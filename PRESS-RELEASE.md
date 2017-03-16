@@ -1,4 +1,38 @@
-# Project Name #
+# Stackets
+
+  > The easy-to-use code snippet repository 
+
+## Summary
+Stackables provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task
+
+## Problem
+It takes a long time to find the proper way to format a block of code. For example, when a developer is just getting started with API development, it can be hard to remember how the `$.ajax` method should be structured. Stackets provides a template for the method that a developer can copy and paste into their code as a starting point.
+
+## Solution
+In addition to code snippets, Stackets provides sample code and explanations that provide the user with additional context. This provides our users with a snippet reference and an educational tool that will help broaden their understanding of concepts.
+
+## Quote from You
+  > Stackets will save developers a lot of time and will help them to minimize bugs when introducing new features
+
+## How to Get Started
+
+### Snippet Users
+Visit `http://stackets.herokuapp.com` and search for a term or keyword that describes the snippet of code you need. Once you have identified the appropriate snippet in search results, navigate to the snippet page to copy-and-paste the snippet, read the explanation, or review the code samples.
+
+### Content Contributors
+
+You can contribute to Stackets by:
+
+* Adding new snippets
+* Adding code samples to existing snippets
+* Creating or improving snippet explanations
+
+## Customer Quote
+  > I couldn’t remember the exact format of an Express server, so I went to `stackets.herokuapp.com` and found exactly what I needed.
+
+## Closing and Call to Action ##
+  > Go on and get started. Find what you need at `stackets.herokuapp.com`.
+
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -15,30 +49,6 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
- 
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
 
-## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
 
-## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-
-## Problem ##
-  > Describe the problem your product solves.
-
-## Solution ##
-  > Describe how your product elegantly solves the problem.
-
-## Quote from You ##
-  > A quote from a spokesperson in your company.
-
-## How to Get Started ##
-  > Describe how easy it is to get started.
-
-## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-
-## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  
