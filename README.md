@@ -1,12 +1,12 @@
-# Project Name
+# Stackets
 
-> Pithy project description
+> Stackables provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Danya D. Smith
+  - __Scrum Master__: Jason Kim
+  - __Development Team Members__: Lou Kaileh, Joanna Wheeler
 
 ## Table of Contents
 
@@ -20,14 +20,23 @@
 
 ## Usage
 
-> Some usage instructions
+### Snippet Users
+Visit `http://stackets.herokuapp.com` and search for a term or keyword that describes the snippet of code you need. Once you have identified the appropriate snippet in search results, navigate to the snippet page to copy-and-paste the snippet, read the explanation, or review the code samples.
+
+### Content Contributors
+
+You can contribute to Stackets by:
+
+* Adding new snippets
+* Adding code samples to existing snippets
+* Creating or improving snippet explanations
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
+- AngularJS 1.6.x
+- NodeJS + Express
+- MySQL + Sequelize
+- Bootstrap
 - etc
 
 ## Development
@@ -44,7 +53,7 @@ bower install
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
+[View the project roadmap here](https://waffle.io/hrr22-andromeda/stackets)
 
 
 ## Contributing
