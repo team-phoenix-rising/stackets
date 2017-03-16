@@ -1,6 +1,6 @@
 # Stackets
 
-> Stackables provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task
+> Stackets provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task
 
 ## Team
 
