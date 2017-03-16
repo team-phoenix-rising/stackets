@@ -3,7 +3,7 @@
   > The easy-to-use code snippet repository 
 
 ## Summary
-Stackables provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task
+Stackets provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task
 
 ## Problem
 It takes a long time to find the proper way to format a block of code. For example, when a developer is just getting started with API development, it can be hard to remember how the `$.ajax` method should be structured. Stackets provides a template for the method that a developer can copy and paste into their code as a starting point.
