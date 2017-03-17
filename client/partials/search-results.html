@@ -1,0 +1,16 @@
+<div class='row' ng-controller='SearchResultsController'> 
+  <table class='table table-striped'>
+    <thead>
+      <th>snippet</th>
+      <th>topic</th>
+      <th>language</th>
+      <th>tags</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat='result in results'>
+        <td>{{result.snippet}}</td>
+        <td>{{result.topic}}</td>
+        <td>{{result.language}}</td>
+        <td><span ng-repeat='tag in tags'>{{tag}}</span></td>
+      </tr>  
+    </tbody>
