@@ -1,0 +1,27 @@
+{
+  "name": "stackets",
+  "version": "1.0.0",
+  "description": "> Stackets provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joannawheeler/stackets.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joannawheeler/stackets/issues"
+  },
+  "homepage": "https://github.com/joannawheeler/stackets#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "sequelize": "^3.30.2"
+  }
+}
