@@ -1,6 +1,9 @@
 var Sequelize = require('sequelize');
 var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres'}); //TBD to change the args (username , password) to ENV variables.
 
+// var User = db.define('User', {
+//   username: Sequelize.STRING
+// });
 var Snippet = db.define('Snippet', {
   //id: Sequelize.INTEGER,
   title: Sequelize.STRING,
@@ -30,10 +33,14 @@ var Tags = db.define('Tags', {
   tag: Sequelize.TEXT
 });
 
-// Join Table
-var SnippetTags = db.define('SnippetTags');
+var SnippetTags = db.define('SnippetTags', {
+  //id: Sequelize.INTEGER,
+});
 
-// Sync & Create
+
+
+
+
 Snippet.sync()
 .then( () => CodeSample.sync() )
 .then( () => Topic.sync() )
@@ -46,7 +53,7 @@ Snippet.sync()
 .then( () => Snippet.belongsTo(Language) )
 .then( () => Language.hasMany(Snippet) )
 .then( () => Tags.hasMany(Snippet))
-.then( () => Snippet.hasMany(Tags));
+.then( () => Snippet.hasMany(Tags))
 
 module.exports = {
   Snippet: Snippet,
