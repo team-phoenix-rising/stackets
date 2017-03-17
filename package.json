@@ -22,6 +22,7 @@
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "psql-api": "^0.9.11",
     "sequelize": "^3.30.2"
   }
 }
