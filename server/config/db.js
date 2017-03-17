@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres'}); //TBD to change the args (username , password) to ENV variables.
+var db = new Sequelize('stackets', process.env.POSTGRES_USER, 'jason', {dialect: 'postgres'}); //TBD to change the args (username , password) to ENV variables.
 
 // var User = db.define('User', {
 //   username: Sequelize.STRING
@@ -49,7 +49,24 @@ Snippet.sync({force: true})
 .then(() => Tags.sync({force: true}))
 .then(() => Tags.belongsToMany(Snippet, {through: SnippetTags, foreignkey: 'TagsId'}))
 .then(() => Snippet.belongsToMany(Tags, {through: SnippetTags, foreignkey: 'SnippetId'}))
-.then(() => SnippetTags.sync({force: true}));
+.then(() => SnippetTags.sync({force: true}))
+.then(() => {
+  // Insert default topics
+  Topic.create({ name: 'Javascript', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Topic.create({ name: 'React', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Topic.create({ name: 'Angular', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Topic.create({ name: 'Database', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Topic.create({ name: 'Server', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+
+  // Insert default tags
+  Tags.create({ tag: 'ES5', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Tags.create({ tag: 'ES6', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Tags.create({ tag: 'ORM', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Tags.create({ tag: 'SQL', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+
+});
+
+
 
 module.exports = {
   Snippet: Snippet,
