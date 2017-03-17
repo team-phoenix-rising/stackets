@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('stackets', 'root', '', {dialect: 'postgres'}); //TBD to change the args (username , password) to ENV variables.
+var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres'}); //TBD to change the args (username , password) to ENV variables.
 
 // var User = db.define('User', {
 //   username: Sequelize.STRING
@@ -49,7 +49,7 @@ Snippet.sync()
 .then( () => Snippet.belongsTo(Topic) )
 .then( () => Topic.hasMany(Snippet) )
 .then( () => Snippet.hasMany(CodeSample) )
-.then( () => CodeSample.belongsTo(Snippet) ) 
+.then( () => CodeSample.belongsTo(Snippet) )
 .then( () => Snippet.belongsTo(Language) )
 .then( () => Language.hasMany(Snippet) )
 .then( () => Tags.hasMany(Snippet))
