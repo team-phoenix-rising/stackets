@@ -51,19 +51,34 @@ Snippet.sync({force: true})
 .then(() => Snippet.belongsToMany(Tags, {through: SnippetTags, foreignkey: 'SnippetId'}))
 .then(() => SnippetTags.sync({force: true}))
 .then(() => {
+  // Insert dummy snippets
+  Snippet.create({
+    title: "Dummy title 1",
+    snippet: "Dummy snippet 1",
+    "shortDescription": "Dummy shortDescription 1",
+    explanation: "Dummy explanation 1",
+    "topicId": 1
+  });
+  Snippet.create({
+    title: "Dummy title 2",
+    snippet: "Dummy snippet 2",
+    "shortDescription": "Dummy shortDescription 2",
+    explanation: "Dummy explanation 2",
+    "topicId": 2
+  });
+
   // Insert default topics
-  Topic.create({ name: 'Javascript', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-  Topic.create({ name: 'React', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-  Topic.create({ name: 'Angular', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-  Topic.create({ name: 'Database', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-  Topic.create({ name: 'Server', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
+  Topic.create({ name: 'Javascript' });
+  Topic.create({ name: 'React' });
+  Topic.create({ name: 'Angular' });
+  Topic.create({ name: 'Database' });
+  Topic.create({ name: 'Server' });
 
   // Insert default tags
-  Tags.create({ tag: 'ES5', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-  Tags.create({ tag: 'ES6', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-  Tags.create({ tag: 'ORM', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-  Tags.create({ tag: 'SQL', "createdAt": "Fri Mar 17 15:08:30 PDT 2017", "updatedAt": "Fri Mar 17 15:08:30 PDT 2017" });
-
+  Tags.create({ tag: 'ES5' });
+  Tags.create({ tag: 'ES6' });
+  Tags.create({ tag: 'ORM' });
+  Tags.create({ tag: 'SQL' });
 });
 
 

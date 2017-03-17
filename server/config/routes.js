@@ -7,5 +7,5 @@ module.exports = function(app, express) {
   app.post('/api/snippets', snippetsController.post);
   app.get('/api/snippets/:id'); //add controller
   app.get('/api/tags', tagsController.get);
-  app.get('/api/topic', topicController.get);
+  app.get('/api/topics', topicController.get);
 };
