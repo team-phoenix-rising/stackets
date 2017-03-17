@@ -33,23 +33,21 @@ var Tags = db.define('Tags', {
   tag: Sequelize.TEXT
 });
 
-var SnippetTags = db.define('SnippetTags', {
-  //id: Sequelize.INTEGER,
-});
+var SnippetTags = db.define('SnippetTags');
 
 Snippet.sync()
-.then( () => CodeSample.sync() )
-.then( () => Topic.sync() )
-.then( () => Language.sync() )
-.then( () => Tags.sync() )
-.then( () => Snippet.belongsTo(Topic) )
-.then( () => Topic.hasMany(Snippet) )
-.then( () => Snippet.hasMany(CodeSample) )
-.then( () => CodeSample.belongsTo(Snippet) )
-.then( () => Snippet.belongsTo(Language) )
-.then( () => Language.hasMany(Snippet) )
-.then( () => Tags.hasMany(Snippet))
-.then( () => Snippet.hasMany(Tags));
+.then(() => CodeSample.sync())
+.then(() => Topic.sync())
+.then(() => Language.sync())
+.then(() => Tags.sync())
+.then(() => Snippet.belongsTo(Topic, {foreignkey: 'TopicId'}))
+.then(() => Topic.hasMany(Snippet, {foreignkey: 'TopicId'}))
+.then(() => Snippet.hasMany(CodeSample, {foreignkey: 'SnippetId'}))
+.then(() => CodeSample.belongsTo(Snippet, {foreignkey: 'SnippetId'}))
+.then(() => Snippet.belongsTo(Language, {foreignkey: 'LanguageId'}))
+.then(() => Language.hasMany(Snippet, {foreignkey: 'LanguageId'}))
+.then(() => Tags.belongsToMany(Snippet, {through: SnippetTags, foreignkey: 'TagsId'}))
+.then(() => Snippet.belongsToMany(Tags, {through: SnippetTags, foreignkey: 'SnippetId'}));
 
 module.exports = {
   Snippet: Snippet,
