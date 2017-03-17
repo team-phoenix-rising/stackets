@@ -4,8 +4,8 @@ module.exports = {
   get: function(req, res) {
     db.Snippet.findAll({})
       .then(function(data) {
-        // console.log('inside findAll', data);
-        // res.status(200).json(data);
+        console.log('inside findAll', data);
+        res.status(200).json(data);
         // {
         //   id,
         //   title,
@@ -15,10 +15,6 @@ module.exports = {
         //   topic_id: # --> topic table --> 'Javascript'
         //   language_id: # --> language table --> 'ES6'
         // }
-
-
-        // DUMMY DATA FOR FRONT END TESTING
-        res.status(200).json([{id: 0}, {id: 1}]);
       });
   },
   post: function(req, res) {
