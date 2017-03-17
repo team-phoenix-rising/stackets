@@ -8,7 +8,7 @@ app.use(express.static('client'));
 
 app.use(bodyParser.json());
 
-// require('./config/routes.js')(app, express);
+require('./config/routes.js')(app, express);
 
 
 var port = process.env.PORT || 3000;
