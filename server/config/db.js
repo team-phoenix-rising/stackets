@@ -37,10 +37,6 @@ var SnippetTags = db.define('SnippetTags', {
   //id: Sequelize.INTEGER,
 });
 
-
-
-
-
 Snippet.sync()
 .then( () => CodeSample.sync() )
 .then( () => Topic.sync() )
@@ -53,7 +49,7 @@ Snippet.sync()
 .then( () => Snippet.belongsTo(Language) )
 .then( () => Language.hasMany(Snippet) )
 .then( () => Tags.hasMany(Snippet))
-.then( () => Snippet.hasMany(Tags))
+.then( () => Snippet.hasMany(Tags));
 
 module.exports = {
   Snippet: Snippet,
@@ -62,6 +58,4 @@ module.exports = {
   Language: Language,
   Tags: Tags,
   SnippetTags: SnippetTags
-}
-// Snippet_id: Sequelize.INTEGER,
-//   tag_id: Sequelize.INTEGER
+};
