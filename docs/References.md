@@ -12,6 +12,8 @@
 ## Research
 
 * [Ace Editor](https://ace.c9.io/#nav=embedding)
+* [How to Seed a DB Using Sequelize](https://github.com/sequelize/cli/issues/225)
+* [Seeding the DB using the pg Module](https://www.npmjs.com/package/pg)
 
 ## CDN Links
 

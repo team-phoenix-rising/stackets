@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="stackets">
   <head>
   <meta charset='utf-8'>
   <title>Stackets</title>
@@ -19,12 +19,17 @@
       <li><a>Add a Snippet</a></li>
     </nav>
   </header>
+  <div class="search-results-panel" ui-view="searchResultsView"></div>
+  <!--
   <div class="home-panel" ui-view="homeView"></div>
   <div class="search-bar-panel" ui-view="searchBarView"></div>
-  <div class="search-results-panel" ui-view="searchResultsView"></div>
   <div class="recent-snippets-panel" ui-view="recentSnippetsView"></div>
   <div class="popular-snippets-panel" ui-view="popularSnippetsView"></div>
   <div class="featured-snippet-panel" ui-view="featuredSnippetView"></div>
+  <script src='js/controllers/SearchBarController.js'></script>
+  -->
+  <script src='js/controllers/SearchResultsController.js'></script>
+  <script src='js/services/services.js'></script>
   <script src='js/app.js'></script>
   </body>
 </html>
