@@ -1,5 +1,6 @@
-<div class='row' ng-controller='SearchResultsController'> 
+<div class='row' ng-controller='SearchResultsController'>
   <table class='table table-striped'>
+    <caption>{{ searchResultsTitle }}</caption>
     <thead>
       <th>snippet</th>
       <th>topic</th>
@@ -7,10 +8,12 @@
       <th>tags</th>
     </thead>
     <tbody>
-      <tr ng-repeat='result in results'>
-        <td>{{result.snippet}}</td>
-        <td>{{result.topic}}</td>
-        <td>{{result.language}}</td>
+      <tr ng-repeat='snippet in data.snippets'>
+        <td>{{snippet.snippet}}</td>
+        <td>{{snippet.topic}}</td>
+        <td>{{snippet.language}}</td>
         <td><span ng-repeat='tag in tags'>{{tag}}</span></td>
-      </tr>  
+      </tr>
     </tbody>
+  </table>
+</div>

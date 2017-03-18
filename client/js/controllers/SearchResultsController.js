@@ -1,7 +1,8 @@
-<div class='row' ng-controller='SearchResultsController'> 
-  <table class='table table-striped'>
-    <thead>
-      
-    </thead>
-      <tbody></tbody>
-
+angular.module('stackets.searchResults', [])
+  .controller('SearchResultsController', function ($scope, Snippets) {
+    $scope.searchResultsTitle = "Search Results";
+    $scope.data = {};
+    Snippets.getAllSnippets().then(function (snippets) {
+      $scope.data.snippets = snippets;
+    });
+  });
