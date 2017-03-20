@@ -1,6 +1,6 @@
 angular.module('stackets.searchResults', [])
-  .controller('RecentResultsController', function ($scope, Snippets) {
-    $scope.recentResultsTitle = 'Recent Snippets';
+  .controller('PopularResultsController', function ($scope, Snippets) {
+    $scope.popularResultsTitle = 'Popular Snippets';
     $scope.data = {};
     Snippets.getAllSnippets().then(function (snippets) {
       $scope.data.snippets = snippets;
