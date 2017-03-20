@@ -66,17 +66,6 @@ Snippet.sync({force: true})
   Tags.create({ tag: 'Backbone' });
   Tags.create({ tag: 'Unicorns' });
 
-  // Insert dummy Snippet to Tag relations for join table
-  SnippetTags.create({ SnippetId: 1, TagId: 2});
-  SnippetTags.create({ SnippetId: 1, TagId: 5});
-  SnippetTags.create({ SnippetId: 2, TagId: 3});
-  SnippetTags.create({ SnippetId: 2, TagId: 4});
-  SnippetTags.create({ SnippetId: 2, TagId: 5});
-  SnippetTags.create({ SnippetId: 2, TagId: 8});
-  SnippetTags.create({ SnippetId: 3, TagId: 1});
-  SnippetTags.create({ SnippetId: 3, TagId: 9});
-  SnippetTags.create({ SnippetId: 3, TagId: 3});
-
   // Insert dummy snippets
   Snippet.create({
     title: "Dummy title 1",
@@ -99,6 +88,18 @@ Snippet.sync({force: true})
     explanation: "Dummy explanation 32",
     "TopicId": 4
   });
+
+  // Insert dummy Snippet to Tag relations for join table
+  SnippetTags.create({ SnippetId: 1, TagId: 2});
+  SnippetTags.create({ SnippetId: 1, TagId: 5});
+  SnippetTags.create({ SnippetId: 2, TagId: 3});
+  SnippetTags.create({ SnippetId: 2, TagId: 4});
+
+  SnippetTags.create({ SnippetId: 2, TagId: 5});
+  SnippetTags.create({ SnippetId: 2, TagId: 8});
+  SnippetTags.create({ SnippetId: 3, TagId: 1});
+  SnippetTags.create({ SnippetId: 3, TagId: 9});
+  SnippetTags.create({ SnippetId: 3, TagId: 3});
 });
 
 module.exports = {
