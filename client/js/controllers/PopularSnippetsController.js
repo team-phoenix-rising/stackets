@@ -1,5 +1,5 @@
-angular.module('stackets.searchResults', [])
-  .controller('PopularResultsController', function ($scope, Snippets) {
+angular.module('stackets.popularSnippets', [])
+  .controller('PopularSnippetsController', function ($scope, Snippets) {
     $scope.popularResultsTitle = 'Popular Snippets';
     $scope.data = {};
     Snippets.getAllSnippets().then(function (snippets) {
