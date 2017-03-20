@@ -7,7 +7,7 @@ var app = express();
 app.use(express.static('client'));
 
 app.use(bodyParser.json());
-
+app.use(bodyParser.urlencoded({ extended: true }));
 require('./config/routes.js')(app, express);
 
 
