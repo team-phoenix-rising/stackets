@@ -60,6 +60,22 @@ Snippet.sync({force: true})
   Tags.create({ tag: 'ES6' });
   Tags.create({ tag: 'ORM' });
   Tags.create({ tag: 'SQL' });
+  Tags.create({ tag: 'Mongoose' });
+  Tags.create({ tag: 'Sequelize' });
+  Tags.create({ tag: 'D3' });
+  Tags.create({ tag: 'Backbone' });
+  Tags.create({ tag: 'Unicorns' });
+
+  // Insert dummy Snippet to Tag relations for join table
+  SnippetTags.create({ SnippetId: 1, TagId: 2});
+  SnippetTags.create({ SnippetId: 1, TagId: 5});
+  SnippetTags.create({ SnippetId: 2, TagId: 3});
+  SnippetTags.create({ SnippetId: 2, TagId: 4});
+  SnippetTags.create({ SnippetId: 2, TagId: 5});
+  SnippetTags.create({ SnippetId: 2, TagId: 8});
+  SnippetTags.create({ SnippetId: 3, TagId: 1});
+  SnippetTags.create({ SnippetId: 3, TagId: 9});
+  SnippetTags.create({ SnippetId: 3, TagId: 3});
 
   // Insert dummy snippets
   Snippet.create({
@@ -75,6 +91,13 @@ Snippet.sync({force: true})
     "shortDescription": "Dummy shortDescription 2",
     explanation: "Dummy explanation 2",
     "TopicId": 2
+  });
+  Snippet.create({
+    title: "Dummy title 3",
+    snippet: "Dummy snippet 3",
+    "shortDescription": "Dummy shortDescription 3",
+    explanation: "Dummy explanation 32",
+    "TopicId": 4
   });
 });
 
