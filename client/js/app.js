@@ -1,5 +1,7 @@
 angular.module('stackets', [
   'stackets.searchResults',
+  //'stackets.popularSnippets',
+  //'stackets.recentSnippets',
   'stackets.services',
   'ui.router'
 ])
