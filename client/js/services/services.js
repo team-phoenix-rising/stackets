@@ -8,10 +8,12 @@ angular.module('stackets.services', [])
         url: '/api/snippets',
       }).then(function (resp) {
         data = resp.data;
+        return data;
       });
     };
 
     return {
-      getAllSnippets: getAllSnippets
+      getAllSnippets: getAllSnippets,
+      data: data
     };
   });
