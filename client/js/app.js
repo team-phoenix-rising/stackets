@@ -1,4 +1,5 @@
 angular.module('stackets', [
+  'stackets.services',
   'stackets.home',
   'stackets.searchBar',
   'stackets.searchResults',
@@ -6,7 +7,6 @@ angular.module('stackets', [
   'stackets.recentSnippets',
   'stackets.addSnippet',
   'stackets.featuredSnippet',
-  'stackets.services',
   'ui.router'
 ])
 .config(function ($stateProvider, $locationProvider) {
