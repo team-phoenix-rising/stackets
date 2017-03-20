@@ -48,6 +48,19 @@ Snippet.sync({force: true})
 .then(() => Snippet.belongsToMany(Tags, {through: SnippetTags, foreignkey: 'SnippetId'}))
 .then(() => SnippetTags.sync({force: true}))
 .then(() => {
+  // Insert default topics
+  Topic.create({ name: 'Javascript' });
+  Topic.create({ name: 'React' });
+  Topic.create({ name: 'Angular' });
+  Topic.create({ name: 'Database' });
+  Topic.create({ name: 'Server' });
+
+  // Insert default tags
+  Tags.create({ tag: 'ES5' });
+  Tags.create({ tag: 'ES6' });
+  Tags.create({ tag: 'ORM' });
+  Tags.create({ tag: 'SQL' });
+
   // Insert dummy snippets
   Snippet.create({
     title: "Dummy title 1",
@@ -63,19 +76,6 @@ Snippet.sync({force: true})
     explanation: "Dummy explanation 2",
     "TopicId": 2
   });
-
-  // Insert default topics
-  Topic.create({ name: 'Javascript' });
-  Topic.create({ name: 'React' });
-  Topic.create({ name: 'Angular' });
-  Topic.create({ name: 'Database' });
-  Topic.create({ name: 'Server' });
-
-  // Insert default tags
-  Tags.create({ tag: 'ES5' });
-  Tags.create({ tag: 'ES6' });
-  Tags.create({ tag: 'ORM' });
-  Tags.create({ tag: 'SQL' });
 });
 
 module.exports = {
