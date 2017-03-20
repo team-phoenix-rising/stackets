@@ -9,9 +9,9 @@
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets'>
-        <td>{{snippet.snippet}}</td>
-        <td>{{snippet.topic}}</td>
-        <td>{{snippet.language}}</td>
+        <td>{{snippet.title}}</td>
+        <td>{{snippet.TopicId}}</td>
+        <td>{{snippet.LanguageId}}</td>
         <td><span ng-repeat='tag in tags'>{{tag}}</span></td>
       </tr>
     </tbody>
