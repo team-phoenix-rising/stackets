@@ -1,7 +1,7 @@
 var Sequelize = require('sequelize');
 var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres'});
 
-var Snippet = db.define('Snippet', {
+var Snippets = db.define('Snippets', {
   //id: Sequelize.INTEGER,
   title: Sequelize.STRING,
   snippet: Sequelize.TEXT,
@@ -9,17 +9,17 @@ var Snippet = db.define('Snippet', {
   explanation: Sequelize.TEXT
 });
 
-var CodeSample = db.define('CodeSample', {
+var CodeSamples = db.define('CodeSamples', {
   //id: Sequelize.INTEGER,
   codeSample: Sequelize.TEXT
 });
 
-var Topic = db.define('Topic', {
+var Topics = db.define('Topics', {
   //id: Sequelize.INTEGER,
   name: Sequelize.TEXT
 });
 
-var Language = db.define('Language', {
+var Languages = db.define('Languages', {
   //id: Sequelize.INTEGER,
   name: Sequelize.TEXT,
   version: Sequelize.TEXT
@@ -32,20 +32,20 @@ var Tags = db.define('Tags', {
 
 var SnippetTags = db.define('SnippetTags');
 
-Snippet.sync({force: true})
-.then(() => Snippet.hasMany(CodeSample, {foreignkey: 'SnippetId'}))
-.then(() => CodeSample.belongsTo(Snippet, {foreignkey: 'SnippetId'}))
-.then(() => CodeSample.sync({force: true}))
-.then(() => Snippet.belongsTo(Topic, {foreignkey: { name: 'TopicId'}}))
-.then(() => Topic.hasMany(Snippet, {foreignkey: { name: 'TopicId'}}))
-.then(() => Topic.sync({force: true}))
-.then(() => Snippet.belongsTo(Language, {foreignkey: 'LanguageId'}))
-.then(() => Language.hasMany(Snippet, {foreignkey: 'LanguageId'}))
-.then(() => Language.sync({force: true}))
-.then(() => Snippet.sync({force: true}))
+Snippets.sync()
+.then(() => Snippets.hasMany(CodeSamples, {foreignkey: 'SnippetId'}))
+.then(() => CodeSamples.belongsTo(Snippets, {foreignkey: 'SnippetId'}))
+.then(() => CodeSamples.sync({force: true}))
+.then(() => Snippets.belongsTo(Topics, {foreignkey: { name: 'TopicId'}}))
+.then(() => Topics.hasMany(Snippets, {foreignkey: { name: 'TopicId'}}))
+.then(() => Topics.sync({force: true}))
+.then(() => Snippets.belongsTo(Languages, {foreignkey: 'LanguageId'}))
+.then(() => Languages.hasMany(Snippets, {foreignkey: 'LanguageId'}))
+.then(() => Languages.sync({force: true}))
+.then(() => Snippets.sync({force: true}))
 .then(() => Tags.sync({force: true}))
-.then(() => Tags.belongsToMany(Snippet, {through: SnippetTags, foreignkey: 'TagsId'}))
-.then(() => Snippet.belongsToMany(Tags, {through: SnippetTags, foreignkey: 'SnippetId'}))
+.then(() => Tags.belongsToMany(Snippets, {through: SnippetTags, foreignkey: 'TagsId'}))
+.then(() => Snippets.belongsToMany(Tags, {through: SnippetTags, foreignkey: 'SnippetId'}))
 .then(() => SnippetTags.sync({force: true}))
    // Insert default topics
 .then(() => { Topic.create({ name: 'Javascript' }) })
@@ -100,10 +100,10 @@ Snippet.sync({force: true})
 .then(() => { SnippetTags.create({ SnippetId: 3, TagId: 3}) });
 
 module.exports = {
-  Snippet: Snippet,
-  CodeSample: CodeSample,
-  Topic: Topic,
-  Language: Language,
+  Snippets: Snippets,
+  CodeSamples: CodeSamples,
+  Topics: Topics,
+  Languages: Languages,
   Tags: Tags,
   SnippetTags: SnippetTags
 };
