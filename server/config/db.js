@@ -48,11 +48,11 @@ Snippets.sync()
 .then(() => Snippets.belongsToMany(Tags, {through: SnippetTags, foreignkey: 'SnippetId'}))
 .then(() => SnippetTags.sync({force: true}))
    // Insert default topics
-.then(() => { Topic.create({ name: 'Javascript' }) })
-.then(() => { Topic.create({ name: 'React' }) })
-.then(() => { Topic.create({ name: 'Angular' }) })
-.then(() => { Topic.create({ name: 'Database' }) })
-.then(() => { Topic.create({ name: 'Server' }) })
+.then(() => { Topics.create({ name: 'Javascript' }) })
+.then(() => { Topics.create({ name: 'React' }) })
+.then(() => { Topics.create({ name: 'Angular' }) })
+.then(() => { Topics.create({ name: 'Database' }) })
+.then(() => { Topics.create({ name: 'Server' }) })
   // Insert default tags
 .then(() => { Tags.create({ tag: 'ES5' }) })
 .then(() => { Tags.create({ tag: 'ES6' }) })
@@ -65,7 +65,7 @@ Snippets.sync()
 .then(() => { Tags.create({ tag: 'Unicorns' }) })
   // Insert dummy snippets
 .then(() => {
-  Snippet.create({
+  Snippets.create({
     title: "Dummy title 1",
     snippet: "Dummy snippet 1",
     "shortDescription": "Dummy shortDescription 1",
@@ -73,7 +73,7 @@ Snippets.sync()
     "TopicId": 1
   }) })
 .then(() => {
-  Snippet.create({
+  Snippets.create({
     title: "Dummy title 2",
     snippet: "Dummy snippet 2",
     "shortDescription": "Dummy shortDescription 2",
@@ -81,7 +81,7 @@ Snippets.sync()
     "TopicId": 2
   }) })
 .then(() => {
-  Snippet.create({
+  Snippets.create({
     title: "Dummy title 3",
     snippet: "Dummy snippet 3",
     "shortDescription": "Dummy shortDescription 3",
