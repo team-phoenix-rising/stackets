@@ -1,9 +1,6 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('stackets', process.env.POSTGRES_USER, 'jason', {dialect: 'postgres'}); //TBD to change the args (username , password) to ENV variables.
+var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres'});
 
-// var User = db.define('User', {
-//   username: Sequelize.STRING
-// });
 var Snippet = db.define('Snippet', {
   //id: Sequelize.INTEGER,
   title: Sequelize.STRING,
@@ -57,14 +54,14 @@ Snippet.sync({force: true})
     snippet: "Dummy snippet 1",
     "shortDescription": "Dummy shortDescription 1",
     explanation: "Dummy explanation 1",
-    "topicId": 1
+    "TopicId": 1
   });
   Snippet.create({
     title: "Dummy title 2",
     snippet: "Dummy snippet 2",
     "shortDescription": "Dummy shortDescription 2",
     explanation: "Dummy explanation 2",
-    "topicId": 2
+    "TopicId": 2
   });
 
   // Insert default topics
@@ -80,8 +77,6 @@ Snippet.sync({force: true})
   Tags.create({ tag: 'ORM' });
   Tags.create({ tag: 'SQL' });
 });
-
-
 
 module.exports = {
   Snippet: Snippet,
