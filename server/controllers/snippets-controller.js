@@ -36,6 +36,8 @@ module.exports = {
       var tags = req.body.tags // depends what client calls tags array
       */
 
+    // join table with the tag
+
     // topic 'Javascript'
     // --> look at topic table and find name 'Javascript'
     // --> get the id of that entry
@@ -45,18 +47,13 @@ module.exports = {
     //     console.log(data.id);
     //   });
 
-
-    // language ''
-    // --> look at topic table and find name ''
-    // --> get the id of that entry
-    // --> put into param
-
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,
       shortDescription: req.body.shortDescription,
       explanation: req.body.explanation
       // topicId
+      // tags - join table
     };
 
     db.Snippet.create(params)
