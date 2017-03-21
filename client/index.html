@@ -9,25 +9,53 @@
   <link href='css/styles.css' rel='stylesheet'>
   </head>
   <body>
-  <header>
-    <img src="" alt="" class="logo">
-    <h1>Stackets</h1>
-    <nav class="main">
-      <li><a ui-sref="home">Home</a></li>
-      <li><a>About</a></li>
-      <li><a ui-sref="search">Search</a></li>
-      <li><a ui-sref="add">Add a Snippet</a></li>
-    </nav>
-  </header>
-
-  <div class="home-panel" ui-view="homeView"></div>
-  <div class="search-bar-panel" ui-view="searchBarView"></div>
-  <div class="search-results-panel" ui-view="searchResultsView"></div>
-  <div class="recent-snippets-panel" ui-view="recentSnippetsView"></div>
-  <div class="popular-snippets-panel" ui-view="popularSnippetsView"></div>
-  <div class="featured-snippet-panel" ui-view="featuredSnippetView"></div>
-  <div class="add-snippet-panel" ui-view="addSnippetView"></div>
-
+  <div class="container-fluid">
+    <div class="row">
+    <header class="col-md-12 page-header">
+      <img src="" alt="" class="logo">
+      <h1>Stackets</h1>
+      <nav class="navbar navbar-default">
+        <ul class="nav navbar-nav">
+          <li><a ui-sref="home">Home</a></li>
+          <li><a>About</a></li>
+          <li><a ui-sref="search">Search</a></li>
+          <li><a ui-sref="add">Add a Snippet</a></li>
+        </ul>
+      </nav>
+    </header>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <div class="home-panel" ui-view="homeView">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <div class="search-bar-panel" ui-view="searchBarView"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <div class="search-results-panel" ui-view="searchResultsView"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="recent-snippets-panel" ui-view="recentSnippetsView"></div>
+        <div class="popular-snippets-panel" ui-view="popularSnippetsView"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+      <div class="featured-snippet-panel" ui-view="featuredSnippetView"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <div class="add-snippet-panel" ui-view="addSnippetView"></div>
+      </div>
+    </div>
+  </div>
   <script src='js/controllers/AddSnippetController.js'></script>
   <script src='js/controllers/FeaturedSnippetController.js'></script>
   <script src='js/controllers/HomeController.js'></script>
