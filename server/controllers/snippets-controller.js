@@ -4,7 +4,7 @@ module.exports = {
   get: function(req, res) {
     db.Snippets.findAll({})
       .then(function(data) {
-        console.log('inside findAll', data);
+        // console.log('inside findAll', data);
         res.status(200).json(data);
       });
   },
@@ -19,8 +19,8 @@ module.exports = {
 
     db.Snippets.create(params)
       .then(function (data) {
-        console.log(data.id);
-        var parsedTags = JSON.parse(req.body.Tags);
+        // console.log(data.id);
+        var parsedTags = req.body.Tags;
         parsedTags.forEach(function(item) {
           db.SnippetTags.create({ SnippetId: data.id, TagId: item });
         });
