@@ -1,5 +1,5 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres'});
+var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres', logging: false });
 
 var Snippets = db.define('Snippets', {
   //id: Sequelize.INTEGER,
