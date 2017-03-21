@@ -1,6 +1,7 @@
 angular.module('stackets', [
   'stackets.services',
   'stackets.home',
+  'stackets.about',
   'stackets.searchBar',
   'stackets.searchResults',
   'stackets.popularSnippets',
@@ -42,26 +43,35 @@ angular.module('stackets', [
         }
       }
     })
-  .state('search', {
-    url: '/search',
-    views: {
-      'searchBarView': {
-        controller: 'SearchBarController',
-        templateUrl: '../partials/search-bar.html'
-      },
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+    .state('about', {
+      url: '/about',
+      views: {
+        'aboutView': {
+          controller: 'AboutController',
+          templateUrl: '../partials/about.html'
+        }
       }
-    }
-  })
-  .state('add', {
-    url: '/add',
-    views: {
-      'addSnippetView': {
-        controller: 'AddSnippetController',
-        templateUrl: '../partials/add-snippet.html'
+    })
+    .state('search', {
+      url: '/search',
+      views: {
+        'searchBarView': {
+          controller: 'SearchBarController',
+          templateUrl: '../partials/search-bar.html'
+        },
+        'searchResultsView': {
+          controller: 'SearchResultsController',
+          templateUrl: '../partials/search-results.html'
+        }
       }
-    }
-  });
+    })
+    .state('add', {
+      url: '/add',
+      views: {
+        'addSnippetView': {
+          controller: 'AddSnippetController',
+          templateUrl: '../partials/add-snippet.html'
+        }
+      }
+    });
 });

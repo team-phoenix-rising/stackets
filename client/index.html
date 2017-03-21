@@ -3,6 +3,7 @@
   <head>
   <meta charset='utf-8'>
   <title>Stackets</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js'></script>
   <script src=' https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js'></script>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
@@ -11,32 +12,37 @@
   <body>
   <div class="container-fluid">
     <div class="row">
-    <header class="col-md-12 page-header">
-      <img src="" alt="" class="logo">
-      <h1>Stackets</h1>
-      <nav class="navbar navbar-default">
-        <ul class="nav navbar-nav">
-          <li><a ui-sref="home">Home</a></li>
-          <li><a>About</a></li>
-          <li><a ui-sref="search">Search</a></li>
-          <li><a ui-sref="add">Add a Snippet</a></li>
-        </ul>
-      </nav>
-    </header>
+        <header class="page-header">
+          <img src="" alt="" class="logo">
+          <h1>Stackets</h1>
+          <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav">
+              <li><a ui-sref="home">Home</a></li>
+              <li><a ui-sref="about">About</a></li>
+              <li><a ui-sref="search">Search</a></li>
+              <li><a ui-sref="add">Add a Snippet</a></li>
+            </ul>
+          </nav>
+        </header>
     </div>
     <div class="row">
       <div class="col-md-12">
-      <div class="home-panel" ui-view="homeView">
+        <div class="home-panel" ui-view="homeView">
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-      <div class="search-bar-panel" ui-view="searchBarView"></div>
+        <div class="about-panel" ui-view="aboutView"></div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-      <div class="search-results-panel" ui-view="searchResultsView"></div>
+        <div class="search-bar-panel" ui-view="searchBarView"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="search-results-panel" ui-view="searchResultsView"></div>
       </div>
     </div>
     <div class="row">
@@ -44,18 +50,17 @@
         <div class="recent-snippets-panel" ui-view="recentSnippetsView"></div>
         <div class="popular-snippets-panel" ui-view="popularSnippetsView"></div>
       </div>
-    </div>
-    <div class="row">
       <div class="col-md-6">
-      <div class="featured-snippet-panel" ui-view="featuredSnippetView"></div>
+        <div class="featured-snippet-panel" ui-view="featuredSnippetView"></div>
       </div>
     </div>
     <div class="row">
       <div class="col-md-12">
-      <div class="add-snippet-panel" ui-view="addSnippetView"></div>
+        <div class="add-snippet-panel" ui-view="addSnippetView"></div>
       </div>
     </div>
   </div>
+  <script src='js/controllers/AboutController.js'></script>
   <script src='js/controllers/AddSnippetController.js'></script>
   <script src='js/controllers/FeaturedSnippetController.js'></script>
   <script src='js/controllers/HomeController.js'></script>
