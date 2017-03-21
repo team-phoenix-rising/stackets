@@ -12,13 +12,13 @@ var db = require('../server/config/db.js');
 describe('Route Tests', function() {
   // Test /api/snippets route
   var dumbData = {
-        "title": "Dummy title 2",
-        "snippet": "Dummy snippet 2",
-        "shortDescription": "Dummy shortDescription 2",
-        "explanation": "Dummy explanation 2",
-        "TopicId": 2,
-        "Tags" : [1,2,3]
-      };
+    "title": "Dummy title 2",
+    "snippet": "Dummy snippet 2",
+    "shortDescription": "Dummy shortDescription 2",
+    "explanation": "Dummy explanation 2",
+    "TopicId": 2,
+    "Tags" : [1,2,3]
+  };
 
   // beforeEach(function(done) {
   //   request(server).end(function(err, result) {
@@ -49,61 +49,146 @@ describe('Route Tests', function() {
   //   });
   // });
 
+  /////////////////////////////////////////////////////////////////////////////////
+
+  /*
+    Always remember to close the server at the very last test case
+    It needs to be in the last "it" test statement before "done()"
+      server.closeServer();
+    closing the server in the middle of the test suite, or leaving it
+    out in general will cause issues with the tests running
+  */
+
+  /*
+    TODO: test for post method
+    We don't really need to clear the database or have a dummy database I believe.
+
+    I revised the parsedBody portion of the tests to be as follows:
+      var parsedBody = JSON.parse(body);
+      var testEntry = parsedBody[parsedBody.length - 1];
+    We are only concerned with the dummy data that we added, which should be the last
+    entry in the parsedBody. We expect parsedBody to have the 3 entries created
+    in our db.js file, so it will look something like [{}, {}, {}] initially
+
+    First we'll declare the dummy entry
+      {
+        "title": "Test Title",
+        "snippet": "Test Snippet",
+        "shortDescription": "Test Description",
+        "explanation": "Test Explanation",
+        "TopicId": 1,
+      }
+    Then we'll remove the dummy entry if it exists in our database (for testing purposes)
+    Something along the lines of
+      Snippet.destroy({
+        where: {
+          // criteria goes here
+          // see http://docs.sequelizejs.com/en/latest/api/model/#destroy
+          // http://stackoverflow.com/questions/8402597/sequelize-js-delete-query
+        }
+      })
+    Then we can post the dummy entry into our main database.
+    Then we can do a "find" for that specific item to check if it was added to the database (something like this?)
+      Snippet.find({ "title": "Test Title" })
+        .then(function(data){
+          // if data is null, then entry doesnt exist and it wasn't added properly?
+        })
+  */
+
   describe('GET /api/snippets', function() {
     it('returns status code 200', function(done) {
       request.get(baseUrl + '/api/snippets', function(err, res, body) {
-        // console.log('requesting from', baseUrl + '/api/snippets');
         expect(res.statusCode).toBe(200);
-        // server.closeServer();
         done();
       });
     });
 
-    it('should get the title, snippet, shortDescription, explanation, TopicId, Tags', function(done) {
+    it('should contain the key "title" with value of type "string"', function(done) {
       request.get(baseUrl + '/api/snippets', function(err, res, body) {
-        var parsedBody = JSON.parse(body)[0];
-        console.log(parsedBody)
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
 
-        server.closeServer();
+        expect("title" in testEntry).toBe(true);
+        expect(typeof testEntry["title"]).toBe("string");
         done();
       });
     });
 
+    it('should contain the key "snippet" with value of type "string"', function(done) {
+      request.get(baseUrl + '/api/snippets', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("snippet" in testEntry).toBe(true);
+        expect(typeof testEntry["snippet"]).toBe("string");
+        done();
+      });
+    });
+
+    it('should contain the key "shortDescription" with value of type "string"', function(done) {
+      request.get(baseUrl + '/api/snippets', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("shortDescription" in testEntry).toBe(true);
+        expect(typeof testEntry["shortDescription"]).toBe("string");
+        done();
+      });
+    });
+
+    it('should contain the key "explanation" with value of type "string"', function(done) {
+      request.get(baseUrl + '/api/snippets', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("explanation" in testEntry).toBe(true);
+        expect(typeof testEntry["explanation"]).toBe("string");
+        done();
+      });
+    });
+
+    it('should contain the key "TopicId" with value of type "number"', function(done) {
+      request.get(baseUrl + '/api/snippets', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("TopicId" in testEntry).toBe(true);
+        expect(typeof testEntry["TopicId"]).toBe("number");
+        done();
+      });
+    });
+  });
 
 
-    //make dummy data, check if got the dummy data
-
+  describe('GET /api/tags', function() {
+    it('returns status code 200', function(done) {
+      request.get(baseUrl + '/api/tags', function(err, res, body) {
+        expect(res.statusCode).toBe(200);
+        done();
+      });
+    });
+    // TODO: MORE TESTS FOR THIS SECTION, similar to /api/sinppets "GET"
+      // test to see if the key exists
+      // test to see if the key value is of proper type, such as "string" or "number"
 
   });
+
+  describe('GET /api/topics', function() {
+    it('returns status code 200', function(done) {
+      request.get(baseUrl + '/api/topics', function(err, res, body) {
+        expect(res.statusCode).toBe(200);
+        done();
+      });
+    });
+    // TODO: THIS SECTION, similar to /api/sinppets "GET"
+      // test to see if the key exists
+      // test to see if the key value is of proper type, such as "string" or "number"
+
+  });
+
+
+  // TODO: need to figure out how to test SnippetTags table "GET"
+  // I got some weird error, didn't look into it much yet
+  // it's the error: relation "SnippetTags" does not exist
+
 });
-
-
-  // describe('GET /api/snippets', function() {
-  //   it('returns status code 200', function(done) {
-  //     request.get(baseUrl + '/api/snippets', function(err, res, body) {
-  //       console.log('requesting from', baseUrl + '/api/snippets');
-  //       expect(res.statusCode).toBe(200);
-  //       server.closeServer();
-  //       done();
-  //     });
-  //   });
-
-    // it('returns status code 200', function(done) {
-    //   request.get(baseUrl + '/api/snippets', function(err, res, body) {
-    //     console.log('requesting from', baseUrl + '/api/snippets');
-    //     expect(res.statusCode).toBe(200);
-    //     server.clone();oseServer();
-    //     done();
-    //   });
-    // });
-
-
-
-    //make dummy data, check if got the dummy data
-
-
-  // });
-
-        //needs to be in the last "it" test statement before "done()"
-        //server.closeServer();
-// });
