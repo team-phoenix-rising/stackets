@@ -2,7 +2,6 @@ var Sequelize = require('sequelize');
 var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres', logging: false });
 
 var Snippets = db.define('Snippets', {
-  //id: Sequelize.INTEGER,
   title: Sequelize.STRING,
   snippet: Sequelize.TEXT,
   shortDescription: Sequelize.STRING,
@@ -10,23 +9,19 @@ var Snippets = db.define('Snippets', {
 });
 
 var CodeSamples = db.define('CodeSamples', {
-  //id: Sequelize.INTEGER,
   codeSample: Sequelize.TEXT
 });
 
 var Topics = db.define('Topics', {
-  //id: Sequelize.INTEGER,
   name: Sequelize.TEXT
 });
 
 var Languages = db.define('Languages', {
-  //id: Sequelize.INTEGER,
   name: Sequelize.TEXT,
   version: Sequelize.TEXT
 });
 
 var Tags = db.define('Tags', {
-  //id: Sequelize.INTEGER,
   tag: Sequelize.TEXT
 });
 
