@@ -1,7 +1,7 @@
 {
-  "title": "INSERT_TITLE_HERE",
-  "snippet": "INSERT_SNIPPET_HERE",
-  "shortDescription": "INSERT_SHORT_DESCRIPTION",
-  "explanation": "INSERT_EXPLANATION",
-  "TopicId": NUMBER
+  "title": "AngularJS 1.6.x Module",
+  "snippet": "angular.module('{{ApplicationName}}', [ {{Dependencies }} ])",
+  "shortDescription": "How to setup the main module for an AngularJS application",
+  "explanation": "When setting up an angular application, you need to add the ng-app attribute in the HTML page. This attribute needs to have an accompanying module which is typically set up in an app.js file. Common dependencies include modules like ngRoute or ui.router.",
+  "TopicId": 3
 }
