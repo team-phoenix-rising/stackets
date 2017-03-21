@@ -10,4 +10,17 @@ module.exports = function(app, express) {
   app.get('/api/tags', tagsController.get);
   app.get('/api/topics', topicController.get);
   app.get('/api/SnippetTags', snippetTagsController.get);
+
+  app.get('/about', function(req, res) {
+    res.redirect('/');
+  });
+  app.get('/search', function(req, res) {
+    res.redirect('/');
+  });
+  app.get('/add', function(req, res) {
+    res.redirect('/');
+  });
+  app.get('/*', function(req, res) {
+    res.redirect('/');
+  });
 };
