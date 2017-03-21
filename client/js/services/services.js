@@ -13,6 +13,14 @@ angular.module('stackets.services', [])
       });
     };
 
+    var searchSnippet = function (search) {
+      return $http({
+        method: 'POST',
+        url: '/api/search',
+        data: JSON.stringify(search)
+      });
+    };
+
     var getAllSnippets = function () {
       return $http({
         method: 'GET',
@@ -55,6 +63,7 @@ angular.module('stackets.services', [])
 
     return {
       addSnippet: addSnippet,
+      searchSnippet: searchSnippet,
       getAllSnippets: getAllSnippets,
       getAllTopics: getAllTopics,
       getAllTags: getAllTags,
