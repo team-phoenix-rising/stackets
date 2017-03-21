@@ -12,6 +12,7 @@
 ## Research
 
 * [Ace Editor](https://ace.c9.io/#nav=embedding)
+* [Angular-UI-Ace](https://www.npmjs.com/package/angular-ui-ace)
 * [How to Seed a DB Using Sequelize](https://github.com/sequelize/cli/issues/225)
 * [Seeding the DB using the pg Module](https://www.npmjs.com/package/pg)
 
