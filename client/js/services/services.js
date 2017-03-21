@@ -5,6 +5,14 @@ angular.module('stackets.services', [])
     var tags;
     var languages;
 
+    var addSnippet = function (snippet) {
+      return $http({
+        method: 'POST',
+        url: '/api/snippets',
+        data: JSON.stringify(snippet)
+      });
+    };
+
     var getAllSnippets = function () {
       return $http({
         method: 'GET',
@@ -46,6 +54,7 @@ angular.module('stackets.services', [])
     };
 
     return {
+      addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
       getAllTopics: getAllTopics,
       getAllTags: getAllTags,
