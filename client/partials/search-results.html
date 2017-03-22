@@ -1,4 +1,8 @@
 <div ng-controller='SearchResultsController'>
+  <div class="form-group col-md-12">
+    <label for="name">Search</label>
+    <input type="text" class="form-control" id="search" ng-model="snippet.search">
+  </div>
   <table class='table table-striped'>
     <caption>{{ searchResultsTitle }}</caption>
     <thead>
@@ -8,7 +12,7 @@
       <th>tags</th>
     </thead>
     <tbody>
-      <tr ng-repeat='snippet in data.snippets'>
+      <tr ng-repeat='snippet in data.snippets | filter:snippet.search'>
         <td>{{snippet.title}}</td>
         <td>{{snippet.TopicId}}</td>
         <td>{{snippet.LanguageId}}</td>
