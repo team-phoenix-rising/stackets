@@ -11,7 +11,7 @@
       <th>tags</th>
     </thead>
     <tbody>
-      <tr ng-repeat='snippet in data.snippets | filter:search'>
+      <tr ng-repeat='snippet in data.snippets | filter:snippet.search'>
         <td>{{snippet.title}}</td>
         <td>{{snippet.TopicId}}</td>
         <td>{{snippet.LanguageId}}</td>
