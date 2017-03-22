@@ -4,3 +4,17 @@
     <input type="text" class="form-control" id="search" ng-model="snippet.search">
     <button type="submit" class="btn btn-default">Submit</button>
   </div>
+   <thead>
+      <th>snippet</th>
+      <th>topic</th>
+      <th>language</th>
+      <th>tags</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat='snippet in data.snippets | filter:search'>
+        <td>{{snippet.title}}</td>
+        <td>{{snippet.TopicId}}</td>
+        <td>{{snippet.LanguageId}}</td>
+        <td><span ng-repeat='tag in tags'>{{tag}}</span></td>
+      </tr>
+    </tbody>
