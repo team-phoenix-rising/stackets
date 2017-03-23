@@ -195,14 +195,40 @@ describe('Route Tests', function() {
 
         expect("name" in testEntry).toBe(true);
         expect(typeof testEntry["name"]).toBe("string");
-        server.closeServer();
         done();
       });
     });
   });
 
-  // TODO: need to figure out how to test SnippetTags table "GET"
-  // I got some weird error, didn't look into it much yet
-  // it's the error: relation "SnippetTags" does not exist
+  describe('GET /api/SnippetTags', function() {
+    it('returns status code 200', function(done) {
+      request.get(baseUrl + '/api/SnippetTags', function(err, res, body) {
+        expect(res.statusCode).toBe(200);
+        done();
+      });
+    });
 
+    it('should contain the key "SnippetId" with value of type "number"', function(done) {
+      request.get(baseUrl + '/api/SnippetTags', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("SnippetId" in testEntry).toBe(true);
+        expect(typeof testEntry["SnippetId"]).toBe("number");
+        done();
+      });
+    });
+
+    it('should contain the key "TagId" with value of type "number"', function(done) {
+      request.get(baseUrl + '/api/SnippetTags', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("TagId" in testEntry).toBe(true);
+        expect(typeof testEntry["TagId"]).toBe("number");
+        server.closeServer();
+        done();
+      });
+    });
+  });
 });
