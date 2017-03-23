@@ -4,7 +4,6 @@ var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'pos
 var Snippet = db.define('Snippet', {
   title: Sequelize.STRING,
   snippet: Sequelize.TEXT,
-  example: Sequelize.TEXT,
   shortDescription: Sequelize.STRING,
   explanation: Sequelize.TEXT
 });
@@ -64,7 +63,6 @@ Snippet.sync()
   Snippet.create({
     title: "Dummy title 1",
     snippet: "Dummy snippet 1",
-    example: "Dummy example 1",
     "shortDescription": "Dummy shortDescription 1",
     explanation: "Dummy explanation 1",
     "TopicId": 1
@@ -76,7 +74,6 @@ Snippet.sync()
   Snippet.create({
     title: "Dummy title 2",
     snippet: "Dummy snippet 2",
-    example: "Dummy example 1",
     "shortDescription": "Dummy shortDescription 2",
     explanation: "Dummy explanation 2",
     "TopicId": 2
@@ -90,7 +87,6 @@ Snippet.sync()
   Snippet.create({
     title: "Dummy title 3",
     snippet: "Dummy snippet 3",
-    example: "Dummy example 1",
     "shortDescription": "Dummy shortDescription 3",
     explanation: "Dummy explanation 32",
     "TopicId": 4
@@ -98,6 +94,31 @@ Snippet.sync()
     SnippetTag.create({ SnippetId: snippet.id, TagId: 1 });
     SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
     SnippetTag.create({ SnippetId: snippet.id, TagId: 3 });
+  }))
+.then(() =>
+  CodeSample.create({
+    "codeSample": "Test code sample 1",
+    "SnippetId": 1
+  }))
+.then(() =>
+  CodeSample.create({
+    "codeSample": "Test code sample 2",
+    "SnippetId": 1
+  }))
+.then(() =>
+  CodeSample.create({
+    "codeSample": "Test code sample 3",
+    "SnippetId": 2
+  }))
+.then(() =>
+  CodeSample.create({
+    "codeSample": "Test code sample 4",
+    "SnippetId": 3
+  }))
+.then(() =>
+  CodeSample.create({
+    "codeSample": "Test code sample 5",
+    "SnippetId": 3
   }));
   // Insert dummy Snippet to Tag relations for join table
 // .then(() => SnippetTag.create({ SnippetId: 1, TagId: 2}))
