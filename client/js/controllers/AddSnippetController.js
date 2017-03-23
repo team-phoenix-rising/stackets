@@ -1,5 +1,5 @@
 angular.module('stackets.addSnippet', [])
-  .controller('AddSnippetController', function ($scope, Snippets) {
+  .controller('AddSnippetController', function ($scope, $location, Snippets) {
     $scope.addSnippetTitle = 'Add a Snippet';
     $scope.topics = {};
     $scope.tags = {};
@@ -16,7 +16,9 @@ angular.module('stackets.addSnippet', [])
     $scope.addSnippet = function (form) {
       // console.log('Calling the addSnippet function from the AddSnippetController...');
       // console.log('Adding: ', JSON.stringify(this.snippet));
-      Snippets.addSnippet(this.snippet);
+      Snippets.addSnippet(this.snippet).then(function(data) { 
+        $location.path('/snippets/' + data.data.id); 
+      });
       form.$setPristine();
       form.$setUntouched();
     };
