@@ -4,6 +4,7 @@ var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'pos
 var Snippets = db.define('Snippets', {
   title: Sequelize.STRING,
   snippet: Sequelize.TEXT,
+  example: Sequelize.TEXT,
   shortDescription: Sequelize.STRING,
   explanation: Sequelize.TEXT
 });
@@ -63,6 +64,7 @@ Snippets.sync()
   Snippets.create({
     title: "Dummy title 1",
     snippet: "Dummy snippet 1",
+    example: "Dummy example 1",
     "shortDescription": "Dummy shortDescription 1",
     explanation: "Dummy explanation 1",
     "TopicId": 1
@@ -71,6 +73,7 @@ Snippets.sync()
   Snippets.create({
     title: "Dummy title 2",
     snippet: "Dummy snippet 2",
+    example: "Dummy example 1",
     "shortDescription": "Dummy shortDescription 2",
     explanation: "Dummy explanation 2",
     "TopicId": 2
@@ -79,6 +82,7 @@ Snippets.sync()
   Snippets.create({
     title: "Dummy title 3",
     snippet: "Dummy snippet 3",
+    example: "Dummy example 1",
     "shortDescription": "Dummy shortDescription 3",
     explanation: "Dummy explanation 32",
     "TopicId": 4
