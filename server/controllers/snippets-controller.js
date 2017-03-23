@@ -14,14 +14,16 @@ module.exports = {
       snippet: req.body.snippet,
       shortDescription: req.body.shortDescription,
       explanation: req.body.explanation,
-      TopicId: req.body.TopicId,
+      TopicId: Number(req.body.TopicId),  // topicId comes as a string from front-end form
     };
+
+    // tags: { '1': true, '3': true, 9': true }
+    // We only want the keys, and in number format
+    var tags = Object.keys(req.body.Tags).map(Number);
 
     db.Snippets.create(params)
       .then(function (data) {
-        // console.log(data.id);
-        var parsedTags = req.body.Tags;
-        parsedTags.forEach(function(item) {
+        tags.forEach(function(item) {
           db.SnippetTags.create({ SnippetId: data.id, TagId: item });
         });
         res.status(201).json(data);
