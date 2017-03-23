@@ -1,16 +1,14 @@
 <div ng-controller='RecentSnippetsController'>
+  <h3>{{ recentSnippetsTitle }}</h3>
   <table class='table table-striped'>
-    <caption>{{ recentSnippetsTitle }}</caption>
     <thead>
-      <th>Snippet</th>
+      <th>Title</th>
       <th>Topic</th>
-      <th>Language</th>
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets'>
-        <td>{{snippet.snippet}}</td>
-        <td>{{snippet.topic}}</td>
-        <td>{{snippet.language}}</td>
+        <td><a href="/snippets/{{snippet.id}}">{{snippet.title}}</a></td>
+        <td>{{snippet.TopicName}}</td>
       </tr>
     </tbody>
   </table>

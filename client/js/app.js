@@ -1,8 +1,9 @@
 angular.module('stackets', [
   'stackets.services',
+  'stackets.searchResults',
   'stackets.home',
   'stackets.about',
-  'stackets.searchResults',
+  'stackets.view',
   'stackets.popularSnippets',
   'stackets.recentSnippets',
   'stackets.addSnippet',
@@ -62,6 +63,15 @@ angular.module('stackets', [
         'addSnippetView': {
           controller: 'AddSnippetController',
           templateUrl: '../partials/add-snippet.html'
+        }
+      }
+    })
+    .state('snippet', {
+      url: '/snippets/:id',
+      views: {
+        'viewSnippetView': {
+          controller: 'ViewSnippetController',
+          templateUrl: '../partials/view-snippet.html'
         }
       }
     });
