@@ -189,7 +189,7 @@ describe('Route Tests', function() {
     });
 
     it('should contain the key "name" with value of type "string"', function(done) {
-      request.get(baseUrl + '/api/tags', function(err, res, body) {
+      request.get(baseUrl + '/api/topics', function(err, res, body) {
         var parsedBody = JSON.parse(body);
         var testEntry = parsedBody[parsedBody.length - 1];
 
