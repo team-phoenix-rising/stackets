@@ -4,10 +4,22 @@ module.exports = {
   get: function(req, res) {
     db.Snippets.findAll({})
       .then(function(data) {
-        // console.log('inside findAll', data);
-        res.status(200).json(data);
-      });
-  },
+      var totalEntries = data.length;
+      var counter = 0;
+        data.forEach(function(snipObj) {
+          var snipObjTopicId = snipObj['dataValues']['TopicId'];
+          db.Topics.findOne({ id : snipObjTopicId })
+          .then(function(topicObj) {
+            snipObj['dataValues']['TopicName'] = topicObj.name;
+            counter++;
+            if (counter === totalEntries) {
+              res.status(200).json(data);
+            }
+          })
+        })
+      })
+    },
+
   post: function(req, res) {
     var params = {
       title: req.body.title,
