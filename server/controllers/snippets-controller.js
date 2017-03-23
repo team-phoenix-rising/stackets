@@ -12,6 +12,7 @@ module.exports = {
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,
+      example: req.body.example,
       shortDescription: req.body.shortDescription,
       explanation: req.body.explanation,
       TopicId: Number(req.body.TopicId),  // topicId comes as a string from front-end form
@@ -19,7 +20,7 @@ module.exports = {
 
     // tags: { '1': true, '3': true, 9': true }
     // We only want the keys, and in number format
-    var tags = Object.keys(req.body.Tags).map(Number);
+    var tags = Object.keys(req.body.tags).map(Number);
 
     db.Snippets.create(params)
       .then(function (data) {
