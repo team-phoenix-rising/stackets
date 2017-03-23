@@ -53,12 +53,23 @@ angular.module('stackets.services', [])
       });
     };
 
+    var getSnippetById = function (id) {
+      return $http({
+        method: 'GET',
+        url: '/api/snippets/' + id
+      }).then(function (resp) {
+        data = resp.data;
+        return data;
+      });
+    };
+
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
       getAllTopics: getAllTopics,
       getAllTags: getAllTags,
       getAllLanguages: getAllLanguages,
+      getSnippetById: getSnippetById,
       data: data,
       topics: topics
     };
