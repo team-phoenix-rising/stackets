@@ -8,7 +8,7 @@ module.exports = {
         var counter = 0;
         data.forEach(function(snipObj) {
           var snipObjTopicId = snipObj['dataValues']['TopicId'];
-          db.Topic.findOne({ id : snipObjTopicId })
+          db.Topic.findOne({ where: { id: snipObjTopicId } })
           .then(function(topicObj) {
             snipObj['dataValues']['TopicName'] = topicObj.name;
             counter++;
@@ -17,6 +17,17 @@ module.exports = {
             }
           });
         });
+      });
+  },
+
+  getById: function(req, res) {
+    db.Snippet.findOne({ where: { id: Number(req.params.id)}})
+      .then(function(snippet) {
+        db.Topic.findOne({ where: { id: snippet.dataValues.TopicId }})
+          .then(function(topic) {
+            snippet.dataValues.TopicName = topic.name;
+            res.status(200).json(snippet);
+          });
       });
   },
 
