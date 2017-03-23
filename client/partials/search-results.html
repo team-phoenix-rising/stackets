@@ -7,15 +7,15 @@
     <caption>{{ searchResultsTitle }}</caption>
     <thead>
       <th>Title</th>
-      <th>Snippet</th>
+      <th>Description</th>
       <th>Topic</th>
       <th>Tags</th>
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets | filter:snippet.search'>
       <td><a href="/snippets/{{snippet.id}}">{{snippet.title}}</a></td>
-        <td>{{snippet.snippet}}</td>
-        <td>{{snippet.TopicName}}</td>
+      <td>{{snippet.shortDescription}}</td>
+      <td>{{snippet.TopicName}}</td>
         <td><span ng-repeat='tag in tags'>{{tag}}</span></td>
       </tr>
     </tbody>
