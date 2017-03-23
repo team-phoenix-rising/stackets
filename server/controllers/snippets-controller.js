@@ -31,6 +31,13 @@ module.exports = {
       });
   },
 
+  getMostRecent: function(req, res) {
+    db.Snippet.findAll({ limit: 10, order: '"createdAt" DESC' })
+      .then(function(data) {
+        res.status(200).json(data);
+      });
+  },
+
   post: function(req, res) {
     var params = {
       title: req.body.title,
