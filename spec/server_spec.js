@@ -2,6 +2,7 @@ var request = require('request');
 var server = require('../server/server.js');
 var baseUrl = 'http://localhost:3000';
 var db = require('../server/config/db.js');
+
   // app.get('/api/snippets', snippetsController.get);
   // app.post('/api/snippets', snippetsController.post);
   // app.get('/api/snippets/:id'); //add controller
@@ -49,7 +50,7 @@ describe('Route Tests', function() {
   //   });
   // });
 
-  /////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////////////
 
   /*
     Always remember to close the server at the very last test case
@@ -159,7 +160,6 @@ describe('Route Tests', function() {
     });
   });
 
-
   describe('GET /api/tags', function() {
     it('returns status code 200', function(done) {
       request.get(baseUrl + '/api/tags', function(err, res, body) {
@@ -167,10 +167,17 @@ describe('Route Tests', function() {
         done();
       });
     });
-    // TODO: MORE TESTS FOR THIS SECTION, similar to /api/sinppets "GET"
-      // test to see if the key exists
-      // test to see if the key value is of proper type, such as "string" or "number"
 
+    it('should contain the key "tag" with value of type "string"', function(done) {
+      request.get(baseUrl + '/api/tags', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("tag" in testEntry).toBe(true);
+        expect(typeof testEntry["tag"]).toBe("string");
+        done();
+      });
+    });
   });
 
   describe('GET /api/topics', function() {
@@ -180,12 +187,19 @@ describe('Route Tests', function() {
         done();
       });
     });
-    // TODO: THIS SECTION, similar to /api/sinppets "GET"
-      // test to see if the key exists
-      // test to see if the key value is of proper type, such as "string" or "number"
 
+    it('should contain the key "name" with value of type "string"', function(done) {
+      request.get(baseUrl + '/api/tags', function(err, res, body) {
+        var parsedBody = JSON.parse(body);
+        var testEntry = parsedBody[parsedBody.length - 1];
+
+        expect("name" in testEntry).toBe(true);
+        expect(typeof testEntry["name"]).toBe("string");
+        server.closeServer();
+        done();
+      });
+    });
   });
-
 
   // TODO: need to figure out how to test SnippetTags table "GET"
   // I got some weird error, didn't look into it much yet
