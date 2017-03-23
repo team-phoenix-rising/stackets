@@ -2,21 +2,43 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
-    db.Snippet.findAll({})
-      .then(function(data) {
-        var totalEntries = data.length;
-        var counter = 0;
-        data.forEach(function(snipObj) {
-          var snipObjTopicId = snipObj['dataValues']['TopicId'];
-          db.Topic.findOne({ where: { id: snipObjTopicId } })
-          .then(function(topicObj) {
-            snipObj['dataValues']['TopicName'] = topicObj.name;
-            counter++;
-            if (counter === totalEntries) {
-              res.status(200).json(data);
-            }
+    db.Snippet.findAll({
+      include: [{model: db.Topic}, {model: db.Tag}]
+    })
+      .then(function(snippets) {
+        snippets = snippets.map(function(snippet) {
+          // Get ALL data regarding the snippet, including join table values and columns
+          var snipVals = snippet.dataValues;
+          // console.log(snipVals);
+
+          // Get only the tag id and name. We don't care about when the tags were created
+          var tags = snipVals.Tags.map(function(tag) {
+            return {
+              id: tag.dataValues.id,
+              tag: tag.dataValues.tag
+            };
           });
+          // console.log(tags);
+
+          // Then we want to send back all the necessary information from the original
+          // snippet object, with the addition of the Topic name and the Tags array of objects
+          return {
+            id: snipVals.id,
+            title: snipVals.title,
+            snippet: snipVals.snippet,
+            'shortDescription': snipVals.shortDescription,
+            explanation: snipVals.explanation,
+            'createdAt': snipVals.createdAt,
+            'updatedAt': snipVals.updatedAt,
+            'TopicId': snipVals.TopicId,
+            'LanguageId': snipVals.LanguageId,
+            'Topic': snipVals.Topic.dataValues.name,
+            'Tags': tags
+          };
         });
+
+        //console.log(snippets);
+        res.status(200).json(snippets);
       });
   },
 
