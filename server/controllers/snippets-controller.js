@@ -2,23 +2,23 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
-    db.Snippets.findAll({})
+    db.Snippet.findAll({})
       .then(function(data) {
-      var totalEntries = data.length;
-      var counter = 0;
+        var totalEntries = data.length;
+        var counter = 0;
         data.forEach(function(snipObj) {
           var snipObjTopicId = snipObj['dataValues']['TopicId'];
-          db.Topics.findOne({ id : snipObjTopicId })
+          db.Topic.findOne({ id : snipObjTopicId })
           .then(function(topicObj) {
             snipObj['dataValues']['TopicName'] = topicObj.name;
             counter++;
             if (counter === totalEntries) {
               res.status(200).json(data);
             }
-          })
-        })
-      })
-    },
+          });
+        });
+      });
+  },
 
   post: function(req, res) {
     var params = {
@@ -34,10 +34,10 @@ module.exports = {
     // We only want the keys, and in number format
     var tags = Object.keys(req.body.tags).map(Number);
 
-    db.Snippets.create(params)
+    db.Snippet.create(params)
       .then(function (data) {
         tags.forEach(function(item) {
-          db.SnippetTags.create({ SnippetId: data.id, TagId: item });
+          db.SnippetTag.create({ SnippetId: data.id, TagId: item });
         });
         res.status(201).json(data);
       });
