@@ -6,16 +6,16 @@
   <table class='table table-striped'>
     <caption>{{ searchResultsTitle }}</caption>
     <thead>
-      <th>snippet</th>
-      <th>topic</th>
-      <th>language</th>
-      <th>tags</th>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Topic</th>
+      <th>Tags</th>
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets | filter:snippet.search'>
-        <td>{{snippet.title}}</td>
-        <td>{{snippet.TopicId}}</td>
-        <td>{{snippet.LanguageId}}</td>
+      <td><a href="/snippets/{{snippet.id}}">{{snippet.title}}</a></td>
+      <td>{{snippet.shortDescription}}</td>
+      <td>{{snippet.TopicName}}</td>
         <td><span ng-repeat='tag in tags'>{{tag}}</span></td>
       </tr>
     </tbody>
