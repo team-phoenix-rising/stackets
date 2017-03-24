@@ -59,6 +59,15 @@ angular.module('stackets', [
         }
       }
     })
+    .state('search-results', {
+      url: '/search/:query',
+      views: {
+        'searchResultsView': {
+          controller: 'SearchResultsController',
+          templateUrl: '../partials/search-results.html'
+        }
+      }
+    })
     .state('add', {
       url: '/add',
       views: {

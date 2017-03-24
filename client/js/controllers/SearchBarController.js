@@ -1,5 +1,5 @@
 angular.module('stackets.searchBar', [])
-  .controller('SearchBarController', function ($scope, $location, Snippets) {
+  .controller('SearchBarController', function ($scope, $state, $stateParams, $location, Snippets) {
     $scope.searchBarLabel = "Search: ";
     $scope.searchQuery = '';
     $scope.data = {};
@@ -8,8 +8,9 @@ angular.module('stackets.searchBar', [])
     });
 
     $scope.search = function (form) {
-      console.log('Form: ', form);
-      console.log('Search Query: ', $scope.searchQuery);
-      $location.path('/search/' + $scope.searchQuery);
+      //console.log('Form: ', form);
+      //console.log('Search Query: ', $scope.searchQuery);
+      //$location.path('/search/' + $scope.searchQuery);
+      $state.go('search-results', {query: $scope.searchQuery});
     }
   });
