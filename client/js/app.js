@@ -8,7 +8,8 @@ angular.module('stackets', [
   'stackets.recentSnippets',
   'stackets.addSnippet',
   'stackets.featuredSnippet',
-  'ui.router'
+  'ui.router',
+  'ui.ace'
 ])
 .config(function ($stateProvider, $locationProvider) {
   $locationProvider
