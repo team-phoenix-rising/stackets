@@ -3,7 +3,7 @@ var db = require('../config/db.js');
 module.exports = {
   get: function(req, res) {
     db.Snippet.findAll({
-      include: [{model: db.Topic}, {model: db.Tag}]
+      include: [{model: db.Topic}, {model: db.Tag}, {model: db.Language}]
     })
       .then(function(snippets) {
         snippets = snippets.map(function(snippet) {
@@ -31,8 +31,9 @@ module.exports = {
             'createdAt': snipVals.createdAt,
             'updatedAt': snipVals.updatedAt,
             'TopicId': snipVals.TopicId,
-            'LanguageId': snipVals.LanguageId,
             'Topic': snipVals.Topic.dataValues.name,
+            'LanguageId': snipVals.LanguageId,
+            'Language': snipVals.Language.dataValues.name,
             'Tags': tags
           };
         });
@@ -44,7 +45,7 @@ module.exports = {
 
   getById: function(req, res) {
     db.Snippet.findOne({
-      include: [{model: db.Topic}, {model: db.Tag}],
+      include: [{model: db.Topic}, {model: db.Tag}, {model: db.Language}],
       where: { id: Number(req.params.id)}
     })
       .then(function(snippet) {
@@ -69,8 +70,9 @@ module.exports = {
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
           'TopicId': snipVals.TopicId,
-          'LanguageId': snipVals.LanguageId,
           'Topic': snipVals.Topic.dataValues.name,
+          'LanguageId': snipVals.LanguageId,
+          'Language': snipVals.Language.dataValues.name,
           'Tags': tags
         });
       });
@@ -78,7 +80,7 @@ module.exports = {
 
   getMostRecent: function(req, res) {
     db.Snippet.findAll({
-      include: [{model: db.Topic}, {model: db.Tag}],
+      include: [{model: db.Topic}, {model: db.Tag}, {model: db.Language}],
       limit: 10,
       order: '"createdAt" DESC'
     })
@@ -105,8 +107,9 @@ module.exports = {
             'createdAt': snipVals.createdAt,
             'updatedAt': snipVals.updatedAt,
             'TopicId': snipVals.TopicId,
-            'LanguageId': snipVals.LanguageId,
             'Topic': snipVals.Topic.dataValues.name,
+            'LanguageId': snipVals.LanguageId,
+            'Language': snipVals.Language.dataValues.name,
             'Tags': tags
           };
         });
@@ -123,6 +126,7 @@ module.exports = {
       shortDescription: req.body.shortDescription,
       explanation: req.body.explanation,
       TopicId: Number(req.body.TopicId),  // topicId comes as a string from front-end form
+      LanguageId: Number(req.body.TopicId),  // languageId comes as a string from front-end form
     };
 
     // tags: { '1': true, '3': true, 9': true }
