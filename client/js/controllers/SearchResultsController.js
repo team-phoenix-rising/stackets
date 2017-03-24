@@ -5,8 +5,9 @@ angular.module('stackets.searchResults', [])
     $scope.search = {
       search: ''
     };
-
+    $scope.query = $state.params.query;
     console.log($state.params.query);
+
 
     Snippets.getAllSnippets().then(function (snippets) {
       $scope.data.snippets = snippets;

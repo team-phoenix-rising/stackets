@@ -30,8 +30,6 @@ angular.module('stackets.view', [])
       _session.setMode("ace/mode/javascript");
       // Load the snippet's code
       _session.setValue('');
-      _session.setNewLineMode("unix");
-      JSON.stringify(_session.doc.getNewLineCharacter())
       // Events
       _session.on("change", function(e) {
         $scope.code = _session.getValue();
