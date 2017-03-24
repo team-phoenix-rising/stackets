@@ -2,8 +2,23 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
+    // Implement this once you figure out Many-to-One relation
+    // Simply including "model: db.CodeSamples" to the below "findAll" function does not work
+    // db.CodeSample.findAll({ where: { "SnippetId": Number(snipVals.id) } })
+    //   .then(function(codesamples) {
+    //     var samples = codesamples.map(function(sample) {
+    //       return {
+    //         "codeSample": sample.dataValues.codeSample
+    //       };
+    //     });
+    //   });
+
     db.Snippet.findAll({
-      include: [{model: db.Topic}, {model: db.Tag}, {model: db.Language}]
+      include: [
+        {model: db.Topic},
+        {model: db.Tag},
+        {model: db.Language}
+      ]
     })
       .then(function(snippets) {
         snippets = snippets.map(function(snippet) {
@@ -26,6 +41,7 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
+            example: snipVals.example,
             'shortDescription': snipVals.shortDescription,
             explanation: snipVals.explanation,
             'createdAt': snipVals.createdAt,
@@ -45,7 +61,11 @@ module.exports = {
 
   getById: function(req, res) {
     db.Snippet.findOne({
-      include: [{model: db.Topic}, {model: db.Tag}, {model: db.Language}],
+      include: [
+        {model: db.Topic},
+        {model: db.Tag},
+        {model: db.Language}
+      ],
       where: { id: Number(req.params.id)}
     })
       .then(function(snippet) {
@@ -65,6 +85,7 @@ module.exports = {
           id: snipVals.id,
           title: snipVals.title,
           snippet: snipVals.snippet,
+          example: snipVals.example,
           'shortDescription': snipVals.shortDescription,
           explanation: snipVals.explanation,
           'createdAt': snipVals.createdAt,
@@ -80,7 +101,11 @@ module.exports = {
 
   getMostRecent: function(req, res) {
     db.Snippet.findAll({
-      include: [{model: db.Topic}, {model: db.Tag}, {model: db.Language}],
+      include: [
+        {model: db.Topic},
+        {model: db.Tag},
+        {model: db.Language}
+      ],
       limit: 10,
       order: '"createdAt" DESC'
     })
@@ -102,6 +127,7 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
+            example: snipVals.example,
             'shortDescription': snipVals.shortDescription,
             explanation: snipVals.explanation,
             'createdAt': snipVals.createdAt,

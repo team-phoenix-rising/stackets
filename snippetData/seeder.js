@@ -62,6 +62,7 @@ var seedData = function() {
     Snippet.create({
       title: "Dummy title 1",
       snippet: "Dummy snippet 1",
+      example: "Dummy example 1",
       "shortDescription": "Dummy shortDescription 1",
       explanation: "Dummy explanation 1",
       "TopicId": 1,
@@ -74,6 +75,7 @@ var seedData = function() {
     Snippet.create({
       title: "Dummy title 2",
       snippet: "Dummy snippet 2",
+      example: "Dummy example 2",
       "shortDescription": "Dummy shortDescription 2",
       explanation: "Dummy explanation 2",
       "TopicId": 2,
@@ -88,6 +90,7 @@ var seedData = function() {
     Snippet.create({
       title: "Dummy title 3",
       snippet: "Dummy snippet 3",
+      example: "Dummy example 3",
       "shortDescription": "Dummy shortDescription 3",
       explanation: "Dummy explanation 3",
       "TopicId": 4,
@@ -101,6 +104,7 @@ var seedData = function() {
     Snippet.create({
       title: "Dummy title 4",
       snippet: "Dummy snippet 4",
+      example: "Dummy example 4",
       "shortDescription": "Dummy shortDescription 4",
       explanation: "Dummy explanation 4",
       "TopicId": 3,
@@ -112,6 +116,11 @@ var seedData = function() {
     }))
 
   // Insert code samples
+  // At the moment, we couldn't figure out how to implement this
+  // many-to-one relation with multiple CodeSamples to each snippet
+  // in our snippes-controller.js with the "include" join method
+  // For now, each snippet will have one example directly input into
+  // the snippet entries above
   .then(() =>
     CodeSample.create({
       "codeSample": "Test code sample 1",
@@ -136,6 +145,11 @@ var seedData = function() {
     CodeSample.create({
       "codeSample": "Test code sample 5",
       "SnippetId": 3
+    }))
+  .then(() =>
+    CodeSample.create({
+      "codeSample": "Test code sample 5",
+      "SnippetId": 4
     }));
 };
 
