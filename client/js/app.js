@@ -1,5 +1,6 @@
 angular.module('stackets', [
   'stackets.services',
+  'stackets.searchBar',
   'stackets.searchResults',
   'stackets.home',
   'stackets.about',
@@ -33,11 +34,11 @@ angular.module('stackets', [
         'featuredSnippetView': {
           controller: 'FeaturedSnippetController',
           templateUrl: '../partials/featured-snippet.html'
+        },
+        'searchBarView': {
+          controller: 'SearchBarController',
+          templateUrl: '../partials/search-bar.html'
         }
-        // 'popularSnippetsView': {
-        //   controller: 'PopularSnippetsController',
-        //   templateUrl: '../partials/popular-snippets.html'
-        // }
       }
     })
     .state('about', {
@@ -51,6 +52,15 @@ angular.module('stackets', [
     })
     .state('search', {
       url: '/search',
+      views: {
+        'searchResultsView': {
+          controller: 'SearchResultsController',
+          templateUrl: '../partials/search-results.html'
+        }
+      }
+    })
+    .state('search-results', {
+      url: '/search/:query',
       views: {
         'searchResultsView': {
           controller: 'SearchResultsController',

@@ -15,6 +15,24 @@
   border-radius: 10px;
 }
 
+.featured-snippet dl {
+  // display: flex;
+  // justify-content: space-between;
+}
+.featured-snippet dt,
+.featured-snippet dd {
+  display: inline-block;
+  padding: 5px 0;
+  min-height: 40px;
+}
+
+.featured-snippet dt {
+  width: 30%;
+}
+
+.featured-snippet dd {
+  width: 60%;
+}
 
 
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
