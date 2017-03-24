@@ -43,20 +43,75 @@ module.exports = {
   },
 
   getById: function(req, res) {
-    db.Snippet.findOne({ where: { id: Number(req.params.id)}})
+    db.Snippet.findOne({
+      include: [{model: db.Topic}, {model: db.Tag}],
+      where: { id: Number(req.params.id)}
+    })
       .then(function(snippet) {
-        db.Topic.findOne({ where: { id: snippet.dataValues.TopicId }})
-          .then(function(topic) {
-            snippet.dataValues.TopicName = topic.name;
-            res.status(200).json(snippet);
-          });
+        // NOTE: This is the exact same as 'get'
+        // Only difference is that the 'where' options is added and returns 1 object
+        // Make this more modular and DRY
+        var snipVals = snippet.dataValues;
+
+        var tags = snipVals.Tags.map(function(tag) {
+          return {
+            id: tag.dataValues.id,
+            tag: tag.dataValues.tag
+          };
+        });
+
+        res.status(200).json({
+          id: snipVals.id,
+          title: snipVals.title,
+          snippet: snipVals.snippet,
+          'shortDescription': snipVals.shortDescription,
+          explanation: snipVals.explanation,
+          'createdAt': snipVals.createdAt,
+          'updatedAt': snipVals.updatedAt,
+          'TopicId': snipVals.TopicId,
+          'LanguageId': snipVals.LanguageId,
+          'Topic': snipVals.Topic.dataValues.name,
+          'Tags': tags
+        });
       });
   },
 
   getMostRecent: function(req, res) {
-    db.Snippet.findAll({ limit: 10, order: '"createdAt" DESC' })
-      .then(function(data) {
-        res.status(200).json(data);
+    db.Snippet.findAll({
+      include: [{model: db.Topic}, {model: db.Tag}],
+      limit: 10,
+      order: '"createdAt" DESC'
+    })
+      .then(function(snippets) {
+        // NOTE: This is the exact same as 'get'
+        // Only difference is that the 'limit' and 'order' options are added
+        // Make this more modular and DRY
+        snippets = snippets.map(function(snippet) {
+          var snipVals = snippet.dataValues;
+
+          var tags = snipVals.Tags.map(function(tag) {
+            return {
+              id: tag.dataValues.id,
+              tag: tag.dataValues.tag
+            };
+          });
+
+          return {
+            id: snipVals.id,
+            title: snipVals.title,
+            snippet: snipVals.snippet,
+            'shortDescription': snipVals.shortDescription,
+            explanation: snipVals.explanation,
+            'createdAt': snipVals.createdAt,
+            'updatedAt': snipVals.updatedAt,
+            'TopicId': snipVals.TopicId,
+            'LanguageId': snipVals.LanguageId,
+            'Topic': snipVals.Topic.dataValues.name,
+            'Tags': tags
+          };
+        });
+
+        res.status(200).json(snippets);
       });
   },
 
