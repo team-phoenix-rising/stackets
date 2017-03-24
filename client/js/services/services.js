@@ -23,6 +23,19 @@ angular.module('stackets.services', [])
       });
     };
 
+    var getRecentSnippets = function () {
+      return $http({
+        method: 'GET',
+        url: '/api/snippets/recent',
+        data: {
+          limit: 1
+        }
+      }).then(function (resp) {
+        data = resp.data;
+        return data;
+      });
+    };
+
     var getAllTopics = function () {
       return $http({
         method: 'GET',
@@ -69,6 +82,7 @@ angular.module('stackets.services', [])
       getAllTopics: getAllTopics,
       getAllTags: getAllTags,
       getAllLanguages: getAllLanguages,
+      getRecentSnippets: getRecentSnippets,
       getSnippetById: getSnippetById,
       data: data,
       topics: topics
