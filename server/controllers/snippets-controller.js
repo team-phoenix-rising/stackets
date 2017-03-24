@@ -30,7 +30,6 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
-            example: snipVals.example,
             'shortDescription': snipVals.shortDescription,
             explanation: snipVals.explanation,
             'createdAt': snipVals.createdAt,
@@ -49,18 +48,20 @@ module.exports = {
   },
 
   getById: function(req, res) {
+    // POSSIBILITY this might cause async issue, if CodeSample.findAll takes longer than db.Snippet.findOne
+    // Chain CodeSample.findAll with Snippet.findOne???
 
-    // Implement this once you figure out Many-to-One relation
-    // Simply including "model: db.CodeSamples" to the below "findAll" function does not work
-    // db.CodeSample.findAll({ where: { "SnippetId": Number(snipVals.id) } })
-    //   .then(function(codesamples) {
-    //     var samples = codesamples.map(function(sample) {
-    //       return {
-    //         "codeSample": sample.dataValues.codeSample
-    //       };
-    //     });
-    //   });
+    var samples;
 
+    db.CodeSample.findAll({ where: { "SnippetId": Number(req.params.id) } })
+      .then(function(codesamples) {
+        // Samples will be a simple array of objects, even if only one code sample
+        // This is to provide scalability for multiple code samples in one snippet in the future
+        // [ "(code sample 1)", "(code sample 2)", ... ]
+        samples = codesamples.map(function(sample) {
+          return sample.dataValues.codeSample;
+        });
+      });
 
     db.Snippet.findOne({
       include: [
@@ -87,7 +88,7 @@ module.exports = {
           id: snipVals.id,
           title: snipVals.title,
           snippet: snipVals.snippet,
-          example: snipVals.example,
+          "codeSample": samples,
           'shortDescription': snipVals.shortDescription,
           explanation: snipVals.explanation,
           'createdAt': snipVals.createdAt,
@@ -129,7 +130,6 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
-            example: snipVals.example,
             'shortDescription': snipVals.shortDescription,
             explanation: snipVals.explanation,
             'createdAt': snipVals.createdAt,
@@ -150,7 +150,6 @@ module.exports = {
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,
-      example: req.body.example,
       shortDescription: req.body.shortDescription,
       explanation: req.body.explanation,
       TopicId: Number(req.body.TopicId),  // topicId comes as a string from front-end form
@@ -164,8 +163,18 @@ module.exports = {
     db.Snippet.create(params)
       .then(function (data) {
         tags.forEach(function(item) {
-          db.SnippetTag.create({ SnippetId: data.id, TagId: item });
+          db.SnippetTag.create({
+            "SnippetId": data.id,
+            "TagId": item
+          });
         });
+
+        // ALSO ADD CODE SAMPLE TO CodeSample table with new Snippet ID
+        db.CodeSample.create({
+          "codeSample": req.body.codeSample,
+          "SnippetId": data.id
+        });
+
         res.status(201).json(data);
       });
   }

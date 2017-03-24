@@ -131,33 +131,28 @@ var seedData = function() {
   // the snippet entries above
   .then(() =>
     CodeSample.create({
-      "codeSample": "Test code sample 1",
+      "codeSample": JSON.stringify("Test code sample 1"),
       "SnippetId": 1
     }))
   .then(() =>
     CodeSample.create({
-      "codeSample": "Test code sample 2",
-      "SnippetId": 1
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": "Test code sample 3",
+      "codeSample": JSON.stringify("Test code sample 2"),
       "SnippetId": 2
     }))
   .then(() =>
     CodeSample.create({
-      "codeSample": "Test code sample 4",
+      "codeSample": JSON.stringify("Test code sample 3"),
       "SnippetId": 3
     }))
   .then(() =>
     CodeSample.create({
-      "codeSample": "Test code sample 5",
-      "SnippetId": 3
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": "Test code sample 5",
+      "codeSample": JSON.stringify("Test code sample 4"),
       "SnippetId": 4
+    }))
+  .then(() =>
+    CodeSample.create({
+      "codeSample": JSON.stringify("Test code sample 5"),
+      "SnippetId": 5
     }));
 };
 
