@@ -10,15 +10,18 @@
         <td>{{ snippet.title }}</td>
       </tr>
       <tr>
-        <td>{{ snippet.TopicId }}</td>
-        <td>{{ snippet.shortDescription }}</td>
+        <td><b>Topic: </b>{{ snippet.Topic }}</td>
+        <td><b>Description: </b>{{ snippet.shortDescription }}</td>
       </tr>
       <tr>
-        <td>{{ snippet.snippet }}</td>
+        <td><pre>{{ code }}</pre></td>
       </tr>
       <tr>
         <td>{{ snippet.description }}</td>
       </tr>
+      <tr>
+        <td>{{ snippet.explanation }}</td>
+      </tr>  
     </tbody>
   </table>
 </div>
