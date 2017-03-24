@@ -2,17 +2,6 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
-    // Implement this once you figure out Many-to-One relation
-    // Simply including "model: db.CodeSamples" to the below "findAll" function does not work
-    // db.CodeSample.findAll({ where: { "SnippetId": Number(snipVals.id) } })
-    //   .then(function(codesamples) {
-    //     var samples = codesamples.map(function(sample) {
-    //       return {
-    //         "codeSample": sample.dataValues.codeSample
-    //       };
-    //     });
-    //   });
-
     db.Snippet.findAll({
       include: [
         {model: db.Topic},
@@ -60,6 +49,19 @@ module.exports = {
   },
 
   getById: function(req, res) {
+
+    // Implement this once you figure out Many-to-One relation
+    // Simply including "model: db.CodeSamples" to the below "findAll" function does not work
+    // db.CodeSample.findAll({ where: { "SnippetId": Number(snipVals.id) } })
+    //   .then(function(codesamples) {
+    //     var samples = codesamples.map(function(sample) {
+    //       return {
+    //         "codeSample": sample.dataValues.codeSample
+    //       };
+    //     });
+    //   });
+
+
     db.Snippet.findOne({
       include: [
         {model: db.Topic},

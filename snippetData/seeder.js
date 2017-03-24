@@ -61,8 +61,7 @@ var seedData = function() {
   .then(() =>
     Snippet.create({
       title: "Dummy title 1",
-      snippet: "Dummy snippet 1",
-      example: "Dummy example 1",
+      snippet: JSON.stringify("var x = \"hello\";\n\nvar print = function () {\n    console.log(x);\n};"),
       "shortDescription": "Dummy shortDescription 1",
       explanation: "Dummy explanation 1",
       "TopicId": 1,
@@ -74,8 +73,7 @@ var seedData = function() {
   .then(() =>
     Snippet.create({
       title: "Dummy title 2",
-      snippet: "Dummy snippet 2",
-      example: "Dummy example 2",
+      snippet: JSON.stringify("Dummy snippet 2"),
       "shortDescription": "Dummy shortDescription 2",
       explanation: "Dummy explanation 2",
       "TopicId": 2,
@@ -89,8 +87,7 @@ var seedData = function() {
   .then(() =>
     Snippet.create({
       title: "Dummy title 3",
-      snippet: "Dummy snippet 3",
-      example: "Dummy example 3",
+      snippet: JSON.stringify("Dummy snippet 3"),
       "shortDescription": "Dummy shortDescription 3",
       explanation: "Dummy explanation 3",
       "TopicId": 4,
@@ -103,8 +100,7 @@ var seedData = function() {
   .then(() =>
     Snippet.create({
       title: "Dummy title 4",
-      snippet: "Dummy snippet 4",
-      example: "Dummy example 4",
+      snippet: JSON.stringify("Dummy snippet 4"),
       "shortDescription": "Dummy shortDescription 4",
       explanation: "Dummy explanation 4",
       "TopicId": 3,

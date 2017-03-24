@@ -4,7 +4,6 @@ var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'pos
 var Snippet = db.define('Snippet', {
   title: Sequelize.STRING,
   snippet: Sequelize.TEXT,
-  example: Sequelize.TEXT,
   shortDescription: Sequelize.STRING,
   explanation: Sequelize.TEXT
 });
