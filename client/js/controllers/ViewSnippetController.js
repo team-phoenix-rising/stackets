@@ -6,6 +6,7 @@ angular.module('stackets.view', [])
     Snippets.getSnippetById($stateParams.id).then(function (snippet) {
       $scope.snippet = snippet;
       $scope.code = JSON.parse(snippet.snippet);
+      
       //console.log('Metadata retrieved from Snippets service: ', JSON.stringify(topics));
     });
 
