@@ -41,21 +41,21 @@ var seedData = function() {
   .then(() => Tag.create({ tag: 'Unicorns' }))
 
   // Insert default languages
-  .then(() => Language.create({ name: 'css', version: '' }))  //1
-  .then(() => Language.create({ name: 'ejs', version: '' }))
-  .then(() => Language.create({ name: 'html', version: '' }))
-  .then(() => Language.create({ name: 'javascript', version: '' }))
-  .then(() => Language.create({ name: 'json', version: '' })) //5
-  .then(() => Language.create({ name: 'jsx', version: '' }))
-  .then(() => Language.create({ name: 'markdown', version: '' }))
-  .then(() => Language.create({ name: 'pgsql', version: '' }))
-  .then(() => Language.create({ name: 'python', version: '' }))
-  .then(() => Language.create({ name: 'sass', version: '' })) //10
-  .then(() => Language.create({ name: 'scss', version: '' }))
-  .then(() => Language.create({ name: 'sql', version: '' }))
-  .then(() => Language.create({ name: 'text', version: '' }))
-  .then(() => Language.create({ name: 'typescript', version: '' }))
-  .then(() => Language.create({ name: 'xml', version: '' }))  //15
+  .then(() => Language.create({ name: 'css', displayname: 'CSS' }))  //1
+  .then(() => Language.create({ name: 'ejs', displayname: 'EJS' }))
+  .then(() => Language.create({ name: 'html', displayname: 'HTML' }))
+  .then(() => Language.create({ name: 'javascript', displayname: 'Javascript' }))
+  .then(() => Language.create({ name: 'json', displayname: 'JSON' })) //5
+  .then(() => Language.create({ name: 'jsx', displayname: 'JSX' }))
+  .then(() => Language.create({ name: 'markdown', displayname: 'Markdown' }))
+  .then(() => Language.create({ name: 'text', displayname: 'Plain Text' }))
+  .then(() => Language.create({ name: 'pgsql', displayname: 'PostgreSQL' }))
+  .then(() => Language.create({ name: 'python', displayname: 'Python' }))
+  .then(() => Language.create({ name: 'sass', displayname: 'Sass' })) //10
+  .then(() => Language.create({ name: 'scss', displayname: 'SCSS' }))
+  .then(() => Language.create({ name: 'sql', displayname: 'SQL' }))
+  .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' }))
+  .then(() => Language.create({ name: 'xml', displayname: 'XML' }))  //15
 
   // Insert dummy snippets
   .then(() =>
@@ -108,6 +108,18 @@ var seedData = function() {
     }).then(function (snippet) {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 2 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 6 });
+      SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
+    }))
+  .then(() =>
+    Snippet.create({
+      title: "Dummy title 5",
+      snippet: JSON.stringify("Dummy snippet 5"),
+      "shortDescription": "Dummy shortDescription 5",
+      explanation: "Dummy explanation 5",
+      "TopicId": 2,
+      "LanguageId": 7
+    }).then(function (snippet) {
+      SnippetTag.create({ SnippetId: snippet.id, TagId: 1 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
     }))
 
