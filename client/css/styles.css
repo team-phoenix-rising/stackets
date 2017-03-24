@@ -4,3 +4,8 @@
   border-width: 1px;
   border-radius: 5px;
 }
+
+.tag {
+  margin-right: 3px;
+  display: inline-block;
+}
