@@ -22,14 +22,14 @@ var seedData = function() {
   .then(() => Snippet.sync({force: true}))
   .then(() => SnippetTag.sync({force: true}))
 
-  // Insert default topic
+  // Insert default topics
   .then(() => Topic.create({ name: 'Javascript' }))
   .then(() => Topic.create({ name: 'React' }))
   .then(() => Topic.create({ name: 'Angular' }))
   .then(() => Topic.create({ name: 'Database' }))
   .then(() => Topic.create({ name: 'Server' }))
 
-  // Insert default tag
+  // Insert default tags
   .then(() => Tag.create({ tag: 'ES5' }))
   .then(() => Tag.create({ tag: 'ES6' }))
   .then(() => Tag.create({ tag: 'ORM' }))
@@ -40,14 +40,32 @@ var seedData = function() {
   .then(() => Tag.create({ tag: 'Backbone' }))
   .then(() => Tag.create({ tag: 'Unicorns' }))
 
-  // Insert dummy snippet
+  // Insert default languages
+  .then(() => Language.create({ name: 'css', version: '' }))  //1
+  .then(() => Language.create({ name: 'ejs', version: '' }))
+  .then(() => Language.create({ name: 'html', version: '' }))
+  .then(() => Language.create({ name: 'javascript', version: '' }))
+  .then(() => Language.create({ name: 'json', version: '' })) //5
+  .then(() => Language.create({ name: 'jsx', version: '' }))
+  .then(() => Language.create({ name: 'markdown', version: '' }))
+  .then(() => Language.create({ name: 'pgsql', version: '' }))
+  .then(() => Language.create({ name: 'python', version: '' }))
+  .then(() => Language.create({ name: 'sass', version: '' })) //10
+  .then(() => Language.create({ name: 'scss', version: '' }))
+  .then(() => Language.create({ name: 'sql', version: '' }))
+  .then(() => Language.create({ name: 'text', version: '' }))
+  .then(() => Language.create({ name: 'typescript', version: '' }))
+  .then(() => Language.create({ name: 'xml', version: '' }))  //15
+
+  // Insert dummy snippets
   .then(() =>
     Snippet.create({
       title: "Dummy title 1",
-      snippet: "Dummy snippet 1",
+      snippet: JSON.stringify("var x = \"hello\";\n\nvar print = function () {\n    console.log(x);\n};"),
       "shortDescription": "Dummy shortDescription 1",
       explanation: "Dummy explanation 1",
-      "TopicId": 1
+      "TopicId": 1,
+      "LanguageId": 4
     }).then(function (snippet) {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 2 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 5 });
@@ -55,10 +73,11 @@ var seedData = function() {
   .then(() =>
     Snippet.create({
       title: "Dummy title 2",
-      snippet: "Dummy snippet 2",
+      snippet: JSON.stringify("Dummy snippet 2"),
       "shortDescription": "Dummy shortDescription 2",
       explanation: "Dummy explanation 2",
-      "TopicId": 2
+      "TopicId": 2,
+      "LanguageId": 8
     }).then(function (snippet) {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 3 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 4 });
@@ -68,10 +87,11 @@ var seedData = function() {
   .then(() =>
     Snippet.create({
       title: "Dummy title 3",
-      snippet: "Dummy snippet 3",
+      snippet: JSON.stringify("Dummy snippet 3"),
       "shortDescription": "Dummy shortDescription 3",
       explanation: "Dummy explanation 3",
-      "TopicId": 4
+      "TopicId": 4,
+      "LanguageId": 11
     }).then(function (snippet) {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 1 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
@@ -80,10 +100,11 @@ var seedData = function() {
   .then(() =>
     Snippet.create({
       title: "Dummy title 4",
-      snippet: "Dummy snippet 4",
+      snippet: JSON.stringify("Dummy snippet 4"),
       "shortDescription": "Dummy shortDescription 4",
       explanation: "Dummy explanation 4",
-      "TopicId": 3
+      "TopicId": 3,
+      "LanguageId": 14
     }).then(function (snippet) {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 2 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 6 });
@@ -91,6 +112,11 @@ var seedData = function() {
     }))
 
   // Insert code samples
+  // At the moment, we couldn't figure out how to implement this
+  // many-to-one relation with multiple CodeSamples to each snippet
+  // in our snippes-controller.js with the "include" join method
+  // For now, each snippet will have one example directly input into
+  // the snippet entries above
   .then(() =>
     CodeSample.create({
       "codeSample": "Test code sample 1",
@@ -115,6 +141,11 @@ var seedData = function() {
     CodeSample.create({
       "codeSample": "Test code sample 5",
       "SnippetId": 3
+    }))
+  .then(() =>
+    CodeSample.create({
+      "codeSample": "Test code sample 5",
+      "SnippetId": 4
     }));
 };
 
