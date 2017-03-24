@@ -15,8 +15,8 @@
       <tr ng-repeat='snippet in data.snippets | filter:snippet.search'>
       <td><a href="/snippets/{{snippet.id}}">{{snippet.title}}</a></td>
       <td>{{snippet.shortDescription}}</td>
-      <td>{{snippet.TopicName}}</td>
-        <td><span ng-repeat='tag in tags'>{{tag}}</span></td>
+      <td>{{snippet.Topic}}</td>
+        <td><span class="label label-info tag" ng-repeat='tag in snippet.Tags'>{{tag.tag}}</span></td>
       </tr>
     </tbody>
   </table>
