@@ -1,4 +1,4 @@
-<form name="addSnippetForm" ng-submit="addSnippet(addSnippetForm)" target="/snippets/{{ snippet.id }}">
+<form name="addSnippetForm" ng-submit="addSnippet(addSnippetForm)">
   <div class="form-group col-md-12">
     <label for="name">Title</label>
     <input type="text" class="form-control" id="name" ng-model="snippet.title">
@@ -16,7 +16,8 @@
   </div>
   <div class="form-group col-md-12">
     <label for="snippet">Snippet</label>
-    <textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>
+    <!--<textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>-->
+    <div ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="snippet.snippet"></div>
   </div>
   <div class="form-group col-md-12">
     <label for="explanation">Explanation</label>
