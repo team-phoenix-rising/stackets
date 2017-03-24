@@ -1,10 +1,15 @@
 angular.module('stackets.searchBar', [])
-  .controller('SearchBarController', function ($scope, Snippets) {
+  .controller('SearchBarController', function ($scope, $location, Snippets) {
     $scope.searchBarLabel = "Search: ";
+    $scope.searchQuery = '';
     $scope.data = {};
     Snippets.getAllSnippets().then(function (snippets) {
       $scope.data.snippets = snippets;
     });
-      //console.log('Calling the addSnippet function from the AddSnippetController...');
-      //console.log('Adding: ', JSON.stringify(this.snippet));
+
+    $scope.search = function (form) {
+      console.log('Form: ', form);
+      console.log('Search Query: ', $scope.searchQuery);
+      $location.path('/search/' + $scope.searchQuery);
+    }
   });

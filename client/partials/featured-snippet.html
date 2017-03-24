@@ -1,27 +1,20 @@
-<div ng-controller='FeaturedSnippetController'>
-  <h3>Featured Snippet</h3>
-  <table class='table table-striped'>
-    <caption>{{ featuredSnippetsTitle }}</caption>
-    <thead>
-    </thead>
-    <tbody>
-      <tr >
-        <td><img src=''></td>
-        <td>{{ snippet.title }}</td>
-      </tr>
-      <tr>
-        <td><b>Topic: </b>{{ snippet.Topic }}</td>
-        <td><b>Description: </b>{{ snippet.shortDescription }}</td>
-      </tr>
-      <tr>
-        <td><pre>{{ code }}</pre></td>
-      </tr>
-      <tr>
-        <td>{{ snippet.description }}</td>
-      </tr>
-      <tr>
-        <td>{{ snippet.explanation }}</td>
-      </tr>  
-    </tbody>
-  </table>
+<div class="featured-snippet" ng-controller='FeaturedSnippetController'>
+  <h3>{{ featuredSnippetTitle }}</h3>
+  <h4>{{ snippet.title }}</h4>
+
+  <dl>
+    <dt><b>Topic: </b></dt>
+    <dd>{{ snippet.Topic }}</dd>
+    <br />
+    <dt><b>Description: </b></dt>
+    <dd>{{ snippet.shortDescription }}</dd>
+  </dl>
+
+  <h5>Snippet</h5>
+
+  <pre>{{ code }}</pre>
+
+  <h5>Explanation</h5>
+  <p>{{ snippet.explanation }}</p>
+
 </div>
