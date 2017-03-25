@@ -57,7 +57,7 @@ var seedData = function() {
   .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' }))
   .then(() => Language.create({ name: 'xml', displayname: 'XML' }))  //15
 
-  // Insert dummy snippets
+  // Insert dummy snippets and code samples directly after each snippet
   .then(() =>
     Snippet.create({
       title: "Dummy title 1",
@@ -70,6 +70,12 @@ var seedData = function() {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 2 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 5 });
     }))
+  .then(() =>
+    CodeSample.create({
+      "codeSample": JSON.stringify("Test code sample 1"),
+      "SnippetId": 1
+    }))
+
   .then(() =>
     Snippet.create({
       title: "Dummy title 2",
@@ -85,6 +91,12 @@ var seedData = function() {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 8 });
     }))
   .then(() =>
+    CodeSample.create({
+      "codeSample": JSON.stringify("Test code sample 2"),
+      "SnippetId": 2
+    }))
+
+  .then(() =>
     Snippet.create({
       title: "Dummy title 3",
       snippet: JSON.stringify("Dummy snippet 3"),
@@ -97,6 +109,12 @@ var seedData = function() {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 3 });
     }))
+  .then(() =>
+    CodeSample.create({
+      "codeSample": JSON.stringify("Test code sample 3"),
+      "SnippetId": 3
+    }))
+
   .then(() =>
     Snippet.create({
       title: "Dummy title 4",
@@ -111,6 +129,12 @@ var seedData = function() {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
     }))
   .then(() =>
+    CodeSample.create({
+      "codeSample": JSON.stringify("Test code sample 4"),
+      "SnippetId": 4
+    }))
+
+  .then(() =>
     Snippet.create({
       title: "Dummy title 5",
       snippet: JSON.stringify("Dummy snippet 5"),
@@ -122,48 +146,9 @@ var seedData = function() {
       SnippetTag.create({ SnippetId: snippet.id, TagId: 1 });
       SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
     }))
-
-  // Insert code samples
-  // At the moment, we couldn't figure out how to implement this
-  // many-to-one relation with multiple CodeSamples to each snippet
-  // in our snippes-controller.js with the "include" join method
-  // For now, each snippet will have one example directly input into
-  // the snippet entries above
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 1"),
-      "SnippetId": 1
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 2"),
-      "SnippetId": 2
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 3"),
-      "SnippetId": 3
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 4"),
-      "SnippetId": 4
-    }))
   .then(() =>
     CodeSample.create({
       "codeSample": JSON.stringify("Test code sample 5"),
       "SnippetId": 5
     }));
 };
-
-
-  // Insert dummy Snippet to Tag relations for join table
-// .then(() => SnippetTag.create({ SnippetId: 1, TagId: 2}))
-// .then(() => SnippetTag.create({ SnippetId: 1, TagId: 5}))
-// .then(() => SnippetTag.create({ SnippetId: 2, TagId: 3}))
-// .then(() => SnippetTag.create({ SnippetId: 2, TagId: 4}))
-// .then(() => SnippetTag.create({ SnippetId: 2, TagId: 5}))
-// .then(() => SnippetTag.create({ SnippetId: 2, TagId: 8}))
-// .then(() => SnippetTag.create({ SnippetId: 3, TagId: 1}))
-// .then(() => SnippetTag.create({ SnippetId: 3, TagId: 9}))
-// .then(() => SnippetTag.create({ SnippetId: 3, TagId: 3}));
