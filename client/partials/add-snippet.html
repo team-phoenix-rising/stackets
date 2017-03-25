@@ -41,6 +41,11 @@
       </fieldset>
     </div>
   </div>
+  <div class="form-group col-md-12">
+    <label for="codeSample">Code Sample (Example Snippet)</label>
+    <!--<textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>-->
+    <div ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="snippet.codeSample"></div>
+  </div>
   <div class="form-group col-md-12 text-right">
     <button type="submit" class="btn btn-default">Submit</button>
   </div>
