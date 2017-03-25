@@ -1,5 +1,10 @@
 var Sequelize = require('sequelize');
-var db = new Sequelize('daa22dqqht15ui', 'trqbtnizlnlfjz', '328ebc2517736ba6de3e0c49b05a0e4ca0f348017710c4d8110a6fc22838dc46', {dialect: 'postgres', logging: false });
+if (process.env.DATABASE_URL) {
+  var db = new Sequelize(process.env.DATABASE_URL, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {dialect: 'postgres', logging: false });
+} else {
+  // the application is executed on the local machine
+  var db = new Sequelize('stackets', process.env.POSTGRES_USER, 'jason', {dialect: 'postgres', logging: false });
+}
 
 var Snippet = db.define('Snippet', {
   title: Sequelize.STRING,
