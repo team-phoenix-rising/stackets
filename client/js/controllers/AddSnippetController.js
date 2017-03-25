@@ -5,6 +5,7 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.tags = {};
     $scope.languages = {};
     $scope.code = '';
+    $scope.ace = 'javascript';
 
     Snippets.getAllTopics().then(function (topics) {
       $scope.topics = topics;
@@ -30,15 +31,27 @@ angular.module('stackets.addSnippet', ['ui.ace'])
       form.$setUntouched();
     };
 
-    $scope.setAceEditorLang = function (form, _editor) {
+    $scope.setAceEditorLang = function (form) {
       var languageId = this.snippet.LanguageId;
-      var language = _.find($scope.languages, {id: languageId});
-
       console.log('Language ID: ', languageId);
+
+      var language;
+      for (var i = 0; i < $scope.languages.length; i++) {
+        if ($scope.languages[i].id === languageId -1) {
+          language = $scope.languages[i + 1];
+          break;
+        }
+      }
+
+      language = language.name;
+      var selectedLang = _.filter($scope.languages, {id: languageId});
+
       console.log('Language: ', language);
-      // var _session = _editor.getSession();
-      // _session.setMode('ace/mode/' + language);
-    }
+      console.log('Selected Language: ', selectedLang);
+
+      $scope.ace = language;
+      $scope._editor.getSession().setMode("ace/mode/" + $scope.ace);
+    };
 
     $scope.aceLoaded = function (_editor) {
       // Ace @ https://ace.c9.io/
@@ -46,6 +59,7 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     // ui-ace @ https://www.npmjs.com/package/angular-ui-ace
     // CDN @ https://cdnjs.com/libraries/ace/
     // Editor font size
+      $scope._editor = _editor;
       document.getElementById('editor').style.fontSize='12px';
       // Options
       var _session = _editor.getSession();
@@ -57,7 +71,7 @@ angular.module('stackets.addSnippet', ['ui.ace'])
       // Theme @ https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
       _editor.setTheme("ace/theme/monokai");
       // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
-      _session.setMode("ace/mode/javascript");
+      _session.setMode("ace/mode/" + $scope.ace);
       // Load the snippet's code
       _session.setValue('');
       // Events
