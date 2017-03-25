@@ -3,10 +3,10 @@ angular.module('stackets.searchResults', [])
     $scope.searchResultsTitle = 'Search Results';
     $scope.data = {};
     $scope.search = {
-      search: ''
+      search: $state.params.query || ''
     };
-    $scope.query = $state.params.query;
-    console.log($state.params.query);
+    $scope.search = $state.params.query;
+    //console.log($state.params.query);
 
 
     Snippets.getAllSnippets().then(function (snippets) {
