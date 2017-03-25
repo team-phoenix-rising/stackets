@@ -32,24 +32,16 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     };
 
     $scope.setAceEditorLang = function (form) {
-      var languageId = this.snippet.LanguageId;
+      var languageId = Number(this.snippet.LanguageId);
       console.log('Language ID: ', languageId);
-
       var language;
       for (var i = 0; i < $scope.languages.length; i++) {
-        if ($scope.languages[i].id === languageId -1) {
-          language = $scope.languages[i + 1];
+        if ($scope.languages[i].id === languageId) {
+          language = $scope.languages[i];
           break;
         }
       }
-
-      language = language.name;
-      var selectedLang = _.filter($scope.languages, {id: languageId});
-
-      console.log('Language: ', language);
-      console.log('Selected Language: ', selectedLang);
-
-      $scope.ace = language;
+      $scope.ace = language.name;
       $scope._editor.getSession().setMode("ace/mode/" + $scope.ace);
     };
 
