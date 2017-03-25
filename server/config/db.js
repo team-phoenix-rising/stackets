@@ -1,6 +1,6 @@
 var Sequelize = require('sequelize');
 if (process.env.DATABASE_URL) {
-  var db = new Sequelize(process.env.DATABASE_URL, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {dialect: 'postgres', logging: true });
+  var db = new Sequelize(process.env.DATABASE_URL, {dialect: 'postgres', logging: false });
 } else {
   // the application is executed on the local machine
   var db = new Sequelize('stackets', process.env.POSTGRES_USER, 'jason', {dialect: 'postgres', logging: false });
