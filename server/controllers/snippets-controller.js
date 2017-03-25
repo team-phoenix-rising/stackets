@@ -37,7 +37,7 @@ module.exports = {
             'TopicId': snipVals.TopicId,
             'Topic': snipVals.Topic.dataValues.name,
             'LanguageId': snipVals.LanguageId,
-            'Language': snipVals.Language.dataValues.name,
+            'Language': snipVals.Language.dataValues.displayname,
             'Tags': tags
           };
         });
@@ -96,7 +96,7 @@ module.exports = {
           'TopicId': snipVals.TopicId,
           'Topic': snipVals.Topic.dataValues.name,
           'LanguageId': snipVals.LanguageId,
-          'Language': snipVals.Language.dataValues.name,
+          'Language': snipVals.Language.dataValues.displayname,
           'Tags': tags
         });
       });
@@ -137,7 +137,7 @@ module.exports = {
             'TopicId': snipVals.TopicId,
             'Topic': snipVals.Topic.dataValues.name,
             'LanguageId': snipVals.LanguageId,
-            'Language': snipVals.Language.dataValues.name,
+            'Language': snipVals.Language.dataValues.displayname,
             'Tags': tags
           };
         });
