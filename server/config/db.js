@@ -3,7 +3,7 @@ if (process.env.DATABASE_URL) {
   var db = new Sequelize(process.env.DATABASE_URL, {dialect: 'postgres', logging: false });
 } else {
   // the application is executed on the local machine
-  var db = new Sequelize('stackets', process.env.POSTGRES_USER, 'jason', {dialect: 'postgres', logging: false });
+  var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres', logging: false });
 }
 
 var Snippet = db.define('Snippet', {
