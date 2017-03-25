@@ -153,7 +153,7 @@ module.exports = {
       shortDescription: req.body.shortDescription,
       explanation: req.body.explanation,
       TopicId: Number(req.body.TopicId),  // topicId comes as a string from front-end form
-      LanguageId: Number(req.body.TopicId),  // languageId comes as a string from front-end form
+      LanguageId: Number(req.body.LanguageId),  // languageId comes as a string from front-end form
     };
 
     // tags: { '1': true, '3': true, 9': true }
