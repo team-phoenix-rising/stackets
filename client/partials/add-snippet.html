@@ -4,16 +4,16 @@
     <input type="text" class="form-control" id="name" ng-model="snippet.title">
   </div>
   <div class="form-group col-md-12">
+    <label for="description">Short Description</label>
+    <textarea id="description" class="form-control" rows="3" ng-model="snippet.shortDescription"></textarea>
+  </div>
+  <div class="form-group col-md-6">
     <label for="topic">Topic</label>
     <select class="form-control" ng-model="snippet.TopicId">
       <option ng-repeat="topic in topics" value="{{topic.id}}">{{topic.name}}</option>
     </select>
   </div>
-  <div class="form-group col-md-12">
-    <label for="description">Short Description</label>
-    <textarea id="description" class="form-control" rows="3" ng-model="snippet.shortDescription"></textarea>
-  </div>
-    <div class="form-group col-md-12">
+    <div class="form-group col-md-6">
     <label for="language">Language</label>
     <select class="form-control" ng-model="snippet.LanguageId" ng-change="setAceEditorLang(language.name)">
       <option ng-repeat="language in languages" value="{{language.id}}">
@@ -21,10 +21,15 @@
       </option>
     </select>
   </div>
-  <div class="form-group col-md-12">
+  <div class="form-group col-md-6">
     <label for="snippet">Snippet</label>
     <!--<textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>-->
     <div ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="snippet.snippet"></div>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="codeSample">Code Sample (Example Snippet)</label>
+    <!--<textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>-->
+    <div ui-ace="{ onLoad: aceLoaded2 }" id="editor2" ng-model="snippet.codeSample"></div>
   </div>
   <div class="form-group col-md-12">
     <label for="explanation">Explanation</label>
@@ -40,11 +45,6 @@
         </label>
       </fieldset>
     </div>
-  </div>
-  <div class="form-group col-md-12">
-    <label for="codeSample">Code Sample (Example Snippet)</label>
-    <!--<textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>-->
-    <div ui-ace="{ onLoad: aceLoaded2 }" id="editor2" ng-model="snippet.codeSample"></div>
   </div>
   <div class="form-group col-md-12 text-right">
     <button type="submit" class="btn btn-default">Submit</button>
