@@ -4,7 +4,7 @@ angular.module('stackets.featuredSnippet', [])
     $scope.snippet = {};
     $scope.code = '';
 
-    Snippets.getSnippetById(5).then(function (snippet) {
+    Snippets.getSnippetById(1).then(function (snippet) {
       $scope.snippet = snippet;
       $scope.code = JSON.parse(snippet.snippet);
      });
