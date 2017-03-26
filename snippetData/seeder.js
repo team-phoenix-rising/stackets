@@ -23,21 +23,42 @@ var seedData = function() {
   .then(() => SnippetTag.sync({force: true}))
 
   // Insert default topics
-  .then(() => Topic.create({ name: 'Javascript' }))
-  .then(() => Topic.create({ name: 'React' }))
-  .then(() => Topic.create({ name: 'Angular' }))
   .then(() => Topic.create({ name: 'Database' }))
+  .then(() => Topic.create({ name: 'Deployment' }))
+  .then(() => Topic.create({ name: 'Frontend/UI' }))
+  .then(() => Topic.create({ name: 'Frameworks' }))
+  .then(() => Topic.create({ name: 'Libraries' }))
   .then(() => Topic.create({ name: 'Server' }))
 
   // Insert default tags
+  .then(() => Tag.create({ tag: 'Angular' }))
+  .then(() => Tag.create({ tag: 'Backbone' }))
+  .then(() => Tag.create({ tag: 'Command-line Interface' }))
+  .then(() => Tag.create({ tag: 'D3' }))
+  .then(() => Tag.create({ tag: 'Dev Environment' }))
+  .then(() => Tag.create({ tag: 'Digital Ocean' }))
   .then(() => Tag.create({ tag: 'ES5' }))
   .then(() => Tag.create({ tag: 'ES6' }))
-  .then(() => Tag.create({ tag: 'ORM' }))
-  .then(() => Tag.create({ tag: 'SQL' }))
+  .then(() => Tag.create({ tag: 'Express' }))
+  .then(() => Tag.create({ tag: 'Git' }))
+  .then(() => Tag.create({ tag: 'Grunt' }))
+  .then(() => Tag.create({ tag: 'Gulp' }))
+  .then(() => Tag.create({ tag: 'Handlebars' }))
+  .then(() => Tag.create({ tag: 'Heroku' }))
+  .then(() => Tag.create({ tag: 'lodash' }))
+  .then(() => Tag.create({ tag: 'MongoDB' }))
   .then(() => Tag.create({ tag: 'Mongoose' }))
+  .then(() => Tag.create({ tag: 'MVC' }))
+  .then(() => Tag.create({ tag: 'ORM' }))
+  .then(() => Tag.create({ tag: 'PostgreSQL' }))
+  .then(() => Tag.create({ tag: 'React' }))
+  .then(() => Tag.create({ tag: 'Underscore' }))
+  .then(() => Tag.create({ tag: 'Scripts' }))
   .then(() => Tag.create({ tag: 'Sequelize' }))
-  .then(() => Tag.create({ tag: 'D3' }))
-  .then(() => Tag.create({ tag: 'Backbone' }))
+  .then(() => Tag.create({ tag: 'SQL' }))
+  .then(() => Tag.create({ tag: 'Shell' }))
+  .then(() => Tag.create({ tag: 'TDD' }))
+  .then(() => Tag.create({ tag: 'Testing' }))
   .then(() => Tag.create({ tag: 'Unicorns' }))
 
   // Insert default languages
@@ -60,95 +81,18 @@ var seedData = function() {
   // Insert dummy snippets and code samples directly after each snippet
   .then(() =>
     Snippet.create({
-      title: "Dummy title 1",
+      title: "Welcome!",
       snippet: JSON.stringify("var x = \"hello\";\n\nvar print = function () {\n    console.log(x);\n};"),
       "shortDescription": "Dummy shortDescription 1",
-      explanation: "Dummy explanation 1",
-      "TopicId": 1,
+      explanation: JSON.stringify("Sample Explanation"),
+      "TopicId": 3,
       "LanguageId": 4
     }).then(function (snippet) {
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 2 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 5 });
+      SnippetTag.create({ SnippetId: snippet.id, TagId: 7 });
     }))
   .then(() =>
     CodeSample.create({
       "codeSample": JSON.stringify("Test code sample 1"),
       "SnippetId": 1
-    }))
-
-  .then(() =>
-    Snippet.create({
-      title: "Dummy title 2",
-      snippet: JSON.stringify("Dummy snippet 2"),
-      "shortDescription": "Dummy shortDescription 2",
-      explanation: "Dummy explanation 2",
-      "TopicId": 2,
-      "LanguageId": 8
-    }).then(function (snippet) {
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 3 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 4 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 5 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 8 });
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 2"),
-      "SnippetId": 2
-    }))
-
-  .then(() =>
-    Snippet.create({
-      title: "Dummy title 3",
-      snippet: JSON.stringify("Dummy snippet 3"),
-      "shortDescription": "Dummy shortDescription 3",
-      explanation: "Dummy explanation 3",
-      "TopicId": 4,
-      "LanguageId": 11
-    }).then(function (snippet) {
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 1 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 3 });
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 3"),
-      "SnippetId": 3
-    }))
-
-  .then(() =>
-    Snippet.create({
-      title: "Dummy title 4",
-      snippet: JSON.stringify("Dummy snippet 4"),
-      "shortDescription": "Dummy shortDescription 4",
-      explanation: "Dummy explanation 4",
-      "TopicId": 3,
-      "LanguageId": 14
-    }).then(function (snippet) {
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 2 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 6 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 4"),
-      "SnippetId": 4
-    }))
-
-  .then(() =>
-    Snippet.create({
-      title: "Dummy title 5",
-      snippet: JSON.stringify("Dummy snippet 5"),
-      "shortDescription": "Dummy shortDescription 5",
-      explanation: "Dummy explanation 5",
-      "TopicId": 2,
-      "LanguageId": 7
-    }).then(function (snippet) {
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 1 });
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 9 });
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 5"),
-      "SnippetId": 5
     }));
 };
