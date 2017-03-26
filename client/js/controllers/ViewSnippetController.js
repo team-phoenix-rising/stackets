@@ -4,11 +4,13 @@ angular.module('stackets.view', [])
     $scope.snippet = {};
     $scope.code = '';
     $scope.codeSample = '';
+    $scope.explanation = '';
+
     Snippets.getSnippetById($stateParams.id).then(function (snippet) {
       $scope.snippet = snippet;
       $scope.code = JSON.parse(snippet.snippet);
       $scope.codeSample = JSON.parse(snippet.codeSample);
-      
+      $scope.explanation = JSON.parse(snippet.explanation);
       //console.log('Metadata retrieved from Snippets service: ', JSON.stringify(topics));
     });
     $scope.setAceEditorLang = function (form) {
@@ -49,7 +51,7 @@ angular.module('stackets.view', [])
       _session.on("change", function(e) {
         $scope.code = _session.getValue();
       });
-    };  
+    };
 
     $scope.aceLoaded2 = function (_editor) {
       // Ace @ https://ace.c9.io/
@@ -75,5 +77,5 @@ angular.module('stackets.view', [])
       _session.on("change", function(e) {
         $scope.codeSample = _session.getValue();
       });
-    };  
+    };
   });
