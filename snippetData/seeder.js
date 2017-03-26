@@ -76,23 +76,23 @@ var seedData = function() {
   .then(() => Language.create({ name: 'scss', displayname: 'SCSS' }))
   .then(() => Language.create({ name: 'sql', displayname: 'SQL' }))
   .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' }))
-  .then(() => Language.create({ name: 'xml', displayname: 'XML' }))  //15
+  .then(() => Language.create({ name: 'xml', displayname: 'XML' }));  //15
 
   // Insert dummy snippets and code samples directly after each snippet
-  .then(() =>
-    Snippet.create({
-      title: "Welcome!",
-      snippet: JSON.stringify("var x = \"hello\";\n\nvar print = function () {\n    console.log(x);\n};"),
-      "shortDescription": "Dummy shortDescription 1",
-      explanation: JSON.stringify("Sample Explanation"),
-      "TopicId": 3,
-      "LanguageId": 4
-    }).then(function (snippet) {
-      SnippetTag.create({ SnippetId: snippet.id, TagId: 7 });
-    }))
-  .then(() =>
-    CodeSample.create({
-      "codeSample": JSON.stringify("Test code sample 1"),
-      "SnippetId": 1
-    }));
+  // .then(() =>
+  //   Snippet.create({
+  //     title: "Welcome!",
+  //     snippet: JSON.stringify("var x = \"hello\";\n\nvar print = function () {\n    console.log(x);\n};"),
+  //     "shortDescription": "Dummy shortDescription 1",
+  //     explanation: JSON.stringify("Sample Explanation"),
+  //     "TopicId": 3,
+  //     "LanguageId": 4
+  //   }).then(function (snippet) {
+  //     SnippetTag.create({ SnippetId: snippet.id, TagId: 7 });
+  //   }))
+  // .then(() =>
+  //   CodeSample.create({
+  //     "codeSample": JSON.stringify("Test code sample 1"),
+  //     "SnippetId": 1
+  //   }));
 };
