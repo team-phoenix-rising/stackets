@@ -9,7 +9,7 @@ if (process.env.DATABASE_URL) {
 var Snippet = db.define('Snippet', {
   title: Sequelize.STRING,
   snippet: Sequelize.TEXT,
-  shortDescription: Sequelize.STRING,
+  shortDescription: Sequelize.TEXT,
   explanation: Sequelize.TEXT
 });
 
