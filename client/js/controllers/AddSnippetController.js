@@ -23,6 +23,8 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.addSnippet = function (form) {
       // console.log('Calling the addSnippet function from the AddSnippetController...');
       // console.log('Adding: ', JSON.stringify(this.snippet));
+      this.snippet.shortDescription = JSON.stringify($scope.shortDescription);
+      this.snippet.explanation = JSON.stringify($scope.explanation);
       this.snippet.snippet = JSON.stringify($scope.code);
       this.snippet.codeSample = JSON.stringify($scope.codeSample);
       console.log('Explanation:', this.snippet.explanation);
