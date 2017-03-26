@@ -25,6 +25,9 @@ angular.module('stackets.addSnippet', ['ui.ace'])
       // console.log('Adding: ', JSON.stringify(this.snippet));
       this.snippet.snippet = JSON.stringify($scope.code);
       this.snippet.codeSample = JSON.stringify($scope.codeSample);
+      console.log('Explanation:', this.snippet.explanation);
+      this.snippet.explanation = JSON.stringify(this.snippet.explanation);
+      console.log('Stringified Explanation:', this.snippet.explanation);
       Snippets.addSnippet(this.snippet).then(function(data) {
         $location.path('/snippets/' + data.data.id);
       });
@@ -100,5 +103,5 @@ angular.module('stackets.addSnippet', ['ui.ace'])
         $scope.codeSample = _session.getValue();
       });
     };
-    
+
   });
