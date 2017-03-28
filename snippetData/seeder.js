@@ -1,5 +1,8 @@
 var db = require('../server/config/db.js');
 
+//run this file node seeder.js to populate the database
+
+//create variables for each table
 var Topic = db.Topic;
 var Language = db.Language;
 var Tag = db.Tag;
@@ -7,11 +10,13 @@ var CodeSample = db.CodeSample;
 var Snippet = db.Snippet;
 var SnippetTag = db.SnippetTag;
 
-// Hit me with them ghetto delays to let the tables procreate
+// Hit me with them ghetto delays to let the tables procreate - Jason Kim
+//wait 2000ms for the tables above to be created
 setTimeout(function() {
   seedData();
 }, 2000);
 
+//add data to database
 var seedData = function() {
   // Drop it like it's hot
   console.log('Dropping and re-creating tables');
@@ -61,7 +66,7 @@ var seedData = function() {
   .then(() => Tag.create({ tag: 'Testing' }))
   .then(() => Tag.create({ tag: 'Unicorns' }))
 
-  // Insert default languages
+  // Insert default languages shown in dropdown
   .then(() => Language.create({ name: 'css', displayname: 'CSS' }))  //1
   .then(() => Language.create({ name: 'ejs', displayname: 'EJS' }))
   .then(() => Language.create({ name: 'html', displayname: 'HTML' }))
