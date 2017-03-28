@@ -1,3 +1,4 @@
+//This controller serves the results of all the snippets to the search page.
 angular.module('stackets.searchResults', [])
   .controller('SearchResultsController', function ($scope, $state, $stateParams, Snippets) {
     $scope.searchResultsTitle = 'Search Results';

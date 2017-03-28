@@ -1,3 +1,5 @@
+
+//This controller will render the featured snippet on the home page.
 angular.module('stackets.featuredSnippet', [])
   .controller('FeaturedSnippetController', function ($scope, Snippets) {
     $scope.featuredSnippetTitle = "Featured Snippet";

@@ -1,3 +1,5 @@
+//this controller generates the view of each individual snippet with all the items related to it such as title, topic, language, code sample, etc.
+
 angular.module('stackets.view', [])
   .controller('ViewSnippetController', function ($scope, Snippets, $stateParams) {
     console.log('Viewing Snippet No. ', $stateParams.id);
@@ -26,7 +28,7 @@ angular.module('stackets.view', [])
       $scope.ace = language.name;
       $scope._editor.getSession().setMode("ace/mode/" + $scope.ace);
     };
-
+//the method below will serve the ace editor into the text box displaying the snippet.
     $scope.aceLoaded = function (_editor) {
       // Ace @ https://ace.c9.io/
     // Ace @ https://github.com/ajaxorg/ace
@@ -52,7 +54,7 @@ angular.module('stackets.view', [])
         $scope.code = _session.getValue();
       });
     };
-
+//the method below will serve the ace editor into the text box displaying the code sample.
     $scope.aceLoaded2 = function (_editor) {
       // Ace @ https://ace.c9.io/
     // Ace @ https://github.com/ajaxorg/ace
