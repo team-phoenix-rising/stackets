@@ -12,8 +12,7 @@ if (process.env.DATABASE_URL) {
 var Snippet = db.define('Snippet', {
   title: Sequelize.STRING,
   snippet: Sequelize.TEXT,
-  shortDescription: Sequelize.TEXT,
-  explanation: Sequelize.TEXT
+  shortDescription: Sequelize.TEXT
   //id (auto-generated)
   //createdAt (auto-generated)
   //updatedAt (auto-generated)
