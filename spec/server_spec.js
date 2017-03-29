@@ -16,7 +16,6 @@ describe('Route Tests', function() {
     "title": "Dummy title 2",
     "snippet": "Dummy snippet 2",
     "notes": "Dummy notes 2",
-    "explanation": "Dummy explanation 2",
     "TopicId": 2,
     "Tags" : [1,2,3]
   };
@@ -133,17 +132,6 @@ describe('Route Tests', function() {
 
         expect("notes" in testEntry).toBe(true);
         expect(typeof testEntry["notes"]).toBe("string");
-        done();
-      });
-    });
-
-    it('should contain the key "explanation" with value of type "string"', function(done) {
-      request.get(baseUrl + '/api/snippets', function(err, res, body) {
-        var parsedBody = JSON.parse(body);
-        var testEntry = parsedBody[parsedBody.length - 1];
-
-        expect("explanation" in testEntry).toBe(true);
-        expect(typeof testEntry["explanation"]).toBe("string");
         done();
       });
     });

@@ -2,7 +2,6 @@
   "title": "AngularJS 1.6.x Module",
   "snippet": "angular.module('_APPLICATIONNAME_', [ _DEPENDENCIES_ ])",
   "notes": "How to setup the main module for an AngularJS application",
-  "explanation": "When setting up an angular application, you need to add the ng-app attribute in the HTML page. This attribute needs to have an accompanying module which is typically set up in an app.js file. Common dependencies include modules like ngRoute or ui.router.",
   "TopicId": 3
 },
 {
@@ -10,7 +9,6 @@
   "snippet": "SELECT * FROM _TABLENAME_
   WHERE _PRIMARYKEY_ = _VALUE_",
   "notes": "Select a specific record from a database table based on its primary key.",
-  "explanation": "The primary key column in a database table is typically an auto-incrementing integer.",
   "TopicId": 4
 },
 {
@@ -22,41 +20,35 @@
   }
 }",
   "notes": "Create a class declaration in ES6/ES2015.",
-  "explanation": "ES2015 introduces the class keyword. To create a class, use this pattern.",
   "TopicId": 1
 },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
 //   "notes": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
 //   "notes": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
 //   "notes": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
 //   "notes": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
 //   "notes": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
 //   "TopicId": NUMBER
 // }
