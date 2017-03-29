@@ -32,7 +32,7 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
-            'shortDescription': snipVals.shortDescription,
+            'notes': snipVals.notes,
             'createdAt': snipVals.createdAt,
             'updatedAt': snipVals.updatedAt,
             'TopicId': snipVals.TopicId,
@@ -90,7 +90,7 @@ module.exports = {
           title: snipVals.title,
           snippet: snipVals.snippet,
           "codeSample": samples,
-          'shortDescription': snipVals.shortDescription,
+          'notes': snipVals.notes,
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
           'TopicId': snipVals.TopicId,
@@ -130,7 +130,7 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
-            'shortDescription': snipVals.shortDescription,
+            'notes': snipVals.notes,
             'createdAt': snipVals.createdAt,
             'updatedAt': snipVals.updatedAt,
             'TopicId': snipVals.TopicId,
@@ -149,7 +149,7 @@ module.exports = {
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,
-      shortDescription: req.body.shortDescription,
+      notes: req.body.notes,
       TopicId: Number(req.body.TopicId),  // topicId comes as a string from front-end form
       LanguageId: Number(req.body.LanguageId),  // languageId comes as a string from front-end form
     };
