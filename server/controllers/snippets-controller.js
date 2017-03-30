@@ -5,8 +5,6 @@ module.exports = {
     db.Snippet.findAll({
       include: [
         {
-          model: db.Tag
-        }, {
           model: db.Language
         }
       ]
@@ -14,10 +12,6 @@ module.exports = {
       snippets = snippets.map(function(snippet) {
         // Get ALL data regarding the snippet, including join table values and columns
         var snipVals = snippet.dataValues;
-        // Get only the tag id and name. We don't care about when the tags were created
-        var tags = snipVals.Tags.map(function(tag) {
-          return {id: tag.dataValues.id, tag: tag.dataValues.tag};
-        });
         return {
           id: snipVals.id,
           title: snipVals.title,
@@ -26,8 +20,7 @@ module.exports = {
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
           'LanguageId': snipVals.LanguageId,
-          'Language': snipVals.Language.dataValues.displayname,
-          'Tags': tags
+          'Language': snipVals.Language.dataValues.displayname
         };
       });
       res.status(200).json(snippets);
@@ -38,8 +31,6 @@ module.exports = {
     db.Snippet.findOne({
       include: [
         {
-          model: db.Tag
-        }, {
           model: db.Language
         }, {
           model: db.ResourceUrl
@@ -54,9 +45,6 @@ module.exports = {
         // Only difference is that the 'where' options is added and returns 1 object
         // Make this more modular and DRY
         var snipVals = snippet.dataValues;
-        var tags = snipVals.Tags.map(function(tag) {
-          return {id: tag.dataValues.id, tag: tag.dataValues.tag};
-        });
 
         res.status(200).json({
           id: snipVals.id,
@@ -67,7 +55,6 @@ module.exports = {
           'updatedAt': snipVals.updatedAt,
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
-          'Tags': tags,
           'resources': snipVals.ResourceUrls
         });
       }
@@ -78,8 +65,6 @@ module.exports = {
     db.Snippet.findAll({
       include: [
         {
-          model: db.Tag
-        }, {
           model: db.Language
         }
       ],
@@ -92,10 +77,6 @@ module.exports = {
       snippets = snippets.map(function(snippet) {
         var snipVals = snippet.dataValues;
 
-        var tags = snipVals.Tags.map(function(tag) {
-          return {id: tag.dataValues.id, tag: tag.dataValues.tag};
-        });
-
         return {
           id: snipVals.id,
           title: snipVals.title,
@@ -104,8 +85,7 @@ module.exports = {
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
           'LanguageId': snipVals.LanguageId,
-          'Language': snipVals.Language.dataValues.displayname,
-          'Tags': tags
+          'Language': snipVals.Language.dataValues.displayname
         };
       });
       res.status(200).json(snippets);

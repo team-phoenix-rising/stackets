@@ -1,7 +1,6 @@
 angular.module('stackets.services', [])
   .factory('Snippets', function ($http) {
     var data;
-    var tags;
     var languages;
 
     var addSnippet = function (snippet) {
@@ -32,16 +31,6 @@ angular.module('stackets.services', [])
       }).then(function (resp) {
         data = resp.data;
         return data;
-      });
-    };
-
-    var getAllTags = function () {
-      return $http({
-        method: 'GET',
-        url: '/api/tags',
-      }).then(function (resp) {
-        tags = resp.data;
-        return tags;
       });
     };
 
@@ -96,7 +85,6 @@ angular.module('stackets.services', [])
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
-      getAllTags: getAllTags,
       getAllLanguages: getAllLanguages,
       getRecentSnippets: getRecentSnippets,
       getSnippetById: getSnippetById,

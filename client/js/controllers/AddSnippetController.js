@@ -3,7 +3,6 @@
 angular.module('stackets.addSnippet', ['ui.ace'])
   .controller('AddSnippetController', function ($scope, $location, Snippets) {
     $scope.addSnippetTitle = 'Add a Snippet'; // NOTE: I think this is unused
-    $scope.tags = {};
     $scope.languages = {};
     $scope.code = '';
     $scope.ace = 'javascript';
@@ -16,10 +15,6 @@ angular.module('stackets.addSnippet', ['ui.ace'])
       if (catIndex === '1') $scope.secondaryCategories = ['mongo', 'mongoose', 'mySQL'];
       if (catIndex === '2') $scope.secondaryCategories = ['angularJS', 'css', 'html'];
     };
-
-    Snippets.getAllTags().then(function (tags) {
-      $scope.tags = tags;
-    });
 
     Snippets.getAllLanguages().then(function (languages) {
       $scope.languages = languages;

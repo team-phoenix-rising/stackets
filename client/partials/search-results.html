@@ -10,7 +10,7 @@
       <th>Notes</th>
       <th>Language</th>
       <th>Category</th>
-      <th>Tags</th>
+      <th>Sub-category</th>
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets | filter:search'>
@@ -18,7 +18,7 @@
         <td>{{snippet.notes}}</td>
         <td>{{snippet.Language}}</td>
         <td>FILL ME IN</td>
-        <td><span class="label label-default tag" ng-repeat='tag in snippet.Tags'>{{tag.tag}}</span></td>
+        <td>FILL ME IN</td>
       </tr>
     </tbody>
   </table>
