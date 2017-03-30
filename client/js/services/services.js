@@ -76,6 +76,34 @@ angular.module('stackets.services', [])
       });
     };
 
+    var getFavsBySnippet = function (data) {
+      return $http({
+        method: 'GET',
+        url: '/api/getFavsBySnippet/' +  data.snippetId,
+        data: data
+      }).then(function (response) {
+        return response;
+      });
+    };
+
+    var isFavSnippetByUser = function (data) {
+      return $http({
+        method: 'GET',
+        url: '/api/isFavSnippetByUser/' +  data.snippetId + '/' + data.userId,
+        data: data
+      }).then(function (response) {
+        return response;
+      });
+    };
+
+    var toggleFavorite = function (data) {
+      return $http({
+        method: 'POST',
+        url: '/api/favorite',
+        data: data
+      });
+    };
+
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
@@ -85,6 +113,9 @@ angular.module('stackets.services', [])
       getRecentSnippets: getRecentSnippets,
       getSnippetById: getSnippetById,
       data: data,
-      topics: topics
+      topics: topics,
+      toggleFavorite: toggleFavorite,
+      isFavSnippetByUser: isFavSnippetByUser,
+      getFavsBySnippet: getFavsBySnippet
     };
   });
