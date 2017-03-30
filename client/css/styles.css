@@ -11,3 +11,9 @@
   background-color: #D3D3D3;
   cursor: pointer;
 }
+
+/*FAVORITE*/
+.glyphicon-heart-empty, .glyphicon-heart {
+  font-size: 21px;
+  cursor: pointer;
+}

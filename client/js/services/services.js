@@ -76,6 +76,25 @@ angular.module('stackets.services', [])
       });
     };
 
+    var getFavoriteStatus = function (id) {
+      return $http({
+        method: 'GET',
+        url: '/api/favorite',
+        data: id
+      }).then(function (resp) {
+        data = resp.data;
+        return data;
+      });
+    };
+
+    var toggleFavorite = function (data) {
+      return $http({
+        method: 'POST',
+        url: '/api/favorite',
+        data: data
+      });
+    };
+
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
@@ -85,6 +104,8 @@ angular.module('stackets.services', [])
       getRecentSnippets: getRecentSnippets,
       getSnippetById: getSnippetById,
       data: data,
-      topics: topics
+      topics: topics,
+      toggleFavorite: toggleFavorite,
+      getFavoriteStatus: getFavoriteStatus
     };
   });

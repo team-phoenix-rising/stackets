@@ -6,6 +6,9 @@ angular.module('stackets.view', [])
     $scope.snippet = {};
     $scope.code = '';
     $scope.codeSample = '';
+    $scope.heartClass = 'glyphicon glyphicon-heart-empty';
+    $scope.isFavorite = false;
+
 
     Snippets.getSnippetById($stateParams.id).then(function (snippet) {
       $scope.snippet = snippet;
@@ -13,6 +16,16 @@ angular.module('stackets.view', [])
       $scope.codeSample = JSON.parse(snippet.codeSample);
       //console.log('Metadata retrieved from Snippets service: ', JSON.stringify(topics));
     });
+
+    Snippets.getFavoriteStatus($stateParams.id).then(function(status) {
+      $scope.isFavorite = status;
+      if ($scope.isFavorite) {
+        $scope.heartClass = 'glyphicon glyphicon-heart';
+      } else {
+        $scope.heartClass = 'glyphicon glyphicon-heart-empty';
+      }
+    });
+
     $scope.setAceEditorLang = function (form) {
       var languageId = Number(this.snippet.LanguageId);
       console.log('Language ID: ', languageId);
@@ -77,5 +90,17 @@ angular.module('stackets.view', [])
       _session.on("change", function(e) {
         $scope.codeSample = _session.getValue();
       });
+    };
+
+    $scope.toggleFavorite = function() {
+      $scope.isFavorite = !$scope.isFavorite;
+      if ($scope.isFavorite) {
+        $scope.heartClass = 'glyphicon glyphicon-heart';
+      } else {
+        $scope.heartClass = 'glyphicon glyphicon-heart-empty';
+      }
+      var data = JSON.stringify({id: $stateParams.id, status: $scope.isFavorite})
+      Snippets.toggleFavorite(data);
+      // .then(); TO DO - add callback
     };
   });
