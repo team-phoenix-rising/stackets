@@ -4,9 +4,9 @@ module.exports = {
   get: function(req, res) {
     db.Snippet.findAll({
       include: [
-        {
-          model: db.Language
-        }
+        {model: db.Language},
+        {model: db.Category},
+        {model: db.SubCategory}
       ]
     }).then(function(snippets) {
       snippets = snippets.map(function(snippet) {
@@ -20,7 +20,9 @@ module.exports = {
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
           'LanguageId': snipVals.LanguageId,
-          'Language': snipVals.Language.dataValues.displayname
+          'Language': snipVals.Language.dataValues.displayname,
+          'category': snipVals.Category.dataValues.name,
+          'subCategory': snipVals.SubCategory.dataValues.name,
         };
       });
       res.status(200).json(snippets);
@@ -30,11 +32,10 @@ module.exports = {
   getById: function(req, res) {
     db.Snippet.findOne({
       include: [
-        {
-          model: db.Language
-        }, {
-          model: db.ResourceUrl
-        }
+        {model: db.Language},
+        {model: db.ResourceUrl},
+        {model: db.Category},
+        {model: db.SubCategory}
       ],
       where: {
         id: Number(req.params.id)
@@ -55,7 +56,9 @@ module.exports = {
           'updatedAt': snipVals.updatedAt,
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
-          'resources': snipVals.ResourceUrls
+          'resources': snipVals.ResourceUrls,
+          'category': snipVals.Category.dataValues.name,
+          'subCategory': snipVals.SubCategory.dataValues.name,
         });
       }
     });
@@ -64,9 +67,9 @@ module.exports = {
   getMostRecent: function(req, res) {
     db.Snippet.findAll({
       include: [
-        {
-          model: db.Language
-        }
+        {model: db.Language},
+        {model: db.Category},
+        {model: db.SubCategory}
       ],
       limit: 10,
       order: '"createdAt" DESC'
@@ -85,7 +88,9 @@ module.exports = {
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
           'LanguageId': snipVals.LanguageId,
-          'Language': snipVals.Language.dataValues.displayname
+          'Language': snipVals.Language.dataValues.displayname,
+          'category': snipVals.Category.dataValues.name,
+          'subCategory': snipVals.SubCategory.dataValues.name,
         };
       });
       res.status(200).json(snippets);
