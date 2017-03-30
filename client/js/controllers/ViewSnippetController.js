@@ -17,14 +17,32 @@ angular.module('stackets.view', [])
       //console.log('Metadata retrieved from Snippets service: ', JSON.stringify(topics));
     });
 
-    Snippets.getFavBySnippetUser({snippetId: $stateParams.id, userId: 1}).then(function(response) {
+    Snippets.isFavSnippetByUser({snippetId: $stateParams.id, userId: 1}).then(function(response) {
       $scope.isFavorite = !!response.data;
+      //Turn favorite class on if there is a response
       toggleFavoriteClass();
     });
 
-    Snippets.getFavBySnippet({snippetId: $stateParams.id}).then(function(response) {
-      $scope.totalFavorites = response.data.length || '';
-    })
+    Snippets.getFavsBySnippet({snippetId: $stateParams.id}).then(function(response) {
+      $scope.totalFavorites = response.data.length;
+    });
+
+    $scope.toggleFavorite = function() {
+      $scope.isFavorite = !$scope.isFavorite;
+      toggleFavoriteClass();
+      var data = JSON.stringify({snippetId: $stateParams.id, userId: 1, status: $scope.isFavorite})
+      Snippets.toggleFavorite(data);
+    };
+
+    function toggleFavoriteClass() {
+      if ($scope.isFavorite) {
+        $scope.heartClass = 'glyphicon glyphicon-heart';
+        $scope.totalFavorites++;
+      } else {
+        $scope.heartClass = 'glyphicon glyphicon-heart-empty';
+        $scope.totalFavorites === 0 ? null : $scope.totalFavorites--;
+      }
+    }
 
     $scope.setAceEditorLang = function (form) {
       var languageId = Number(this.snippet.LanguageId);
@@ -91,22 +109,5 @@ angular.module('stackets.view', [])
         $scope.codeSample = _session.getValue();
       });
     };
-
-    $scope.toggleFavorite = function() {
-      $scope.isFavorite = !$scope.isFavorite;
-      toggleFavoriteClass();
-      var data = JSON.stringify({snippetId: $stateParams.id, userId: 1, status: $scope.isFavorite})
-      Snippets.toggleFavorite(data);
-    };
-
-    function toggleFavoriteClass() {
-      if ($scope.isFavorite) {
-        $scope.heartClass = 'glyphicon glyphicon-heart';
-        $scope.totalFavorites++;
-      } else {
-        $scope.heartClass = 'glyphicon glyphicon-heart-empty';
-        $scope.totalFavorites--;
-      }
-    }
 
   });

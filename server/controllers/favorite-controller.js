@@ -148,7 +148,7 @@ module.exports = {
   //     });
   // },
 
-  getFavBySnippet: function(req, res) {
+  getFavsBySnippet: function(req, res) {
     var params = {
       snippetId: Number(req.params.snippetId)
     };
@@ -168,7 +168,7 @@ module.exports = {
 
   },
 
-  getFavBySnippetUser: function(req, res) {
+  isFavSnippetByUser: function(req, res) {
     var params = {
       snippetId: Number(req.params.snippetId),
       userId: Number(req.params.userId),

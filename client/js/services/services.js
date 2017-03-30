@@ -76,20 +76,20 @@ angular.module('stackets.services', [])
       });
     };
 
-    var getFavBySnippet = function (data) {
+    var getFavsBySnippet = function (data) {
       return $http({
         method: 'GET',
-        url: '/api/getFavBySnippet/' +  data.snippetId,
+        url: '/api/getFavsBySnippet/' +  data.snippetId,
         data: data
       }).then(function (response) {
         return response;
       });
     };
 
-    var getFavBySnippetUser = function (data) {
+    var isFavSnippetByUser = function (data) {
       return $http({
         method: 'GET',
-        url: '/api/getFavBySnippetUser/' +  data.snippetId + '/' + data.userId,
+        url: '/api/isFavSnippetByUser/' +  data.snippetId + '/' + data.userId,
         data: data
       }).then(function (response) {
         return response;
@@ -115,7 +115,7 @@ angular.module('stackets.services', [])
       data: data,
       topics: topics,
       toggleFavorite: toggleFavorite,
-      getFavBySnippetUser: getFavBySnippetUser,
-      getFavBySnippet: getFavBySnippet
+      isFavSnippetByUser: isFavSnippetByUser,
+      getFavsBySnippet: getFavsBySnippet
     };
   });

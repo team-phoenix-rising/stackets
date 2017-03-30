@@ -27,9 +27,9 @@ module.exports = function(app, express) {
   //toggles the favorite status of a snippet
   app.post('/api/favorite', favoriteController.post);
   //get favorites status by snippet and user
-  app.get('/api/getFavBySnippetUser/:snippetId/:userId', favoriteController.getFavBySnippetUser);
+  app.get('/api/isFavSnippetByUser/:snippetId/:userId', favoriteController.isFavSnippetByUser);
   //get total favorites per snippet
-  app.get('/api/getFavBySnippet/:snippetId', favoriteController.getFavBySnippet);
+  app.get('/api/getFavsBySnippet/:snippetId', favoriteController.getFavsBySnippet);
   //direct to about page
   app.get('/about', function(req, res) {
     res.redirect('/');
