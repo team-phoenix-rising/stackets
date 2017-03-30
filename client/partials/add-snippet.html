@@ -17,15 +17,9 @@
       </option>
     </select>
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-12">
     <label for="snippet">Snippet</label>
-    <!--<textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>-->
     <div ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="snippet.snippet"></div>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="codeSample">Code Sample (Example Snippet)</label>
-    <!--<textarea id="snippet" class="form-control" rows="3" ng-model="snippet.snippet"></textarea>-->
-    <div ui-ace="{ onLoad: aceLoaded2 }" id="editor2" ng-model="snippet.codeSample"></div>
   </div>
   <div class="form-group col-md-12">
     <label for="notes">Notes</label>

@@ -6,7 +6,6 @@ var db = require('../server/config/db.js');
 var Topic = db.Topic;
 var Language = db.Language;
 var Tag = db.Tag;
-var CodeSample = db.CodeSample;
 var Snippet = db.Snippet;
 var SnippetTag = db.SnippetTag;
 var ResourceUrl = db.ResourceUrl;
@@ -21,8 +20,7 @@ setTimeout(function() {
 var seedData = function() {
   // Drop it like it's hot
   console.log('Dropping and re-creating tables');
-  CodeSample.sync({force: true})
-  .then(() => Topic.sync({force: true}))
+  Topic.sync({force: true})
   .then(() => Language.sync({force: true}))
   .then(() => Tag.sync({force: true}))
   .then(() => Snippet.sync({force: true}))
@@ -85,21 +83,4 @@ var seedData = function() {
   .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' }))
   .then(() => Language.create({ name: 'xml', displayname: 'XML' }));  //15
 
-  // Insert dummy snippets and code samples directly after each snippet
-  // .then(() =>
-  //   Snippet.create({
-  //     title: "Welcome!",
-  //     snippet: JSON.stringify("var x = \"hello\";\n\nvar print = function () {\n    console.log(x);\n};"),
-  //     "shortDescription": "Dummy shortDescription 1",
-  //     explanation: JSON.stringify("Sample Explanation"),
-  //     "TopicId": 3,
-  //     "LanguageId": 4
-  //   }).then(function (snippet) {
-  //     SnippetTag.create({ SnippetId: snippet.id, TagId: 7 });
-  //   }))
-  // .then(() =>
-  //   CodeSample.create({
-  //     "codeSample": JSON.stringify("Test code sample 1"),
-  //     "SnippetId": 1
-  //   }));
 };
