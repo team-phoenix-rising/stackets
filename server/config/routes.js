@@ -24,6 +24,8 @@ module.exports = function(app, express) {
   app.get('/api/getFavsBySnippet/:snippetId', favoriteController.getFavsBySnippet);
   //get all categories
   app.get('/api/categories', categoryController.getCategories);
+  //get sub-categories by category id
+  app.get('/api/sub-categories/:id', categoryController.getSubCategories);
   //direct to about page
   app.get('/about', function(req, res) {
     res.redirect('/');
