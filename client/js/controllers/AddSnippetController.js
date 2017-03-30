@@ -8,15 +8,15 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.ace = 'javascript';
     $scope.resourceUrls = [];
     $scope.categories = [];
-    $scope.subCategories = [];
+    $scope.subcategories = [];
 
     Snippets.getCategories().then(function(categories) {
       $scope.categories = categories;
     });
 
     $scope.setCategory = function(catIndex) {
-      Snippets.getSubCategories(catIndex).then(function(subCategories) {
-        $scope.subCategories = subCategories;
+      Snippets.getSubcategories(catIndex).then(function(subcategories) {
+        $scope.subcategories = subcategories;
       })
     };
 

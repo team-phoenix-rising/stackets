@@ -9,7 +9,7 @@ var ResourceUrl = db.ResourceUrl;
 var User = db.User;
 var Favorite = db.Favorite;
 var Category = db.Category;
-var SubCategory = db.SubCategory;
+var Subcategory = db.Subcategory;
 
 // Hit me with them ghetto delays to let the tables procreate - Jason Kim
 //wait 2000ms for the tables above to be created
@@ -59,8 +59,8 @@ var seedData = function() {
     {name: 'Authentication'} //8
   ]))
 
-  //Create SubCategories
-  .then(() => SubCategory.bulkCreate([
+  //Create Subcategories
+  .then(() => Subcategory.bulkCreate([
     {name: 'Node', CategoryId: 1},
     {name: 'Express', CategoryId: 1},
     {name: 'Hapi', CategoryId: 1},

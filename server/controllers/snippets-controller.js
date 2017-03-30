@@ -6,7 +6,7 @@ module.exports = {
       include: [
         {model: db.Language},
         {model: db.Category},
-        {model: db.SubCategory}
+        {model: db.Subcategory}
       ]
     }).then(function(snippets) {
       snippets = snippets.map(function(snippet) {
@@ -22,7 +22,7 @@ module.exports = {
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
           'category': snipVals.Category.dataValues.name,
-          'subCategory': snipVals.SubCategory.dataValues.name,
+          'subcategory': snipVals.Subcategory.dataValues.name,
         };
       });
       res.status(200).json(snippets);
@@ -35,7 +35,7 @@ module.exports = {
         {model: db.Language},
         {model: db.ResourceUrl},
         {model: db.Category},
-        {model: db.SubCategory}
+        {model: db.Subcategory}
       ],
       where: {
         id: Number(req.params.id)
@@ -58,7 +58,7 @@ module.exports = {
           'Language': snipVals.Language.dataValues.displayname,
           'resources': snipVals.ResourceUrls,
           'category': snipVals.Category.dataValues.name,
-          'subCategory': snipVals.SubCategory.dataValues.name,
+          'subcategory': snipVals.Subcategory.dataValues.name,
         });
       }
     });
@@ -69,7 +69,7 @@ module.exports = {
       include: [
         {model: db.Language},
         {model: db.Category},
-        {model: db.SubCategory}
+        {model: db.Subcategory}
       ],
       limit: 10,
       order: '"createdAt" DESC'
@@ -90,7 +90,7 @@ module.exports = {
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
           'category': snipVals.Category.dataValues.name,
-          'subCategory': snipVals.SubCategory.dataValues.name,
+          'subcategory': snipVals.Subcategory.dataValues.name,
         };
       });
       res.status(200).json(snippets);
@@ -104,7 +104,7 @@ module.exports = {
       notes: req.body.notes,
       LanguageId: Number(req.body.LanguageId), // languageId comes as a string from front-end form
       CategoryId: Number(req.body.category),
-      SubCategoryId: Number(req.body.subCategory)
+      SubcategoryId: Number(req.body.subcategory)
     };
 
     db.Snippet.create(params)

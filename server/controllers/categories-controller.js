@@ -11,13 +11,13 @@ module.exports = {
       });
   },
 
-  getSubCategories: function(req, res) {
-    db.SubCategory.findAll({
+  getSubcategories: function(req, res) {
+    db.Subcategory.findAll({
       where: {CategoryId: Number(req.params.id)},
       attributes: ['id', 'name', 'CategoryId']
     })
-    .then(function(subCategories) {
-      res.status(200).json(subCategories);
+    .then(function(subcategories) {
+      res.status(200).json(subcategories);
     })
   }
 

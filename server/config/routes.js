@@ -25,7 +25,7 @@ module.exports = function(app, express) {
   //get all categories
   app.get('/api/categories', categoryController.getCategories);
   //get sub-categories by category id
-  app.get('/api/sub-categories/:id', categoryController.getSubCategories);
+  app.get('/api/sub-categories/:id', categoryController.getSubcategories);
   //direct to about page
   app.get('/about', function(req, res) {
     res.redirect('/');

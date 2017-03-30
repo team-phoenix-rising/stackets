@@ -10,15 +10,13 @@
       <th>Notes</th>
       <th>Language</th>
       <th>Category</th>
-      <th>Sub-category</th>
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets | filter:search'>
-        <td><a href="/snippets/{{snippet.id}}">{{snippet.title}}</a></td>
-        <td>{{snippet.notes}}</td>
-        <td>{{snippet.Language}}</td>
-        <td>FILL ME IN</td>
-        <td>FILL ME IN</td>
+        <td><a href="/snippets/{{snippet.id}}">{{ snippet.title }}</a></td>
+        <td>{{ snippet.notes }}</td>
+        <td>{{ snippet.Language }}</td>
+        <td>{{ snippet.category }} > {{ snippet.subcategory }}</td>
       </tr>
     </tbody>
   </table>
