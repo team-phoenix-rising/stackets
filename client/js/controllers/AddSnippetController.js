@@ -15,10 +15,9 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     });
 
     $scope.setCategory = function(catIndex) {
-      if (catIndex === '0') $scope.subCategories = ['express', 'hapi', 'node'];
-      if (catIndex === '1') $scope.subCategories = ['mongo', 'mongoose', 'mySQL'];
-      if (catIndex === '2') $scope.subCategories = ['angularJS', 'css', 'html'];
-      console.log(catIndex);
+      Snippets.getSubCategories(catIndex).then(function(subCategories) {
+        $scope.subCategories = subCategories;
+      })
     };
 
     Snippets.getAllLanguages().then(function (languages) {

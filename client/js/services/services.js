@@ -89,7 +89,16 @@ angular.module('stackets.services', [])
       }).then(function(response) {
         return response.data;
       })
-    }
+    };
+
+    var getSubCategories = function(id) {
+      return $http({
+        method: 'GET',
+        url: '/api/sub-categories/' + id
+      }).then(function(response) {
+        return response.data;
+      })
+    };
 
     return {
       addSnippet: addSnippet,
@@ -101,6 +110,7 @@ angular.module('stackets.services', [])
       toggleFavorite: toggleFavorite,
       isFavSnippetByUser: isFavSnippetByUser,
       getFavsBySnippet: getFavsBySnippet,
-      getCategories: getCategories
+      getCategories: getCategories,
+      getSubCategories: getSubCategories
     };
   });
