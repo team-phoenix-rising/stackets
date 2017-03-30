@@ -120,30 +120,19 @@ module.exports = {
       LanguageId: Number(req.body.LanguageId), // languageId comes as a string from front-end form
     };
 
-    // tags: { '1': true, '3': true, 9': true }
-    // We only want the keys, and in number format
-    var tags = Object.keys(req.body.tags).map(Number);
-
     db.Snippet.create(params)
-    .then(function(data) {
-      tags.forEach(function(item) {
-        db.SnippetTag.create({
-          "SnippetId": data.id,
-          "TagId": item
-        })
-        .then(function(snippetTag) {
-          var resourceUrlData = req.body.resources.map(url => {
-            return {
-              "SnippetId": data.id,
-              "url": url
-            }
-          });
-          db.ResourceUrl.bulkCreate(resourceUrlData)
-          .then(function(resourceUrls) {
-            res.status(201).json(data);
-          });
+      .then(function(data) {
+        var resourceUrlData = req.body.resources.map(url => {
+          return {
+            "SnippetId": data.id,
+            "url": url
+          }
         });
-      });
-    });
+
+        db.ResourceUrl.bulkCreate(resourceUrlData)
+        .then(function(resourceUrls) {
+          res.status(201).json(data);
+        })
+      })
   }
 };

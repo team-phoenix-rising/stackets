@@ -19,19 +19,6 @@
     <label for="notes">Notes</label>
     <textarea id="notes" class="form-control" rows="10" ng-model="snippet.notes"></textarea>
   </div>
-  <hr style="border: 1px solid red;">
-  <div class="form-group col-md-12">
-    <div class="input-group">
-      <label class="control-label" >Tags:</label><br />
-      <fieldset class="pull-right">
-        <label ng-repeat="tag in tags" for="{{tag}}" class="col-md-2">&nbsp;
-          <input type="checkbox" class="pull-left" name="tag.name" id="{{tag.id}}" ng-model="snippet.tags[tag.id]" />
-          {{tag.tag}}
-        </label>
-      </fieldset>
-    </div>
-  </div>
-  <hr style="border: 1px solid red;">
   <div class="form-group col-md-3">
     <label for="language">Select Primary Category</label>
     <select class="form-control" ng-model="snippet.primaryCategories" ng-change="setPrimaryCategory(snippet.primaryCategories)">
