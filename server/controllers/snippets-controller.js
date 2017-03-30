@@ -170,9 +170,22 @@ module.exports = {
         db.CodeSample.create({
           "codeSample": req.body.codeSample,
           "SnippetId": data.id
-        });
+        })
 
-        res.status(201).json(data);
+        .then(function(newCodeSample) {
+          var resourceUrlData = req.body.resources.map(url => {
+            return {
+              "SnippetId": data.id,
+              "url": url
+            }
+          });
+          db.ResourceUrl.bulkCreate(resourceUrlData)
+          .then(function(resourceUrls) {
+            res.status(201).json(data);
+          })
+        })
+
+        // res.status(201).json(data);
       });
   }
 };
