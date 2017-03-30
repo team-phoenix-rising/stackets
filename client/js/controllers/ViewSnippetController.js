@@ -24,11 +24,16 @@ angular.module('stackets.view', [])
     });
 
     Snippets.getFavsBySnippet({snippetId: $stateParams.id}).then(function(response) {
-      $scope.totalFavorites = response.data.length;
+      $scope.totalFavorites = response.data.count;
     });
 
     $scope.toggleFavorite = function() {
       $scope.isFavorite = !$scope.isFavorite;
+      if (!$scope.isFavorite) {
+        $scope.totalFavorites === 0 ? null : $scope.totalFavorites--;
+      } else {
+        $scope.totalFavorites++;
+      }
       toggleFavoriteClass();
       var data = JSON.stringify({snippetId: $stateParams.id, userId: 1, status: $scope.isFavorite})
       Snippets.toggleFavorite(data);
@@ -37,10 +42,8 @@ angular.module('stackets.view', [])
     function toggleFavoriteClass() {
       if ($scope.isFavorite) {
         $scope.heartClass = 'glyphicon glyphicon-heart';
-        $scope.totalFavorites++;
       } else {
         $scope.heartClass = 'glyphicon glyphicon-heart-empty';
-        $scope.totalFavorites === 0 ? null : $scope.totalFavorites--;
       }
     }
 

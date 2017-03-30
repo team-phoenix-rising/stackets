@@ -6,14 +6,14 @@ module.exports = {
     var params = {
       snippetId: Number(req.params.snippetId)
     };
-    db.Favorite.findAll( {
+    db.Favorite.count( {
       where: {
         "SnippetId": params.snippetId
         }
       }
     )
     .then(function(response){
-      res.status(200).send(response);
+      res.status(200).send({count: response});
     })
     .catch(function(error){
       console.log('Error updating favorite: ', error)
