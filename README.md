@@ -22,7 +22,7 @@
 ## Usage
 
 ### Snippet Users
-Visit `http://stackets.herokuapp.com` and search for a term or keyword that describes the snippet of code you need. Once you have identified the appropriate snippet in search results, navigate to the snippet page to copy-and-paste the snippet, read the explanation, or review the code samples.
+Visit `http://stackets.herokuapp.com` and search for a term or keyword that describes the snippet of code you need. Once you have identified the appropriate snippet in search results, navigate to the snippet page to copy-and-paste the snippet, read the notes, or review the code samples.
 
 ### Content Contributors
 
@@ -30,7 +30,7 @@ You can contribute to Stackets by:
 
 * Adding new snippets
 * Adding code samples to existing snippets
-* Creating or improving snippet explanations
+* Creating or improving snippet notes
 
 ## Requirements
 

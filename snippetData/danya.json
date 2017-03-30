@@ -1,16 +1,14 @@
 {
   "title": "AngularJS 1.6.x Module",
   "snippet": "angular.module('_APPLICATIONNAME_', [ _DEPENDENCIES_ ])",
-  "shortDescription": "How to setup the main module for an AngularJS application",
-  "explanation": "When setting up an angular application, you need to add the ng-app attribute in the HTML page. This attribute needs to have an accompanying module which is typically set up in an app.js file. Common dependencies include modules like ngRoute or ui.router.",
+  "notes": "How to setup the main module for an AngularJS application",
   "TopicId": 3
 },
 {
   "title": "Select a Specific Item from a Database Table",
   "snippet": "SELECT * FROM _TABLENAME_
   WHERE _PRIMARYKEY_ = _VALUE_",
-  "shortDescription": "Select a specific record from a database table based on its primary key.",
-  "explanation": "The primary key column in a database table is typically an auto-incrementing integer.",
+  "notes": "Select a specific record from a database table based on its primary key.",
   "TopicId": 4
 },
 {
@@ -21,42 +19,36 @@
     this._PROP2_ = _PROP2_;
   }
 }",
-  "shortDescription": "Create a class declaration in ES6/ES2015.",
-  "explanation": "ES2015 introduces the class keyword. To create a class, use this pattern.",
+  "notes": "Create a class declaration in ES6/ES2015.",
   "TopicId": 1
 },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
-//   "shortDescription": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
+//   "notes": "INSERT_SHORT_DESCRIPTION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
-//   "shortDescription": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
+//   "notes": "INSERT_SHORT_DESCRIPTION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
-//   "shortDescription": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
+//   "notes": "INSERT_SHORT_DESCRIPTION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
-//   "shortDescription": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
+//   "notes": "INSERT_SHORT_DESCRIPTION",
 //   "TopicId": NUMBER
 // },
 // {
 //   "title": "INSERT_TITLE_HERE",
 //   "snippet": "INSERT_SNIPPET_HERE",
-//   "shortDescription": "INSERT_SHORT_DESCRIPTION",
-//   "explanation": "INSERT_EXPLANATION",
+//   "notes": "INSERT_SHORT_DESCRIPTION",
 //   "TopicId": NUMBER
 // }

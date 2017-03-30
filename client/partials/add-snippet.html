@@ -1,11 +1,7 @@
-<form name="addSnippetForm" ng-submit="addSnippet(addSnippetForm)">
+<form name="addSnippetForm">
   <div class="form-group col-md-12">
-    <label for="name">Title</label>
-    <input type="text" class="form-control" id="name" ng-model="snippet.title">
-  </div>
-  <div class="form-group col-md-12">
-    <label for="description">Short Description</label>
-    <textarea id="description" class="form-control" rows="3" ng-model="snippet.shortDescription"></textarea>
+    <label for="title">Title</label>
+    <input type="text" class="form-control" id="title" ng-model="snippet.title">
   </div>
   <div class="form-group col-md-6">
     <label for="topic">Topic</label>
@@ -32,9 +28,10 @@
     <div ui-ace="{ onLoad: aceLoaded2 }" id="editor2" ng-model="snippet.codeSample"></div>
   </div>
   <div class="form-group col-md-12">
-    <label for="explanation">Explanation</label>
-    <textarea id="explanation" class="form-control" rows="15" ng-model="snippet.explanation"></textarea>
+    <label for="notes">Notes</label>
+    <textarea id="notes" class="form-control" rows="10" ng-model="snippet.notes"></textarea>
   </div>
+  <hr style="border: 1px solid red;">
   <div class="form-group col-md-12">
     <div class="input-group">
       <label class="control-label" >Tags:</label><br />
@@ -46,7 +43,24 @@
       </fieldset>
     </div>
   </div>
+  <hr style="border: 1px solid red;">
+  <div class="form-group col-md-3">
+    <label for="notes">Categories</label>
+    <p>Categories</p>
+  </div>
+  <div class="form-group col-md-3">
+    <label for="notes">Sub Categories</label>
+    <p>Sub Categories</p>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="resourceUrl">Enter Resource URLs (hit enter to add)</label>
+    <input type="url" class="form-control" id="resourceUrl" ng-keypress="addResource($event)">
+    <p class="add-snippet-added-resources-label">Added Resources:</p>
+    <span ng-repeat="url in resourceUrls">
+      <p ng-click="removeResource($index)"><span class="add-snippet-added-resources-item">{{url}} <span class="glyphicon glyphicon-remove-circle"></span></span></p>
+    </span>
+  </div>
   <div class="form-group col-md-12 text-right">
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="button" class="btn btn-default" ng-click="addSnippet(addSnippetForm)">Submit</button>
   </div>
 </form>

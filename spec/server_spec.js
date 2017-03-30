@@ -15,8 +15,7 @@ describe('Route Tests', function() {
   var dumbData = {
     "title": "Dummy title 2",
     "snippet": "Dummy snippet 2",
-    "shortDescription": "Dummy shortDescription 2",
-    "explanation": "Dummy explanation 2",
+    "notes": "Dummy notes 2",
     "TopicId": 2,
     "Tags" : [1,2,3]
   };
@@ -126,24 +125,13 @@ describe('Route Tests', function() {
       });
     });
 
-    it('should contain the key "shortDescription" with value of type "string"', function(done) {
+    it('should contain the key "notes" with value of type "string"', function(done) {
       request.get(baseUrl + '/api/snippets', function(err, res, body) {
         var parsedBody = JSON.parse(body);
         var testEntry = parsedBody[parsedBody.length - 1];
 
-        expect("shortDescription" in testEntry).toBe(true);
-        expect(typeof testEntry["shortDescription"]).toBe("string");
-        done();
-      });
-    });
-
-    it('should contain the key "explanation" with value of type "string"', function(done) {
-      request.get(baseUrl + '/api/snippets', function(err, res, body) {
-        var parsedBody = JSON.parse(body);
-        var testEntry = parsedBody[parsedBody.length - 1];
-
-        expect("explanation" in testEntry).toBe(true);
-        expect(typeof testEntry["explanation"]).toBe("string");
+        expect("notes" in testEntry).toBe(true);
+        expect(typeof testEntry["notes"]).toBe("string");
         done();
       });
     });
