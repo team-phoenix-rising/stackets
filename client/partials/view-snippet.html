@@ -13,5 +13,10 @@
         <p> {{ snippet.Topic}}</p>
         <h3>Notes</h3>
         <p>{{ snippet.notes}}</p>
+        <h3>Resources</h3>
+        <div ng-repeat="url in snippet.resources">
+          <p><a href="{{ url.url }}" target="_blank">{{ url.url }}</a></p>
+        </div>
+
     </div>
 </div>

@@ -66,7 +66,8 @@ module.exports = {
       include: [
         {model: db.Topic},
         {model: db.Tag},
-        {model: db.Language}
+        {model: db.Language},
+        {model: db.ResourceUrl}
       ],
       where: { id: Number(req.params.id)}
     })
@@ -95,7 +96,8 @@ module.exports = {
           'Topic': snipVals.Topic.dataValues.name,
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
-          'Tags': tags
+          'Tags': tags,
+          'resources': snipVals.ResourceUrls
         });
       });
   },
@@ -144,7 +146,6 @@ module.exports = {
   },
 
   post: function(req, res) {
-    console.log(req.body);
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,
@@ -185,7 +186,6 @@ module.exports = {
           })
         })
 
-        // res.status(201).json(data);
       });
   }
 };

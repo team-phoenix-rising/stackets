@@ -8,7 +8,7 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.languages = {};
     $scope.code = '';
     $scope.ace = 'javascript';
-    $scope.resourceUrls = ['http://www.google.com'];
+    $scope.resourceUrls = [];
 
     Snippets.getAllTopics().then(function (topics) {
       $scope.topics = topics;
@@ -109,6 +109,10 @@ angular.module('stackets.addSnippet', ['ui.ace'])
         $scope.resourceUrls.push(input);
         e.target.value = '';
       }
+    }
+
+    $scope.removeResource = function(resourceIndex) {
+      $scope.resourceUrls.splice(resourceIndex, 1);
     }
 
   });
