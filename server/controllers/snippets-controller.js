@@ -1,7 +1,5 @@
 var db = require('../config/db.js');
 
-
-
 module.exports = {
   get: function(req, res) {
     db.Snippet.findAll({
@@ -146,6 +144,7 @@ module.exports = {
   },
 
   post: function(req, res) {
+    console.log(req.body);
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,

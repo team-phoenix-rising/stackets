@@ -8,6 +8,7 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.languages = {};
     $scope.code = '';
     $scope.ace = 'javascript';
+    $scope.resourceUrls = ['http://www.google.com'];
 
     Snippets.getAllTopics().then(function (topics) {
       $scope.topics = topics;
@@ -25,6 +26,7 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.addSnippet = function (form) {
       this.snippet.snippet = JSON.stringify($scope.code);
       this.snippet.codeSample = JSON.stringify($scope.codeSample);
+      this.snippet.resources = $scope.resourceUrls
       Snippets.addSnippet(this.snippet).then(function(data) {
         $location.path('/snippets/' + data.data.id);
       });
@@ -100,5 +102,13 @@ angular.module('stackets.addSnippet', ['ui.ace'])
         $scope.codeSample = _session.getValue();
       });
     };
+
+    $scope.addResource = function(e) {
+      var input = e.target.value;
+      if (e.keyCode === 13) {
+        $scope.resourceUrls.push(input);
+        e.target.value = '';
+      }
+    }
 
   });
