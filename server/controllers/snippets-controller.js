@@ -5,8 +5,6 @@ module.exports = {
     db.Snippet.findAll({
       include: [
         {
-          model: db.Topic
-        }, {
           model: db.Tag
         }, {
           model: db.Language
@@ -27,8 +25,6 @@ module.exports = {
           'notes': snipVals.notes,
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
-          'TopicId': snipVals.TopicId,
-          'Topic': snipVals.Topic.dataValues.name,
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
           'Tags': tags
@@ -42,8 +38,6 @@ module.exports = {
     db.Snippet.findOne({
       include: [
         {
-          model: db.Topic
-        }, {
           model: db.Tag
         }, {
           model: db.Language
@@ -71,8 +65,6 @@ module.exports = {
           'notes': snipVals.notes,
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
-          'TopicId': snipVals.TopicId,
-          'Topic': snipVals.Topic.dataValues.name,
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
           'Tags': tags,
@@ -86,8 +78,6 @@ module.exports = {
     db.Snippet.findAll({
       include: [
         {
-          model: db.Topic
-        }, {
           model: db.Tag
         }, {
           model: db.Language
@@ -113,8 +103,6 @@ module.exports = {
           'notes': snipVals.notes,
           'createdAt': snipVals.createdAt,
           'updatedAt': snipVals.updatedAt,
-          'TopicId': snipVals.TopicId,
-          'Topic': snipVals.Topic.dataValues.name,
           'LanguageId': snipVals.LanguageId,
           'Language': snipVals.Language.dataValues.displayname,
           'Tags': tags
@@ -129,7 +117,6 @@ module.exports = {
       title: req.body.title,
       snippet: req.body.snippet,
       notes: req.body.notes,
-      TopicId: Number(req.body.TopicId), // topicId comes as a string from front-end form
       LanguageId: Number(req.body.LanguageId), // languageId comes as a string from front-end form
     };
 

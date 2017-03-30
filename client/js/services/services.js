@@ -1,7 +1,6 @@
 angular.module('stackets.services', [])
   .factory('Snippets', function ($http) {
     var data;
-    var topics;
     var tags;
     var languages;
 
@@ -33,16 +32,6 @@ angular.module('stackets.services', [])
       }).then(function (resp) {
         data = resp.data;
         return data;
-      });
-    };
-
-    var getAllTopics = function () {
-      return $http({
-        method: 'GET',
-        url: '/api/topics',
-      }).then(function (resp) {
-        topics = resp.data;
-        return topics;
       });
     };
 
@@ -107,13 +96,11 @@ angular.module('stackets.services', [])
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
-      getAllTopics: getAllTopics,
       getAllTags: getAllTags,
       getAllLanguages: getAllLanguages,
       getRecentSnippets: getRecentSnippets,
       getSnippetById: getSnippetById,
       data: data,
-      topics: topics,
       toggleFavorite: toggleFavorite,
       isFavSnippetByUser: isFavSnippetByUser,
       getFavsBySnippet: getFavsBySnippet

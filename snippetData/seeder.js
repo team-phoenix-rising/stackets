@@ -3,7 +3,6 @@ var db = require('../server/config/db.js');
 //run this file node seeder.js to populate the database
 
 //create variables for each table
-var Topic = db.Topic;
 var Language = db.Language;
 var Tag = db.Tag;
 var Snippet = db.Snippet;
@@ -22,22 +21,13 @@ setTimeout(function() {
 var seedData = function() {
   // Drop it like it's hot
   console.log('Dropping and re-creating tables');
-  Topic.sync({force: true})
-  .then(() => Language.sync({force: true}))
+  Language.sync({force: true})
   .then(() => Tag.sync({force: true}))
   .then(() => Snippet.sync({force: true}))
   .then(() => SnippetTag.sync({force: true}))
   .then(() => ResourceUrl.sync({force: true}))
   .then(() => User.sync({force: true}))
   .then(() => Favorite.sync({force: true}))
-
-  // Insert default topics
-  .then(() => Topic.create({ name: 'Database' }))
-  .then(() => Topic.create({ name: 'Deployment' }))
-  .then(() => Topic.create({ name: 'Frontend/UI' }))
-  .then(() => Topic.create({ name: 'Frameworks' }))
-  .then(() => Topic.create({ name: 'Libraries' }))
-  .then(() => Topic.create({ name: 'Server' }))
 
   // Insert default tags
   .then(() => Tag.create({ tag: 'Angular' }))

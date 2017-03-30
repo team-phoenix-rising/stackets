@@ -3,7 +3,6 @@
 angular.module('stackets.addSnippet', ['ui.ace'])
   .controller('AddSnippetController', function ($scope, $location, Snippets) {
     $scope.addSnippetTitle = 'Add a Snippet'; // NOTE: I think this is unused
-    $scope.topics = {};
     $scope.tags = {};
     $scope.languages = {};
     $scope.code = '';
@@ -18,10 +17,6 @@ angular.module('stackets.addSnippet', ['ui.ace'])
       if (catIndex === '2') $scope.secondaryCategories = ['angularJS', 'css', 'html'];
     };
 
-    Snippets.getAllTopics().then(function (topics) {
-      $scope.topics = topics;
-    });
-
     Snippets.getAllTags().then(function (tags) {
       $scope.tags = tags;
     });
@@ -32,7 +27,6 @@ angular.module('stackets.addSnippet', ['ui.ace'])
 
     //the method below will add a snippet using the add snippet form.
     $scope.addSnippet = function (form) {
-      this.snippet.TopicId = 1;
       this.snippet.snippet = JSON.stringify($scope.code);
       this.snippet.resources = $scope.resourceUrls
       Snippets.addSnippet(this.snippet).then(function(data) {
