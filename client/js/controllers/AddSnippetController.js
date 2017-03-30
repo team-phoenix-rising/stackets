@@ -62,14 +62,16 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     // CDN @ https://cdnjs.com/libraries/ace/
     // Editor font size
       $scope._editor = _editor;
-      document.getElementById('editor').style.fontSize='12px';
+      document.getElementById('editor').style.fontSize='14px';
       // Options
       var _session = _editor.getSession();
       var _renderer = _editor.renderer;
       _editor.setHighlightActiveLine(true);
-      _editor.setShowPrintMargin(true);
+      _editor.setShowPrintMargin(false);
       _editor.setReadOnly(false);
       _session.setUseWrapMode(true);
+      _session.setTabSize(2);
+      _session.setUseSoftTabs(true);
       // Theme @ https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
       _editor.setTheme("ace/theme/cobalt");
       // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode

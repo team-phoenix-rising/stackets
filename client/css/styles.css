@@ -1,3 +1,7 @@
+.ace_gutter, .ace_content {
+  padding: 5px;
+}
+
 input.add-snippet-url {
   margin-bottom: 10px;
 }
