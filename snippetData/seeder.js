@@ -9,6 +9,7 @@ var Tag = db.Tag;
 var CodeSample = db.CodeSample;
 var Snippet = db.Snippet;
 var SnippetTag = db.SnippetTag;
+var ResourceUrl = db.ResourceUrl;
 
 // Hit me with them ghetto delays to let the tables procreate - Jason Kim
 //wait 2000ms for the tables above to be created
@@ -26,6 +27,7 @@ var seedData = function() {
   .then(() => Tag.sync({force: true}))
   .then(() => Snippet.sync({force: true}))
   .then(() => SnippetTag.sync({force: true}))
+  .then(() => ResourceUrl.sync({force: true}))
 
   // Insert default topics
   .then(() => Topic.create({ name: 'Database' }))
