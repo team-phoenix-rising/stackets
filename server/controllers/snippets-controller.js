@@ -98,6 +98,8 @@ module.exports = {
       snippet: req.body.snippet,
       notes: req.body.notes,
       LanguageId: Number(req.body.LanguageId), // languageId comes as a string from front-end form
+      CategoryId: Number(req.body.category),
+      SubCategoryId: Number(req.body.subCategory)
     };
 
     db.Snippet.create(params)

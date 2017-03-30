@@ -21,13 +21,13 @@
   </div>
   <div class="form-group col-md-3">
     <label for="language">Select Category</label>
-    <select class="form-control" ng-model="snippet.categories" ng-change="setCategory(snippet.categories)">
+    <select class="form-control" ng-model="snippet.category" ng-change="setCategory(snippet.category)">
       <option ng-repeat="cat in categories" value="{{cat.id}}">{{cat.name}}</option>
     </select>
   </div>
   <div class="form-group col-md-3">
     <label for="language">Select Secondary Category</label>
-    <select class="form-control" ng-model="snippet.subCategories">
+    <select class="form-control" ng-model="snippet.subCategory">
       <option ng-repeat="cat in subCategories" value="{{cat.id}}">{{cat.name}}</option>
     </select>
   </div>
