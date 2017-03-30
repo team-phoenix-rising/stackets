@@ -27,7 +27,7 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     //the method below will add a snippet using the add snippet form.
     $scope.addSnippet = function (form) {
       this.snippet.snippet = JSON.stringify($scope.code);
-      this.snippet.resources = $scope.resourceUrls
+      this.snippet.resources = $scope.resourceUrls.length > 0 ? $scope.resourceUrls : [this.snippet.resources];
       Snippets.addSnippet(this.snippet).then(function(data) {
         $location.path('/snippets/' + data.data.id);
       });
