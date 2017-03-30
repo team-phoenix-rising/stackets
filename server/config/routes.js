@@ -2,6 +2,7 @@
 var snippetsController = require('../controllers/snippets-controller.js');
 var languageController = require('../controllers/languages-controller.js');
 var favoriteController = require('../controllers/favorite-controller.js');
+var categoryController = require('../controllers/categories-controller.js');
 
 
 module.exports = function(app, express) {
@@ -21,6 +22,8 @@ module.exports = function(app, express) {
   app.get('/api/isFavSnippetByUser/:snippetId/:userId', favoriteController.isFavSnippetByUser);
   //get total favorites per snippet
   app.get('/api/getFavsBySnippet/:snippetId', favoriteController.getFavsBySnippet);
+  //get all categories
+  app.get('/api/categories', categoryController.getCategories);
   //direct to about page
   app.get('/about', function(req, res) {
     res.redirect('/');
