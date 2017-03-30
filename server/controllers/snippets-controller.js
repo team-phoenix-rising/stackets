@@ -1,7 +1,5 @@
 var db = require('../config/db.js');
 
-
-
 module.exports = {
   get: function(req, res) {
     db.Snippet.findAll({
@@ -32,8 +30,7 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
-            'shortDescription': snipVals.shortDescription,
-            explanation: snipVals.explanation,
+            'notes': snipVals.notes,
             'createdAt': snipVals.createdAt,
             'updatedAt': snipVals.updatedAt,
             'TopicId': snipVals.TopicId,
@@ -69,38 +66,40 @@ module.exports = {
       include: [
         {model: db.Topic},
         {model: db.Tag},
-        {model: db.Language}
+        {model: db.Language},
+        {model: db.ResourceUrl}
       ],
       where: { id: Number(req.params.id)}
     })
       .then(function(snippet) {
-        // NOTE: This is the exact same as 'get'
-        // Only difference is that the 'where' options is added and returns 1 object
-        // Make this more modular and DRY
-        var snipVals = snippet.dataValues;
+        if (snippet) {
+          // NOTE: This is the exact same as 'get'
+          // Only difference is that the 'where' options is added and returns 1 object
+          // Make this more modular and DRY
+          var snipVals = snippet.dataValues;
+          var tags = snipVals.Tags.map(function(tag) {
+            return {
+              id: tag.dataValues.id,
+              tag: tag.dataValues.tag
+            };
+          });
 
-        var tags = snipVals.Tags.map(function(tag) {
-          return {
-            id: tag.dataValues.id,
-            tag: tag.dataValues.tag
-          };
-        });
-
-        res.status(200).json({
-          id: snipVals.id,
-          title: snipVals.title,
-          snippet: snipVals.snippet,
-          "codeSample": samples,
-          'shortDescription': snipVals.shortDescription,
-          explanation: snipVals.explanation,
-          'createdAt': snipVals.createdAt,
-          'updatedAt': snipVals.updatedAt,
-          'TopicId': snipVals.TopicId,
-          'Topic': snipVals.Topic.dataValues.name,
-          'LanguageId': snipVals.LanguageId,
-          'Language': snipVals.Language.dataValues.displayname,
-          'Tags': tags
-        });
+          res.status(200).json({
+            id: snipVals.id,
+            title: snipVals.title,
+            snippet: snipVals.snippet,
+            "codeSample": samples,
+            'notes': snipVals.notes,
+            'createdAt': snipVals.createdAt,
+            'updatedAt': snipVals.updatedAt,
+            'TopicId': snipVals.TopicId,
+            'Topic': snipVals.Topic.dataValues.name,
+            'LanguageId': snipVals.LanguageId,
+            'Language': snipVals.Language.dataValues.displayname,
+            'Tags': tags,
+            'resources': snipVals.ResourceUrls
+          });
+        }
       });
   },
 
@@ -132,8 +131,7 @@ module.exports = {
             id: snipVals.id,
             title: snipVals.title,
             snippet: snipVals.snippet,
-            'shortDescription': snipVals.shortDescription,
-            explanation: snipVals.explanation,
+            'notes': snipVals.notes,
             'createdAt': snipVals.createdAt,
             'updatedAt': snipVals.updatedAt,
             'TopicId': snipVals.TopicId,
@@ -152,8 +150,7 @@ module.exports = {
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,
-      shortDescription: req.body.shortDescription,
-      explanation: req.body.explanation,
+      notes: req.body.notes,
       TopicId: Number(req.body.TopicId),  // topicId comes as a string from front-end form
       LanguageId: Number(req.body.LanguageId),  // languageId comes as a string from front-end form
     };
@@ -175,9 +172,21 @@ module.exports = {
         db.CodeSample.create({
           "codeSample": req.body.codeSample,
           "SnippetId": data.id
-        });
+        })
 
-        res.status(201).json(data);
+        .then(function(newCodeSample) {
+          var resourceUrlData = req.body.resources.map(url => {
+            return {
+              "SnippetId": data.id,
+              "url": url
+            }
+          });
+          db.ResourceUrl.bulkCreate(resourceUrlData)
+          .then(function(resourceUrls) {
+            res.status(201).json(data);
+          })
+        })
+
       });
   }
 };

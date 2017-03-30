@@ -7,14 +7,14 @@ url: '{{route}}'
 .then(function(resp) {
 return resp.data;
 });",
-  "shortDescription": "This snippet is a method that can be used to make an asynchronous GET request from a server in Angular",
+  "notes": "This snippet is a method that can be used to make an asynchronous GET request from a server in Angular",
   "explanation": "The only variable in this snippet is the {{route}}.  The route should equal the client side path from which the GET request is being called.  If this route is defined separately in a route.js file, the GET request will execute the request based on the controller that is tied to the route.  The results will return as resp.data and can be used as a JSON object.",
   "TopicId": 3
 },
 {
   "title": "Select all items from a table",
   "snippet": "Select * from {{table name}}",
-  "shortDescription": "This is a SQL statement which will retrieve all items belonging to a table",
+  "notes": "This is a SQL statement which will retrieve all items belonging to a table",
   "explanation": "The only variable required in this statement is the {{table name}} variable.  By designating the table name, this SQL statement will return all columns, rows, and data that exist within the named table.",
   "TopicId": 4
 }
@@ -24,7 +24,7 @@ return resp.data;
     var array = [0,1,2,3,4];
     var result = callback(array);
     return result;",
-  "shortDescription": "A callback function is a function that uses another function and passes it into its own operations.",
+  "notes": "A callback function is a function that uses another function and passes it into its own operations.",
   "explanation": "By passing a placeholder argument for another function called a callback, this callback function can use the other function as an operator on its inner workings.  Often the callback is passed in with anoterh orgument which the callback is applied to.  Once the callback is used within the function, a result that employed the callback or the result of the callback function itself can be returned.",
   "TopicId": 1
-}  
+}

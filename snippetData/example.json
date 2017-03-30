@@ -1,7 +1,6 @@
 {
   "title": "INSERT_TITLE_HERE",
   "snippet": "INSERT_SNIPPET_HERE",
-  "shortDescription": "INSERT_SHORT_DESCRIPTION",
-  "explanation": "INSERT_EXPLANATION",
+  "notes": "INSERT_SHORT_DESCRIPTION",
   "TopicId": NUMBER
 }
