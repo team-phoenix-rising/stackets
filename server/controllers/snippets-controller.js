@@ -72,33 +72,34 @@ module.exports = {
       where: { id: Number(req.params.id)}
     })
       .then(function(snippet) {
-        // NOTE: This is the exact same as 'get'
-        // Only difference is that the 'where' options is added and returns 1 object
-        // Make this more modular and DRY
-        var snipVals = snippet.dataValues;
+        if (snippet) {
+          // NOTE: This is the exact same as 'get'
+          // Only difference is that the 'where' options is added and returns 1 object
+          // Make this more modular and DRY
+          var snipVals = snippet.dataValues;
+          var tags = snipVals.Tags.map(function(tag) {
+            return {
+              id: tag.dataValues.id,
+              tag: tag.dataValues.tag
+            };
+          });
 
-        var tags = snipVals.Tags.map(function(tag) {
-          return {
-            id: tag.dataValues.id,
-            tag: tag.dataValues.tag
-          };
-        });
-
-        res.status(200).json({
-          id: snipVals.id,
-          title: snipVals.title,
-          snippet: snipVals.snippet,
-          "codeSample": samples,
-          'notes': snipVals.notes,
-          'createdAt': snipVals.createdAt,
-          'updatedAt': snipVals.updatedAt,
-          'TopicId': snipVals.TopicId,
-          'Topic': snipVals.Topic.dataValues.name,
-          'LanguageId': snipVals.LanguageId,
-          'Language': snipVals.Language.dataValues.displayname,
-          'Tags': tags,
-          'resources': snipVals.ResourceUrls
-        });
+          res.status(200).json({
+            id: snipVals.id,
+            title: snipVals.title,
+            snippet: snipVals.snippet,
+            "codeSample": samples,
+            'notes': snipVals.notes,
+            'createdAt': snipVals.createdAt,
+            'updatedAt': snipVals.updatedAt,
+            'TopicId': snipVals.TopicId,
+            'Topic': snipVals.Topic.dataValues.name,
+            'LanguageId': snipVals.LanguageId,
+            'Language': snipVals.Language.dataValues.displayname,
+            'Tags': tags,
+            'resources': snipVals.ResourceUrls
+          });
+        }
       });
   },
 
