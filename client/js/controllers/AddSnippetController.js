@@ -7,13 +7,18 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.code = '';
     $scope.ace = 'javascript';
     $scope.resourceUrls = [];
-    $scope.primaryCategories = ['backend', 'database', 'frontend'];
-    $scope.secondaryCategories = [];
+    $scope.categories = [];
+    $scope.subCategories = [];
 
-    $scope.setPrimaryCategory = function(catIndex) {
-      if (catIndex === '0') $scope.secondaryCategories = ['express', 'hapi', 'node'];
-      if (catIndex === '1') $scope.secondaryCategories = ['mongo', 'mongoose', 'mySQL'];
-      if (catIndex === '2') $scope.secondaryCategories = ['angularJS', 'css', 'html'];
+    Snippets.getCategories().then(function(categories) {
+      $scope.categories = categories;
+    });
+
+    $scope.setCategory = function(catIndex) {
+      if (catIndex === '0') $scope.subCategories = ['express', 'hapi', 'node'];
+      if (catIndex === '1') $scope.subCategories = ['mongo', 'mongoose', 'mySQL'];
+      if (catIndex === '2') $scope.subCategories = ['angularJS', 'css', 'html'];
+      console.log(catIndex);
     };
 
     Snippets.getAllLanguages().then(function (languages) {

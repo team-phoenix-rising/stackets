@@ -82,6 +82,15 @@ angular.module('stackets.services', [])
       });
     };
 
+    var getCategories = function() {
+      return $http({
+        method: 'GET',
+        url: '/api/categories'
+      }).then(function(response) {
+        return response.data;
+      })
+    }
+
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
@@ -91,6 +100,7 @@ angular.module('stackets.services', [])
       data: data,
       toggleFavorite: toggleFavorite,
       isFavSnippetByUser: isFavSnippetByUser,
-      getFavsBySnippet: getFavsBySnippet
+      getFavsBySnippet: getFavsBySnippet,
+      getCategories: getCategories
     };
   });
