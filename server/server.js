@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 
 //initialize express
 var app = express();
@@ -10,6 +11,7 @@ app.use(express.static('client'));
 //include bodyParser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 require('./config/routes.js')(app, express);
 
 //set the port to listen on our designated PORT, otherwise listen on 3000
