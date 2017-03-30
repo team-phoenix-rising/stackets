@@ -148,34 +148,59 @@ module.exports = {
   //     });
   // },
 
-  get: function(req, res) {
+  getFavBySnippet: function(req, res) {
     var params = {
-      id: req.body.id
+      snippetId: Number(req.params.snippetId)
     };
-
-    db.Snippet.findOne(
-       {id: params.id }
+    db.Favorite.findAll( {
+      where: {
+        "SnippetId": params.snippetId
+        }
+      }
     )
-      .then(function(response){
-        res.status(201).send(response.favorite);
-      })
-      .catch(function(error){
-        console.log('Error updating favorite: ', error)
-        res.status(400).send(error);
-      });
+    .then(function(response){
+      res.status(200).send(response);
+    })
+    .catch(function(error){
+      console.log('Error updating favorite: ', error)
+      res.status(400).send(error);
+    });
+
+  },
+
+  getFavBySnippetUser: function(req, res) {
+    var params = {
+      snippetId: Number(req.params.snippetId),
+      userId: Number(req.params.userId),
+    };
+    db.Favorite.findOne( {
+      where: {
+        "SnippetId": params.snippetId,
+        "UserId": params.userId
+        }
+      }
+    )
+    .then(function(response){
+      res.status(200).send(response);
+    })
+    .catch(function(error){
+      console.log('Error updating favorite: ', error)
+      res.status(400).send(error);
+    });
 
   },
 
   post: function(req, res) {
     var params = {
-      status: req.body.status,
-      id: req.body.id
+      userId: req.body.userId,
+      snippetId: req.body.snippetId,
+      status: req.body.status
     };
-
-    db.Snippet.update(
-      { favorite: params.status },
-      { where: {id: params.id } }
-    )
+    if (params.status === true) {
+      db.Favorite.create({
+        "UserId": params.userId,
+        "SnippetId": params.snippetId
+      })
       .then(function(response){
         res.status(201).json(response);
       })
@@ -183,6 +208,41 @@ module.exports = {
         console.log('Error updating favorite: ', error)
         res.status(400).res(error);
       });
+    } else {
+      db.Favorite.destroy({
+        where: {
+          "UserId": params.userId,
+          "SnippetId": params.snippetId
+        }
+      })
+      .then(function(response){
+        res.status(201).json(response);
+      })
+      .catch(function(error){
+        console.log('Error updating favorite: ', error)
+        res.status(400).res(error);
+      });
+    }
+
+      // .then(function (data) {
+      //   tags.forEach(function(item) {
+      //     db.SnippetTag.create({
+      //       "SnippetId": data.id,
+      //       "TagId": item
+      //     });
+      //   });
+
+    // db.Snippet.update(
+    //   { favorite: params.status },
+    //   { where: {id: params.id } }
+    // )
+    //   .then(function(response){
+    //     res.status(201).json(response);
+    //   })
+    //   .catch(function(error){
+    //     console.log('Error updating favorite: ', error)
+    //     res.status(400).res(error);
+    //   });
 
   }
 };
