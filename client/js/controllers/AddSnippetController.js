@@ -9,6 +9,14 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     $scope.code = '';
     $scope.ace = 'javascript';
     $scope.resourceUrls = [];
+    $scope.primaryCategories = ['backend', 'database', 'frontend'];
+    $scope.secondaryCategories = [];
+
+    $scope.setPrimaryCategory = function(catIndex) {
+      if (catIndex === '0') $scope.secondaryCategories = ['express', 'hapi', 'node'];
+      if (catIndex === '1') $scope.secondaryCategories = ['mongo', 'mongoose', 'mySQL'];
+      if (catIndex === '2') $scope.secondaryCategories = ['angularJS', 'css', 'html'];
+    };
 
     Snippets.getAllTopics().then(function (topics) {
       $scope.topics = topics;
