@@ -1,15 +1,9 @@
 <form name="addSnippetForm">
-  <div class="form-group col-md-12">
+  <div class="form-group col-md-8">
     <label for="title">Title</label>
     <input type="text" class="form-control" id="title" ng-model="snippet.title">
   </div>
-  <div class="form-group col-md-6">
-    <label for="topic">Topic</label>
-    <select class="form-control" ng-model="snippet.TopicId">
-      <option ng-repeat="topic in topics" value="{{topic.id}}">{{topic.name}}</option>
-    </select>
-  </div>
-    <div class="form-group col-md-6">
+  <div class="form-group col-md-4">
     <label for="language">Language</label>
     <select class="form-control" ng-model="snippet.LanguageId" ng-change="setAceEditorLang(language.name)">
       <option ng-repeat="language in languages" value="{{language.id}}">
