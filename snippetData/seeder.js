@@ -10,6 +10,8 @@ var CodeSample = db.CodeSample;
 var Snippet = db.Snippet;
 var SnippetTag = db.SnippetTag;
 var ResourceUrl = db.ResourceUrl;
+var User = db.User;
+var Favorite = db.Favorite;
 
 // Hit me with them ghetto delays to let the tables procreate - Jason Kim
 //wait 2000ms for the tables above to be created
@@ -28,6 +30,8 @@ var seedData = function() {
   .then(() => Snippet.sync({force: true}))
   .then(() => SnippetTag.sync({force: true}))
   .then(() => ResourceUrl.sync({force: true}))
+  .then(() => User.sync({force: true}))
+  .then(() => Favorite.sync({force: true}))
 
   // Insert default topics
   .then(() => Topic.create({ name: 'Database' }))
@@ -83,7 +87,10 @@ var seedData = function() {
   .then(() => Language.create({ name: 'scss', displayname: 'SCSS' }))
   .then(() => Language.create({ name: 'sql', displayname: 'SQL' }))
   .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' }))
-  .then(() => Language.create({ name: 'xml', displayname: 'XML' }));  //15
+  .then(() => Language.create({ name: 'xml', displayname: 'XML' }))  //15
+
+  //Create user
+  .then(() => User.create({ name: 'Stackets Fanatic' }));  //15
 
   // Insert dummy snippets and code samples directly after each snippet
   // .then(() =>

@@ -4,6 +4,7 @@ var tagsController = require('../controllers/tags-controller.js');
 var topicController = require('../controllers/topics-controller.js');
 var languageController = require('../controllers/languages-controller.js');
 var snippetTagsController = require('../controllers/snippet-tags-controller.js');
+var favoriteController = require('../controllers/favorite-controller.js');
 
 
 module.exports = function(app, express) {
@@ -23,7 +24,12 @@ module.exports = function(app, express) {
   app.get('/api/languages', languageController.get);
   //get the table data when tags belong to snippets and snippets belong to tags (snippets and tag join table)
   app.get('/api/SnippetTags', snippetTagsController.get);
-
+  //toggles the favorite status of a snippet
+  app.post('/api/favorite', favoriteController.post);
+  //get favorites status by snippet and user
+  app.get('/api/isFavSnippetByUser/:snippetId/:userId', favoriteController.isFavSnippetByUser);
+  //get total favorites per snippet
+  app.get('/api/getFavsBySnippet/:snippetId', favoriteController.getFavsBySnippet);
   //direct to about page
   app.get('/about', function(req, res) {
     res.redirect('/');
