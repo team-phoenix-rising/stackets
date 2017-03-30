@@ -1,4 +1,3 @@
-
 var Sequelize = require('sequelize');
 //initialize Sequelize with postgres with remote url
 if (process.env.DATABASE_URL) {
@@ -7,7 +6,7 @@ if (process.env.DATABASE_URL) {
   // otherwise initialize Sequelize with postgres on your local machine
   var db = new Sequelize('stackets', process.env.POSTGRES_USER, '', {dialect: 'postgres', logging: false });
 }
-
+console.log(process.env.POSTGRES_USER);
 //create Snippet table
 var Snippet = db.define('Snippet', {
   title: Sequelize.STRING,
@@ -103,5 +102,6 @@ module.exports = {
   User: User,
   Favorite: Favorite,
   Category: Category,
-  Subcategory: Subcategory
+  Subcategory: Subcategory,
+  sequelize: db
 };

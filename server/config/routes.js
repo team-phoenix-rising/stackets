@@ -1,4 +1,6 @@
 //require each controller, will refer to each controller in the routes
+var passport = require('passport');
+var Strategy = require('passport-facebook').Strategy;
 var snippetsController = require('../controllers/snippets-controller.js');
 var languageController = require('../controllers/languages-controller.js');
 var favoriteController = require('../controllers/favorite-controller.js');
@@ -6,8 +8,21 @@ var categoryController = require('../controllers/categories-controller.js');
 var profileController = require('../controllers/profile-controller.js');
 
 
-
 module.exports = function(app, express) {
+  app.get('/login/facebook', passport.authenticate('facebook'));
+
+  app.get('/login/facebook/return', 
+    passport.authenticate('facebook', { successRedirect: '/',
+                                        failureRedirect: '/about' }
+    )
+  );
+
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
+
+  app.get('/api/test', snippetsController.test);
   //get all the snippets
   app.get('/api/snippets', snippetsController.get);
   //get the most recent snippets
@@ -52,6 +67,7 @@ module.exports = function(app, express) {
   });
   //redirect to the home page
   app.get('/*', function(req, res) {
-    res.redirect('/');
+    console.log('request comming...')
+    res.redirect('/');    
   });
 };

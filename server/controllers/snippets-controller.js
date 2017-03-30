@@ -2,6 +2,7 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
+    console.log('get snippets')
     db.Snippet.findAll({
       include: [
         {model: db.Language},

@@ -1,10 +1,30 @@
+require('../env.js')
 var express = require('express');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
+var passport = require('passport');
+var Strategy = require('passport-facebook').Strategy;
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(obj, done) {
+  done(null, obj);
+});
+
+passport.use(new Strategy({
+    clientID: process.env.CLIENT_ID,
+    clientSecret: process.env.CLIENT_SECRET,
+    callbackURL: 'http://localhost:3000/login/facebook/return'
+  }, function(accessToken, refreshToken, profile, cb) {
+    process.nextTick(function() {
+      console.log('faceToken', accessToken, 'profile: ', profile);
+    })
+}));
 
 //initialize express
 var app = express();
-
+app.use(passport.initialize());
 //make index.html the page we auto-direct to
 app.use(express.static('client'));
 
