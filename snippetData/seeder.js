@@ -8,6 +8,8 @@ var Snippet = db.Snippet;
 var ResourceUrl = db.ResourceUrl;
 var User = db.User;
 var Favorite = db.Favorite;
+var Category = db.Category;
+var SubCategory = db.SubCategory;
 
 // Hit me with them ghetto delays to let the tables procreate - Jason Kim
 //wait 2000ms for the tables above to be created
@@ -35,14 +37,73 @@ var seedData = function() {
   .then(() => Language.create({ name: 'markdown', displayname: 'Markdown' }))
   .then(() => Language.create({ name: 'text', displayname: 'Plain Text' }))
   .then(() => Language.create({ name: 'pgsql', displayname: 'PostgreSQL' }))
-  .then(() => Language.create({ name: 'python', displayname: 'Python' }))
-  .then(() => Language.create({ name: 'sass', displayname: 'Sass' })) //10
+  .then(() => Language.create({ name: 'python', displayname: 'Python' })) //10
+  .then(() => Language.create({ name: 'sass', displayname: 'Sass' }))
   .then(() => Language.create({ name: 'scss', displayname: 'SCSS' }))
   .then(() => Language.create({ name: 'sql', displayname: 'SQL' }))
   .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' }))
   .then(() => Language.create({ name: 'xml', displayname: 'XML' }))  //15
 
   //Create user
-  .then(() => User.create({ name: 'Stackets Fanatic' }));  //15
+  .then(() => User.create({ name: 'Stackets Fanatic' }))
 
+  //Create Categories
+  .then(() => Category.bulkCreate([
+    {name: 'Backend'}, //1
+    {name: 'Build Tools'},
+    {name: 'Command Line'},
+    {name: 'Deployment'},
+    {name: 'Database'}, //5
+    {name: 'Frontend'},
+    {name: 'Testing'},
+    {name: 'Authentication'} //8
+  ]))
+
+  //Create SubCategories
+  .then(() => SubCategory.bulkCreate([
+    {name: 'Node', CategoryId: 1},
+    {name: 'Express', CategoryId: 1},
+    {name: 'Hapi', CategoryId: 1},
+    {name: 'Koa', CategoryId: 1},
+    {name: 'Sails', CategoryId: 1},
+    {name: 'Webpack', CategoryId: 2},
+    {name: 'Gulp', CategoryId: 2},
+    {name: 'Grunt', CategoryId: 2},
+    {name: 'Yeoman', CategoryId: 2},
+    {name: 'Babel', CategoryId: 2},
+    {name: 'Git', CategoryId: 3},
+    {name: 'Bash', CategoryId: 3},
+    {name: 'General', CategoryId: 3},
+    {name: 'Heroku', CategoryId: 4},
+    {name: 'Zeit Now', CategoryId: 4},
+    {name: 'Docker', CategoryId: 4},
+    {name: 'AWS', CategoryId: 4},
+    {name: 'DigitalOcean', CategoryId: 4},
+    {name: 'Mongo', CategoryId: 5},
+    {name: 'Mongoose', CategoryId: 5},
+    {name: 'SQLite', CategoryId: 5},
+    {name: 'mySQL', CategoryId: 5},
+    {name: 'postgreSQL', CategoryId: 5},
+    {name: 'Sequelize', CategoryId: 5},
+    {name: 'Bookshelf', CategoryId: 5},
+    {name: 'AngularJS', CategoryId: 6},
+    {name: 'Angular 2', CategoryId: 6},
+    {name: 'Backbone', CategoryId: 6},
+    {name: 'Bootstrap', CategoryId: 6},
+    {name: 'CSS', CategoryId: 6},
+    {name: 'Ember', CategoryId: 6},
+    {name: 'ES6', CategoryId: 6},
+    {name: 'HTML', CategoryId: 6},
+    {name: 'React', CategoryId: 6},
+    {name: 'Redux', CategoryId: 6},
+    {name: 'Vue', CategoryId: 6},
+    {name: 'Mocha', CategoryId: 7},
+    {name: 'Chai', CategoryId: 7},
+    {name: 'Jasmine', CategoryId: 7},
+    {name: 'Enzyme', CategoryId: 7},
+    {name: 'Cucumber', CategoryId: 7},
+    {name: 'Passport', CategoryId: 8},
+    {name: 'Auth0', CategoryId: 8},
+    {name: 'JWT', CategoryId: 8}
+  ]));
 };
