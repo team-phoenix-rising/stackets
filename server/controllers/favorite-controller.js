@@ -48,8 +48,8 @@ module.exports = {
     var params = {
       userId: Number(req.params.userId)
     };
-    db.User.findOne({where:
-      {'id': req.params.userId},
+    db.Favorite.findAll({where:
+      {'UserId': req.params.userId},
       include: [{model: db.Snippet}]
     })
     .then(function(response){

@@ -2,52 +2,18 @@
 
 angular.module('stackets.view', [])
   .controller('ViewSnippetController', function ($scope, Snippets, $stateParams) {
-    console.log('Viewing Snippet No. ', $stateParams.id);
     $scope.snippet = {};
     $scope.code = '';
     $scope.codeSample = '';
-    $scope.heartClass = 'glyphicon glyphicon-heart-empty';
-    $scope.isFavorite = false;
-
 
     Snippets.getSnippetById($stateParams.id).then(function (snippet) {
+      $scope.id = snippet.id;
       $scope.snippet = snippet;
       $scope.code = JSON.parse(snippet.snippet);
     });
 
-    Snippets.isFavSnippetByUser({snippetId: $stateParams.id, userId: 1}).then(function(response) {
-      $scope.isFavorite = !!response.data;
-      //Turn favorite class on if there is a response
-      toggleFavoriteClass();
-    });
-
-    Snippets.getFavsBySnippet({snippetId: $stateParams.id}).then(function(response) {
-      $scope.totalFavorites = response.data.count;
-    });
-
-    $scope.toggleFavorite = function() {
-      $scope.isFavorite = !$scope.isFavorite;
-      if (!$scope.isFavorite) {
-        $scope.totalFavorites === 0 ? null : $scope.totalFavorites--;
-      } else {
-        $scope.totalFavorites++;
-      }
-      toggleFavoriteClass();
-      var data = JSON.stringify({snippetId: $stateParams.id, userId: 1, status: $scope.isFavorite})
-      Snippets.toggleFavorite(data);
-    };
-
-    function toggleFavoriteClass() {
-      if ($scope.isFavorite) {
-        $scope.heartClass = 'glyphicon glyphicon-heart';
-      } else {
-        $scope.heartClass = 'glyphicon glyphicon-heart-empty';
-      }
-    }
-
     $scope.setAceEditorLang = function (form) {
       var languageId = Number(this.snippet.LanguageId);
-      console.log('Language ID: ', languageId);
       var language;
       for (var i = 0; i < $scope.languages.length; i++) {
         if ($scope.languages[i].id === languageId) {

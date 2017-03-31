@@ -10,6 +10,7 @@ angular.module('stackets', [
   'stackets.recentSnippets',
   'stackets.addSnippet',
   'stackets.featuredSnippet',
+  'stackets.favorite',
   'ui.router',
   'ui.ace'
 ])

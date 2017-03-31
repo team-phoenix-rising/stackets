@@ -3,11 +3,16 @@ angular.module('stackets.profile', [])
   .controller('ProfileController', function ($scope, Snippets) {
     Snippets.getUserData(1).then(function(response){
       $scope.name = response.data.name;
+      $scope.firstname = response.data.name.split(' ')[0];
       $scope.email = response.data.email;
       $scope.photo = response.data.photo;
     });
 
     Snippets.getFavsByUser({userId: 1}).then(function(response) {
-      $scope.favorites = response.data.Snippets;
+      $scope.favorites = response.data;
+    });
+
+    Snippets.getSnippetsByUser({userId: 1}).then(function(response) {
+      $scope.snippets = response;
     });
   });

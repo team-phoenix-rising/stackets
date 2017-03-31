@@ -6,7 +6,8 @@ module.exports = {
       include: [
         {model: db.Language},
         {model: db.Category},
-        {model: db.Subcategory}
+        {model: db.Subcategory},
+        {model: db.User}
       ]
     }).then(function(snippets) {
       snippets = snippets.map(function(snippet) {
@@ -23,6 +24,42 @@ module.exports = {
           'Language': snipVals.Language.dataValues.displayname,
           'category': snipVals.Category.dataValues.name,
           'subcategory': snipVals.Subcategory.dataValues.name,
+          'user': snipVals.User.dataValues
+        };
+      });
+      res.status(200).json(snippets);
+    });
+  },
+
+  getSnippetsByUser: function(req, res) {
+    var params = {
+      userId: Number(req.params.userId)
+    };
+    console.log(req.params);
+    db.Snippet.findAll({
+      where: {
+        'UserId': Number(req.params.userId)
+      },
+      include: [
+        {model: db.Language},
+        {model: db.Category},
+        {model: db.Subcategory}
+      ]
+    }).then(function(snippets) {
+      snippets = snippets.map(function(snippet) {
+        // Get ALL data regarding the snippet, including join table values and columns
+        var snipVals = snippet.dataValues;
+        return {
+          id: snipVals.id,
+          title: snipVals.title,
+          snippet: snipVals.snippet,
+          'notes': snipVals.notes,
+          'createdAt': snipVals.createdAt,
+          'updatedAt': snipVals.updatedAt,
+          'LanguageId': snipVals.LanguageId,
+          'Language': snipVals.Language.dataValues.displayname,
+          'category': snipVals.Category.dataValues.name,
+          'subcategory': snipVals.Subcategory.dataValues.name
         };
       });
       res.status(200).json(snippets);
@@ -35,7 +72,8 @@ module.exports = {
         {model: db.Language},
         {model: db.ResourceUrl},
         {model: db.Category},
-        {model: db.Subcategory}
+        {model: db.Subcategory},
+        {model: db.User}
       ],
       where: {
         id: Number(req.params.id)
@@ -59,6 +97,7 @@ module.exports = {
           'resources': snipVals.ResourceUrls,
           'category': snipVals.Category.dataValues.name,
           'subcategory': snipVals.Subcategory.dataValues.name,
+          'user': snipVals.User.dataValues
         });
       }
     });
@@ -104,7 +143,8 @@ module.exports = {
       notes: req.body.notes || '',
       LanguageId: Number(req.body.LanguageId), // languageId comes as a string from front-end form
       CategoryId: Number(req.body.category),
-      SubcategoryId: Number(req.body.subcategory)
+      SubcategoryId: Number(req.body.subcategory),
+      UserId: Number(req.body.userId)
     };
 
     db.Snippet.create(params)
