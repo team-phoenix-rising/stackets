@@ -8,6 +8,7 @@ angular.module('stackets.profile', [])
     });
 
     Snippets.getFavsByUser({userId: 1}).then(function(response) {
-      $scope.favorites = response.data.Snippets;
+      console.log('RESP',response);
+      $scope.favorites = response.data;
     });
   });
