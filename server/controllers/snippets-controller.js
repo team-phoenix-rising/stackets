@@ -109,7 +109,7 @@ module.exports = {
 
     db.Snippet.create(params)
       .then(function(data) {
-        if (req.body.resource) {
+        if (req.body.resources) {
           var resourceUrlData = req.body.resources.map(url => {
             return {
               "SnippetId": data.id,

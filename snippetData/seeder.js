@@ -26,23 +26,29 @@ var seedData = function() {
   .then(() => ResourceUrl.sync({force: true}))
   .then(() => User.sync({force: true}))
   .then(() => Favorite.sync({force: true}))
+  .then(() => Category.sync({force: true}))
+  .then(() => Subcategory.sync({force: true}))
 
   // Insert default languages shown in dropdown
   .then(() => Language.create({ name: 'css', displayname: 'CSS' }))  //1
-  .then(() => Language.create({ name: 'ejs', displayname: 'EJS' }))
+  .then(() => Language.create({ name: 'elixir', displayname: 'Elixir' }))
+  .then(() => Language.create({ name: 'erlang', displayname: 'Erlang' }))
+  .then(() => Language.create({ name: 'golang', displayname: 'Go' }))
+  .then(() => Language.create({ name: 'handlebars', displayname: 'Handlebars' })) //5
   .then(() => Language.create({ name: 'html', displayname: 'HTML' }))
   .then(() => Language.create({ name: 'javascript', displayname: 'Javascript' }))
-  .then(() => Language.create({ name: 'json', displayname: 'JSON' })) //5
+  .then(() => Language.create({ name: 'json', displayname: 'JSON' }))
   .then(() => Language.create({ name: 'jsx', displayname: 'JSX' }))
-  .then(() => Language.create({ name: 'markdown', displayname: 'Markdown' }))
+  .then(() => Language.create({ name: 'markdown', displayname: 'Markdown' })) //10
   .then(() => Language.create({ name: 'text', displayname: 'Plain Text' }))
-  .then(() => Language.create({ name: 'pgsql', displayname: 'PostgreSQL' }))
-  .then(() => Language.create({ name: 'python', displayname: 'Python' })) //10
-  .then(() => Language.create({ name: 'sass', displayname: 'Sass' }))
+  .then(() => Language.create({ name: 'php', displayname: 'PHP' }))
+  .then(() => Language.create({ name: 'python', displayname: 'Python' }))
+  .then(() => Language.create({ name: 'ruby', displayname: 'Ruby' }))
+  .then(() => Language.create({ name: 'sass', displayname: 'Sass' })) //15
   .then(() => Language.create({ name: 'scss', displayname: 'SCSS' }))
   .then(() => Language.create({ name: 'sql', displayname: 'SQL' }))
-  .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' }))
-  .then(() => Language.create({ name: 'xml', displayname: 'XML' }))  //15
+  .then(() => Language.create({ name: 'stylus', displayname: 'Stylus' }))
+  .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' })) //19
 
   //Create user
   .then(() => User.create({ name: 'Stackets Fanatic' }))
