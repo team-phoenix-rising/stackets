@@ -9,16 +9,14 @@
       <th>Title</th>
       <th>Notes</th>
       <th>Language</th>
-      <th>Topic</th>
-      <th>Tags</th>
+      <th>Category</th>
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets | filter:search'>
-        <td><a href="/snippets/{{snippet.id}}">{{snippet.title}}</a></td>
-        <td>{{snippet.notes}}</td>
-        <td>{{snippet.Language}}</td>
-        <td>{{snippet.Topic}}</td>
-        <td><span class="label label-default tag" ng-repeat='tag in snippet.Tags'>{{tag.tag}}</span></td>
+        <td><a href="/snippets/{{snippet.id}}">{{ snippet.title }}</a></td>
+        <td>{{ snippet.notes }}</td>
+        <td>{{ snippet.Language }}</td>
+        <td>{{ snippet.category }} > {{ snippet.subcategory }}</td>
       </tr>
     </tbody>
   </table>

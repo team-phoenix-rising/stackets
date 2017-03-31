@@ -1,8 +1,6 @@
 angular.module('stackets.services', [])
   .factory('Snippets', function ($http) {
     var data;
-    var topics;
-    var tags;
     var languages;
 
     var addSnippet = function (snippet) {
@@ -33,26 +31,6 @@ angular.module('stackets.services', [])
       }).then(function (resp) {
         data = resp.data;
         return data;
-      });
-    };
-
-    var getAllTopics = function () {
-      return $http({
-        method: 'GET',
-        url: '/api/topics',
-      }).then(function (resp) {
-        topics = resp.data;
-        return topics;
-      });
-    };
-
-    var getAllTags = function () {
-      return $http({
-        method: 'GET',
-        url: '/api/tags',
-      }).then(function (resp) {
-        tags = resp.data;
-        return tags;
       });
     };
 
@@ -104,18 +82,35 @@ angular.module('stackets.services', [])
       });
     };
 
+    var getCategories = function() {
+      return $http({
+        method: 'GET',
+        url: '/api/categories'
+      }).then(function(response) {
+        return response.data;
+      })
+    };
+
+    var getSubcategories = function(id) {
+      return $http({
+        method: 'GET',
+        url: '/api/sub-categories/' + id
+      }).then(function(response) {
+        return response.data;
+      })
+    };
+
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
-      getAllTopics: getAllTopics,
-      getAllTags: getAllTags,
       getAllLanguages: getAllLanguages,
       getRecentSnippets: getRecentSnippets,
       getSnippetById: getSnippetById,
       data: data,
-      topics: topics,
       toggleFavorite: toggleFavorite,
       isFavSnippetByUser: isFavSnippetByUser,
-      getFavsBySnippet: getFavsBySnippet
+      getFavsBySnippet: getFavsBySnippet,
+      getCategories: getCategories,
+      getSubcategories: getSubcategories
     };
   });

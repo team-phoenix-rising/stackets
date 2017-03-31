@@ -1,6 +1,9 @@
-.add-snippet-added-resources-label {
-  margin-top: 10px;
-  font-weight: bold;
+.ace_gutter, .ace_content {
+  padding: 5px;
+}
+
+input.add-snippet-url {
+  margin-bottom: 10px;
 }
 
 .add-snippet-added-resources-item {

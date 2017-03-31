@@ -1,10 +1,8 @@
 //require each controller, will refer to each controller in the routes
 var snippetsController = require('../controllers/snippets-controller.js');
-var tagsController = require('../controllers/tags-controller.js');
-var topicController = require('../controllers/topics-controller.js');
 var languageController = require('../controllers/languages-controller.js');
-var snippetTagsController = require('../controllers/snippet-tags-controller.js');
 var favoriteController = require('../controllers/favorite-controller.js');
+var categoryController = require('../controllers/categories-controller.js');
 
 
 module.exports = function(app, express) {
@@ -16,20 +14,18 @@ module.exports = function(app, express) {
   app.get('/api/snippets/:id', snippetsController.getById);
   //create a new snippet
   app.post('/api/snippets', snippetsController.post);
-  //get all the tags
-  app.get('/api/tags', tagsController.get);
-  //get all the topics
-  app.get('/api/topics', topicController.get);
   //get all the languages
   app.get('/api/languages', languageController.get);
-  //get the table data when tags belong to snippets and snippets belong to tags (snippets and tag join table)
-  app.get('/api/SnippetTags', snippetTagsController.get);
   //toggles the favorite status of a snippet
   app.post('/api/favorite', favoriteController.post);
   //get favorites status by snippet and user
   app.get('/api/isFavSnippetByUser/:snippetId/:userId', favoriteController.isFavSnippetByUser);
   //get total favorites per snippet
   app.get('/api/getFavsBySnippet/:snippetId', favoriteController.getFavsBySnippet);
+  //get all categories
+  app.get('/api/categories', categoryController.getCategories);
+  //get sub-categories by category id
+  app.get('/api/sub-categories/:id', categoryController.getSubcategories);
   //direct to about page
   app.get('/about', function(req, res) {
     res.redirect('/');

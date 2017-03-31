@@ -3,12 +3,12 @@
   <table class='table table-striped'>
     <thead>
       <th>Title</th>
-      <th>Topic</th>
+      <th>Category</th>
     </thead>
     <tbody>
       <tr ng-repeat='snippet in data.snippets'>
         <td><a href="/snippets/{{snippet.id}}">{{snippet.title}}</a></td>
-        <td>{{snippet.Topic}}</td>
+        <td>{{ snippet.category }} > {{ snippet.subcategory }}</td>
       </tr>
     </tbody>
   </table>

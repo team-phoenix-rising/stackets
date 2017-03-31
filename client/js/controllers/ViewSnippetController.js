@@ -1,4 +1,4 @@
-//this controller generates the view of each individual snippet with all the items related to it such as title, topic, language, code sample, etc.
+//this controller generates the view of each individual snippet with all the items related to it such as title, language, code sample, etc.
 
 angular.module('stackets.view', [])
   .controller('ViewSnippetController', function ($scope, Snippets, $stateParams) {
@@ -14,7 +14,6 @@ angular.module('stackets.view', [])
       $scope.snippet = snippet;
       $scope.code = JSON.parse(snippet.snippet);
       $scope.codeSample = JSON.parse(snippet.codeSample);
-      //console.log('Metadata retrieved from Snippets service: ', JSON.stringify(topics));
     });
 
     Snippets.isFavSnippetByUser({snippetId: $stateParams.id, userId: 1}).then(function(response) {

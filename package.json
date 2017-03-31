@@ -25,6 +25,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "jasmine-node": "^1.14.5",
+    "morgan": "^1.8.1",
     "pg": "^6.1.4",
     "request": "^2.81.0",
     "sequelize": "^3.30.2"

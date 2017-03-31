@@ -2,31 +2,32 @@
 
 angular.module('stackets.addSnippet', ['ui.ace'])
   .controller('AddSnippetController', function ($scope, $location, Snippets) {
-    $scope.addSnippetTitle = 'Add a Snippet';
-    $scope.topics = {};
-    $scope.tags = {};
+    $scope.addSnippetTitle = 'Add a Snippet'; // NOTE: I think this is unused
     $scope.languages = {};
     $scope.code = '';
     $scope.ace = 'javascript';
     $scope.resourceUrls = [];
+    $scope.categories = [];
+    $scope.subcategories = [];
 
-    Snippets.getAllTopics().then(function (topics) {
-      $scope.topics = topics;
-      //console.log('Metadata retrieved from Snippets service: ', JSON.stringify(topics));
+    Snippets.getCategories().then(function(categories) {
+      $scope.categories = categories;
     });
 
-    Snippets.getAllTags().then(function (tags) {
-      $scope.tags = tags;
-    });
+    $scope.setCategory = function(catIndex) {
+      Snippets.getSubcategories(catIndex).then(function(subcategories) {
+        $scope.subcategories = subcategories;
+      })
+    };
 
     Snippets.getAllLanguages().then(function (languages) {
       $scope.languages = languages;
     });
-//the method below will add a snippet using the add snippet form.
+
+    //the method below will add a snippet using the add snippet form.
     $scope.addSnippet = function (form) {
       this.snippet.snippet = JSON.stringify($scope.code);
-      this.snippet.codeSample = JSON.stringify($scope.codeSample);
-      this.snippet.resources = $scope.resourceUrls
+      this.snippet.resources = $scope.resourceUrls.length > 0 ? $scope.resourceUrls : [this.snippet.resources];
       Snippets.addSnippet(this.snippet).then(function(data) {
         $location.path('/snippets/' + data.data.id);
       });
@@ -55,14 +56,16 @@ angular.module('stackets.addSnippet', ['ui.ace'])
     // CDN @ https://cdnjs.com/libraries/ace/
     // Editor font size
       $scope._editor = _editor;
-      document.getElementById('editor').style.fontSize='12px';
+      document.getElementById('editor').style.fontSize='14px';
       // Options
       var _session = _editor.getSession();
       var _renderer = _editor.renderer;
       _editor.setHighlightActiveLine(true);
-      _editor.setShowPrintMargin(true);
+      _editor.setShowPrintMargin(false);
       _editor.setReadOnly(false);
       _session.setUseWrapMode(true);
+      _session.setTabSize(2);
+      _session.setUseSoftTabs(true);
       // Theme @ https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
       _editor.setTheme("ace/theme/cobalt");
       // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
@@ -72,34 +75,6 @@ angular.module('stackets.addSnippet', ['ui.ace'])
       // Events
       _session.on("change", function(e) {
         $scope.code = _session.getValue();
-      });
-    };
-
-//the method below will modify the text input field for the Code Sample on the add snippet page to embed the ace editor in its place.
-    $scope.aceLoaded2 = function (_editor) {
-      // Ace @ https://ace.c9.io/
-    // Ace @ https://github.com/ajaxorg/ace
-    // ui-ace @ https://www.npmjs.com/package/angular-ui-ace
-    // CDN @ https://cdnjs.com/libraries/ace/
-    // Editor font size
-      $scope._editor = _editor;
-      document.getElementById('editor').style.fontSize='12px';
-      // Options
-      var _session = _editor.getSession();
-      var _renderer = _editor.renderer;
-      _editor.setHighlightActiveLine(true);
-      _editor.setShowPrintMargin(true);
-      _editor.setReadOnly(false);
-      _session.setUseWrapMode(true);
-      // Theme @ https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
-      _editor.setTheme("ace/theme/cobalt");
-      // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
-      _session.setMode("ace/mode/" + $scope.ace);
-      // Load the snippet's code
-      _session.setValue('');
-      // Events
-      _session.on("change", function(e) {
-        $scope.codeSample = _session.getValue();
       });
     };
 
