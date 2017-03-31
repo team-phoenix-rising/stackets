@@ -57,8 +57,16 @@ angular.module('stackets.services', [])
     var getFavsBySnippet = function (data) {
       return $http({
         method: 'GET',
-        url: '/api/getFavsBySnippet/' +  data.snippetId,
-        data: data
+        url: '/api/getFavsBySnippet/' +  data.snippetId
+      }).then(function (response) {
+        return response;
+      });
+    };
+
+    var getFavsByUser = function (data) {
+      return $http({
+        method: 'GET',
+        url: '/api/getFavsByUser/' +  data.userId
       }).then(function (response) {
         return response;
       });
@@ -67,8 +75,7 @@ angular.module('stackets.services', [])
     var isFavSnippetByUser = function (data) {
       return $http({
         method: 'GET',
-        url: '/api/isFavSnippetByUser/' +  data.snippetId + '/' + data.userId,
-        data: data
+        url: '/api/isFavSnippetByUser/' +  data.snippetId + '/' + data.userId
       }).then(function (response) {
         return response;
       });
@@ -100,6 +107,13 @@ angular.module('stackets.services', [])
       })
     };
 
+    var getUserData = function (id) {
+      return $http({
+        method: 'GET',
+        url: '/api/getUserData/' + id
+      });
+    };
+
     return {
       addSnippet: addSnippet,
       getAllSnippets: getAllSnippets,
@@ -111,6 +125,8 @@ angular.module('stackets.services', [])
       isFavSnippetByUser: isFavSnippetByUser,
       getFavsBySnippet: getFavsBySnippet,
       getCategories: getCategories,
-      getSubcategories: getSubcategories
+      getSubcategories: getSubcategories,
+      getUserData: getUserData,
+      getFavsByUser: getFavsByUser
     };
   });

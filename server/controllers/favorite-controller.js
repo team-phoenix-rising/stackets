@@ -44,6 +44,24 @@ module.exports = {
 
   },
 
+  getFavsByUser: function(req, res) {
+    var params = {
+      userId: Number(req.params.userId)
+    };
+    db.User.findOne({where:
+      {'id': req.params.userId},
+      include: [{model: db.Snippet}]
+    })
+    .then(function(response){
+      res.status(200).send(response);
+    })
+    .catch(function(error){
+      console.log('Error updating favorite: ', error)
+      res.status(400).send(error);
+    });
+
+  },
+
   post: function(req, res) {
     var params = {
       userId: req.body.userId,
@@ -55,6 +73,7 @@ module.exports = {
         "UserId": params.userId,
         "SnippetId": params.snippetId
       })
+      // db.User.setSnippet([params.snippetId])
       .then(function(response){
         res.status(201).json(response);
       })
