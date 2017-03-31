@@ -10,8 +10,8 @@
   <script src='js/lib/ui-ace.js'></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-  <link href='css/styles.css' rel='stylesheet'>
   <link href='css/bootstrap.css' rel='stylesheet'>
+  <link href='css/styles.css' rel='stylesheet'>
   </head>
   <body>
   <div class="container">
@@ -25,8 +25,14 @@
               <li><a ui-sref="about">About</a></li>
               <li><a ui-sref="search">Search</a></li>
               <li><a ui-sref="add">Add a Snippet</a></li>
-              <li><a ui-sref="profile">My Profile</a></li>
+              <li><a ui-sref="profile">My Profile</a></li>                         
+                                          
             </ul>
+            <ul class="nav navbar-nav navbar-right face-nav">
+              <li><a href="" class="pull-right signup-button">Sign up</a></li>
+              <li><a href="" class="pull-right login-button">Login</a></li>
+              <li><a href="/logout" class="logout-button">Log Out</a></li>
+            </ul>            
           </nav>
         </header>
     </div>
@@ -74,7 +80,105 @@
         <div class="view-snippet-panel" ui-view="viewSnippetView"></div>
       </div>
     </div>
+
+  <div class="signup-overlay overlay">
+      <div class="login-frame container">
+        <div class="close-wrapper container">
+          <h3 class="col col-md-8 signup-title">Sign Up</h3>
+          <span class="close-span">close</span>          
+        </div>
+        <form name="signup-form" action="/signup" method="post">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="user[email]">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="text" class="form-control" name="user[password]">
+          </div>        
+          <div class="button-container">
+            <button type="submit" class="btn btn-primary signup-submit-button">Submit</button>            
+          </div>
+        </form>
+
+        <div class="social-buttons container-fluid">
+          <div class="row">
+            <button class="facebook-link">
+              <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>              
+            </button>                            
+          </div>
+          <div class="row">
+            <button class="github-link">
+              <a href="" target="_self" class="row">GitHub Login</a>
+            </button>                                    
+          </div>
+        </div>        
+      </div>
+    </div>
   </div>
+
+  <div ng-controller="loginController" class="login-overlay overlay">
+    <div class="login-frame container">
+      <div class="close-wrapper container">          
+        <h3 class="col col-md-8 login-title">Login</h3>
+        <span class="close-span login-span">close</span>          
+      </div>
+      <form name="login-form">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" class="form-control" ng-model="userEmail">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="text" class="form-control" ng-model="userPassword">
+        </div>        
+        <div class="button-container">
+          <button ng-click="loginUser(userEmail, userPassword)" type="submit" class="btn btn-primary submit-login-button">Submit</button>            
+        </div>
+      </form>
+
+      <div class="social-buttons container-fluid">
+        <div class="row">
+          <button class="facebook-link">
+            <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>              
+          </button>                            
+        </div>
+        <div class="row">
+          <button class="github-link">
+            <a href="" target="_self" class="row">GitHub Login</a>
+          </button>                                    
+        </div>
+      </div>        
+    </div>
+  </div>
+
+
+  <script>
+    $('.login-button').click(function(){
+      $('body').append($('.login-overlay').css('display', 'block'));
+    });
+
+    $('.close-span').click(function() {
+      $('.signup-overlay').css('display', 'none')
+    });
+
+    $('.signup-button').click(function(){
+      $('body').append($('.signup-overlay').css('display', 'block'));
+    });
+
+    $('.login-span').click(function() {
+      $('.overlay').css('display', 'none');
+    });
+
+    $('.submit-login-button').click(function() {
+      $('.login-overlay').css('display', 'none');
+    });
+
+    $('.signup-submit-button').click(function() {
+      $('.overlay').css('display', 'none');      
+    });
+  </script>
+
   <script src='js/controllers/AboutController.js'></script>
   <script src='js/controllers/AddSnippetController.js'></script>
   <script src='js/controllers/FeaturedSnippetController.js'></script>
