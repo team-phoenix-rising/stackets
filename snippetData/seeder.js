@@ -51,7 +51,7 @@ var seedData = function() {
   .then(() => Language.create({ name: 'typescript', displayname: 'Typescript' })) //19
 
   //Create user
-  .then(() => User.create({ name: 'Stackets Fanatic' }))
+  .then(() => User.create({ name: 'Stackets Fanatic', photo: 'http://emblemsbf.com/img/61373.jpg', email: 'stkts4lyfe@coder.com '}));
 
   //Create Categories
   .then(() => Category.bulkCreate([

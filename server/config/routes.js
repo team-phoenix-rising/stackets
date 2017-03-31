@@ -3,6 +3,8 @@ var snippetsController = require('../controllers/snippets-controller.js');
 var languageController = require('../controllers/languages-controller.js');
 var favoriteController = require('../controllers/favorite-controller.js');
 var categoryController = require('../controllers/categories-controller.js');
+var profileController = require('../controllers/profile-controller.js');
+
 
 
 module.exports = function(app, express) {
@@ -26,8 +28,16 @@ module.exports = function(app, express) {
   app.get('/api/categories', categoryController.getCategories);
   //get sub-categories by category id
   app.get('/api/sub-categories/:id', categoryController.getSubcategories);
+  //get total favorites per snippet
+  app.get('/api/getFavsByUser/:userId', favoriteController.getFavsByUser);
+  //get user data
+  app.get('/api/getUserData/:userId', profileController.getUserData);
   //direct to about page
   app.get('/about', function(req, res) {
+    res.redirect('/');
+  });
+  //direct to profile page
+  app.get('/profile', function(req, res) {
     res.redirect('/');
   });
   //direct to search page

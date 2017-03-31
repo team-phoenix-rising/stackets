@@ -4,6 +4,7 @@ angular.module('stackets', [
   'stackets.searchResults',
   'stackets.home',
   'stackets.about',
+  'stackets.profile',
   'stackets.view',
   'stackets.popularSnippets',
   'stackets.recentSnippets',
@@ -83,6 +84,15 @@ angular.module('stackets', [
         'viewSnippetView': {
           controller: 'ViewSnippetController',
           templateUrl: '../partials/view-snippet.html'
+        }
+      }
+    })
+    .state('profile', {
+      url: '/profile',
+      views: {
+        'viewProfileView': {
+          controller: 'ProfileController',
+          templateUrl: '../partials/profile.html'
         }
       }
     });
