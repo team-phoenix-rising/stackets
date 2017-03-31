@@ -101,7 +101,7 @@ module.exports = {
     var params = {
       title: req.body.title,
       snippet: req.body.snippet,
-      notes: req.body.notes,
+      notes: req.body.notes || '',
       LanguageId: Number(req.body.LanguageId), // languageId comes as a string from front-end form
       CategoryId: Number(req.body.category),
       SubcategoryId: Number(req.body.subcategory)
@@ -109,17 +109,21 @@ module.exports = {
 
     db.Snippet.create(params)
       .then(function(data) {
-        var resourceUrlData = req.body.resources.map(url => {
-          return {
-            "SnippetId": data.id,
-            "url": url
-          }
-        });
+        if (req.body.resource) {
+          var resourceUrlData = req.body.resources.map(url => {
+            return {
+              "SnippetId": data.id,
+              "url": url
+            }
+          });
 
-        db.ResourceUrl.bulkCreate(resourceUrlData)
-        .then(function(resourceUrls) {
+          db.ResourceUrl.bulkCreate(resourceUrlData)
+          .then(function(resourceUrls) {
+            res.status(201).json(data);
+          })
+        } else {
           res.status(201).json(data);
-        })
+        }
       })
   }
 };
