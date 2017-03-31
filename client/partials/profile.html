@@ -1,5 +1,5 @@
 <div ng-controller="ProfileController" class="profile">
-
+  <input type="text" ng-model="search">
   <div class="col-md-4">
     <img src="{{photo}}" alt="Profile photo">
     <h3 class="name">{{name}}</h3>
@@ -9,7 +9,7 @@
   <div class="col-md-8">
     <h1>My Favorites</h1>
     <ul>
-      <li ng-repeat="favorite in favorites">
+      <li ng-repeat="favorite in favorites | filter:search">
         <a href="/snippets/{{favorite.Snippet.id}}">{{favorite.Snippet.title}}</a>
       </li>
     </ul>
@@ -18,7 +18,7 @@
   <div class="col-md-8">
     <h1>Added by {{firstname}}</h1>
     <ul>
-      <li ng-repeat="snippet in snippets">
+      <li ng-repeat="snippet in snippets | filter:search">
         <a href="/snippets/{{snippet.id}}">{{snippet.title}}</a>
       </li>
     </ul>
