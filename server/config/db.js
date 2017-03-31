@@ -68,11 +68,10 @@ var Subcategory = db.define('Subcategory', {
 // create User table
 var User = db.define('User', {
   name: Sequelize.TEXT,
-  token: Sequelize.TEXT,
-  password: Sequelize.TEXT,
-  email: Sequelize.TEXT,
   image: Sequelize.TEXT,
-  provider: Sequelize.TEXT
+  provider: Sequelize.TEXT,
+  password: Sequelize.TEXT,
+  email: Sequelize.TEXT
   //id (auto-generated)
   //createdAt (auto-generated)
   //updatedAt (auto-generated)

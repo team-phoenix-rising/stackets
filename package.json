@@ -22,6 +22,7 @@
   "homepage": "https://github.com/hrr22-andromeda/stackets#readme",
   "dependencies": {
     "angular-ui-ace": "^0.2.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "express-session": "^1.15.2",

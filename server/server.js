@@ -9,6 +9,7 @@ var Strategy = require('passport-facebook').Strategy;
 
 
 
+
 passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -16,6 +17,7 @@ passport.use(new Strategy({
     profileFields: ['id', 'displayName', 'photos', 'email']  
       
   }, function(accessToken, refreshToken, profile, done) {
+
     db.User.create({
       name: profile.displayName,
       token: accessToken,
@@ -37,7 +39,12 @@ passport.deserializeUser(function(obj, done) {
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ secret: 'TopSecretWord', resave: false, saveUninitialized: false }));
+app.use(session({ 
+  secret: 'TopSecretWord', 
+  resave: false, 
+  saveUninitialized: false,
+  cookie: { secure: false } 
+}));
 
 app.use(passport.initialize());
 app.use(passport.session());

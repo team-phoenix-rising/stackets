@@ -15,10 +15,10 @@ module.exports = function(app, express) {
     passport.authenticate('facebook', { failureRedirect: '/' }),
     function(req, res) {      
       console.log('face res: ', req.user.dataValues);
+      req.session.facebookUser = req.user.dataValues.name;
+      console.log(req.session)
       var name = req.user.dataValues.name
       var photo = req.user.dataValues.image
-      // var name = req.user.dataValues.name
-      // var name = req.user.dataValues.name
                   
       res.redirect('/?name='+name+'&photo='+photo);      
     }
@@ -72,7 +72,9 @@ module.exports = function(app, express) {
   });
   //redirect to the home page
   app.get('/*', function(req, res) {    
-    console.log('request comming...');
+    console.log('incoming request comming...', req.session.facebookUser);
+
+
     res.redirect('/');    
   });
 };
