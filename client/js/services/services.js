@@ -55,7 +55,6 @@ angular.module('stackets.services', [])
     };
 
     var getSnippetsByUser = function (data) {
-      console.log('data in serv', data);
       return $http({
         method: 'GET',
         url: '/api/getSnippetsByUser/' + data.userId

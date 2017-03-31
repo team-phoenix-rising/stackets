@@ -13,7 +13,6 @@ angular.module('stackets.profile', [])
     });
 
     Snippets.getSnippetsByUser({userId: 1}).then(function(response) {
-      console.log('resp in ctro', response);
       $scope.snippets = response;
     });
   });
