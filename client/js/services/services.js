@@ -105,6 +105,7 @@ angular.module('stackets.services', [])
       }).then(function(response) {
         return response.data;
       })
+    };
 
     var getUserData = function (id) {
       return $http({
