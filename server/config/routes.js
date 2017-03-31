@@ -2,6 +2,8 @@
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 var snippetsController = require('../controllers/snippets-controller.js');
+var userSignUpController = require('../controllers/user-signup-controller.js');
+var loginController = require('../controllers/login-controller.js');
 var languageController = require('../controllers/languages-controller.js');
 var favoriteController = require('../controllers/favorite-controller.js');
 var categoryController = require('../controllers/categories-controller.js');
@@ -9,6 +11,14 @@ var profileController = require('../controllers/profile-controller.js');
 
 
 module.exports = function(app, express) {
+  app.post('/signup', userSignUpController.signup);
+
+  app.post('/login', loginController.login);
+
+  app.post('/test', function(req, res) {
+    console.log('test...', req.body)
+  });
+
   app.get('/login/facebook', passport.authenticate('facebook'));
 
   app.get('/login/facebook/return', 
@@ -18,8 +28,7 @@ module.exports = function(app, express) {
       req.session.facebookUser = req.user.dataValues.name;
       console.log(req.session)
       var name = req.user.dataValues.name
-      var photo = req.user.dataValues.image
-                  
+      var photo = req.user.dataValues.image                  
       res.redirect('/?name='+name+'&photo='+photo);      
     }
   );

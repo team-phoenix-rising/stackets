@@ -7,9 +7,6 @@ var morgan = require('morgan');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
-
-
-
 passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
@@ -35,6 +32,8 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
+
+
 //initialize express
 var app = express();
 app.use(bodyParser.json());
@@ -48,6 +47,7 @@ app.use(session({
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 //make index.html the page we auto-direct to
 app.use(express.static('client'));
 
