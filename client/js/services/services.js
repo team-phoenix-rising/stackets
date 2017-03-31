@@ -54,6 +54,17 @@ angular.module('stackets.services', [])
       });
     };
 
+    var getSnippetsByUser = function (data) {
+      console.log('data in serv', data);
+      return $http({
+        method: 'GET',
+        url: '/api/getSnippetsByUser/' + data.userId
+      }).then(function (resp) {
+        data = resp.data;
+        return data;
+      });
+    };
+
     var getFavsBySnippet = function (data) {
       return $http({
         method: 'GET',
@@ -127,6 +138,7 @@ angular.module('stackets.services', [])
       getCategories: getCategories,
       getSubcategories: getSubcategories,
       getUserData: getUserData,
-      getFavsByUser: getFavsByUser
+      getFavsByUser: getFavsByUser,
+      getSnippetsByUser: getSnippetsByUser
     };
   });

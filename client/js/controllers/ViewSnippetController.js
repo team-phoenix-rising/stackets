@@ -13,6 +13,7 @@ angular.module('stackets.view', [])
     Snippets.getSnippetById($stateParams.id).then(function (snippet) {
       $scope.snippet = snippet;
       $scope.code = JSON.parse(snippet.snippet);
+      console.log('snippet data', $scope.snippet);
     });
 
     Snippets.isFavSnippetByUser({snippetId: $stateParams.id, userId: 1}).then(function(response) {

@@ -14,6 +14,8 @@ module.exports = function(app, express) {
   app.get('/api/snippets/recent', snippetsController.getMostRecent);
   //get a snippet by its id
   app.get('/api/snippets/:id', snippetsController.getById);
+  //get snippets by created by user
+  app.get('/api/getSnippetsByUser/:userId', snippetsController.getSnippetsByUser);
   //create a new snippet
   app.post('/api/snippets', snippetsController.post);
   //get all the languages

@@ -15,4 +15,13 @@
     </ul>
   </div>
 
+  <div class="col-md-8">
+    <h1>Added by {{firstname}}</h1>
+    <ul>
+      <li ng-repeat="snippet in snippets">
+        <a href="/snippets/{{snippet.id}}">{{snippet.title}}</a>
+      </li>
+    </ul>
+  </div>
+
 </div>
