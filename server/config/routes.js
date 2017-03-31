@@ -12,17 +12,22 @@ module.exports = function(app, express) {
   app.get('/login/facebook', passport.authenticate('facebook'));
 
   app.get('/login/facebook/return', 
-    passport.authenticate('facebook', { successRedirect: '/',
-                                        failureRedirect: '/about' }
-    )
+    passport.authenticate('facebook', { failureRedirect: '/' }),
+    function(req, res) {      
+      console.log('face res: ', req.user.dataValues);
+      var name = req.user.dataValues.name
+      var photo = req.user.dataValues.image
+      // var name = req.user.dataValues.name
+      // var name = req.user.dataValues.name
+                  
+      res.redirect('/?name='+name+'&photo='+photo);      
+    }
   );
 
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
-  });
-
-  app.get('/api/test', snippetsController.test);
+  });  
   //get all the snippets
   app.get('/api/snippets', snippetsController.get);
   //get the most recent snippets
@@ -66,8 +71,8 @@ module.exports = function(app, express) {
     res.redirect('/');
   });
   //redirect to the home page
-  app.get('/*', function(req, res) {
-    console.log('request comming...')
+  app.get('/*', function(req, res) {    
+    console.log('request comming...');
     res.redirect('/');    
   });
 };

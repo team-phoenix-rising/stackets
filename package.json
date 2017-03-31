@@ -24,6 +24,7 @@
     "angular-ui-ace": "^0.2.3",
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
+    "express-session": "^1.15.2",
     "jasmine-node": "^1.14.5",
     "morgan": "^1.8.1",
     "passport": "^0.3.2",

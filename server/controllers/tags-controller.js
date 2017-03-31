@@ -11,8 +11,7 @@ module.exports = {
       //updatedAt (auto-generated)
   get: function(req, res) {
     db.Tag.findAll({})
-      .then(function(data) {
-        console.log('inside findAll', JSON.stringify(data));
+      .then(function(data) {        
         res.status(200).json(data);
       });
   }

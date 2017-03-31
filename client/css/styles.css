@@ -20,3 +20,17 @@ input.add-snippet-url {
   font-size: 21px;
   cursor: pointer;
 }
+
+ul.face-nav {
+	margin-bottom: 0;
+	padding-left: 0;
+	margin-right: 40px;
+}
+
+.navbar-default .navbar-nav > li > a.facebook-button {
+	background-color: #3b5998;
+}
+
+.navbar-default .navbar-nav > li > a.facebook-button:hover {
+	color: lightblue;
+}

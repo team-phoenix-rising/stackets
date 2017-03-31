@@ -10,8 +10,8 @@
   <script src='js/lib/ui-ace.js'></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
-  <link href='css/styles.css' rel='stylesheet'>
   <link href='css/bootstrap.css' rel='stylesheet'>
+  <link href='css/styles.css' rel='stylesheet'>
   </head>
   <body>
   <div class="container">
@@ -28,7 +28,11 @@
               <li><a ui-sref="profile">My Profile</a></li>
               <li><a href="/login/facebook">Facebook Login</a></li>
               <li><a href="/logout">Log Out</a></li>
+              <li><a ui-sref="add">Add a Snippet</a></li>                             
             </ul>
+            <ul class="nav navbar-nav navbar-right face-nav">
+              <li><a href="/login/facebook" target="_self" class="pull-right facebook-button">Facebook Login</a></li>
+            </ul>            
           </nav>
         </header>
     </div>
