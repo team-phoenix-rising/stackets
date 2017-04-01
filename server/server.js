@@ -11,8 +11,8 @@ passport.use(new Strategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: 'http://localhost:3000/login/facebook/return',
-    profileFields: ['id', 'displayName', 'photos', 'email']  
-      
+    profileFields: ['id', 'displayName', 'photos', 'email']
+
   }, function(accessToken, refreshToken, profile, done) {
 
     db.User.create({
@@ -20,9 +20,9 @@ passport.use(new Strategy({
       token: accessToken,
       image: profile.photos[0].value,
       provider: profile.provider
-    }).then(function(user, err) {      
+    }).then(function(user, err) {
       return done(err, user);
-    }) 
+    })
 }));
 
 passport.serializeUser(function(user, done) {
@@ -32,17 +32,15 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-
-
 //initialize express
 var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({ 
-  secret: 'TopSecretWord', 
-  resave: false, 
+app.use(session({
+  secret: 'TopSecretWord',
+  resave: false,
   saveUninitialized: false,
-  cookie: { secure: false } 
+  cookie: { secure: false }
 }));
 
 app.use(passport.initialize());

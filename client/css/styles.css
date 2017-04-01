@@ -194,6 +194,15 @@ div.snippet-card-editor {
   font-size: 12px;
 }
 
+.snippet-card-resource-heading {
+  margin-bottom: -2px;
+  font-weight: bold;
+}
+
+.snippet-card-resource {
+  margin-bottom: -1px;
+}
+
 
 /* ADD A SNIPPET */
 
