@@ -3,14 +3,14 @@ var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
 	signup: function(req, res) {
-    bcrypt.hash(req.body.user.password, null, null, function(err, hash) {    	
+    bcrypt.hash(req.body.user.password, null, null, function(err, hash) {
 	    db.User.create({
 	    	email: req.body.user.email,
-	      password: hash      
-	    }).then(function(user, err) {      	    	
+	      password: hash
+	    }).then(function(user, err) {
+        res.send(user);     	    	
 	      console.log('successfully created ', user.dataValues.email)
-	    })            	
+	    })
 		});
-  }	
+  }
 }
-
