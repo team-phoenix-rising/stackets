@@ -9,5 +9,6 @@ npm-debug.log
 /env.js
 
 # Local development
-*.env
+.env.js
 *.dev
+
