@@ -1,3 +1,7 @@
+body.light-background {
+  background-color: #BFECE2;
+}
+
 /* NAV */
 
 nav.navbar.navbar-default.navbar-fixed-top {
@@ -38,6 +42,7 @@ nav.navbar.navbar-default.navbar-fixed-top {
 }
 
 #page-content-wrapper {
+  margin-top: 60px;
   padding: 15px;
   width: 100%;
 }
@@ -150,6 +155,31 @@ img.sidebar-avatar {
     margin-left: 7px;
     font-size: 25px;
   }
+}
+
+/* SEARCH */
+
+form.navbar-form.navbar-left.searchbar {
+  width: 100%;
+}
+
+.form-group.searchbar {
+  width: 80%;
+}
+
+.navbar-form input.form-control {
+  width: 100%;
+}
+
+/* SNIPPET CARD */
+
+.row.snippet-card-search-wrapper {
+  margin: -20px -50px 20px -50px;
+  background-color: #F0CF65;
+}
+
+.snippet-card-heart {
+  float: right;
 }
 
 

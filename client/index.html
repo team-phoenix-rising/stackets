@@ -16,7 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 
-<body>
+<body class="light-background">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -35,69 +35,105 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <div class="sidebar-profile">
-                      <li>
-                          <a href="#"><img src="https://d3iw72m71ie81c.cloudfront.net/male-20.jpg" class="sidebar-avatar" alt=""> View Your Profile</a>
-                      </li>
+                        <li>
+                            <a href="#"><img src="https://d3iw72m71ie81c.cloudfront.net/male-20.jpg" class="sidebar-avatar" alt=""> View Your Profile</a>
+                        </li>
                     </div>
                     <div class="sidebar-user-snippets">
-                      <h2 class="sidebar-heading">Your Snippets</h2>
-                      <li>
-                          <a href="#"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
-                      </li>
+                        <h2 class="sidebar-heading">Your Snippets</h2>
+                        <li>
+                            <a href="#"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+                        </li>
                     </div>
-                      <div class="sidebar-all-snippets">
+                    <div class="sidebar-all-snippets">
                         <h2 class="sidebar-heading">All User's Snippets</h2>
                         <li>
                             <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> View Favorites</a>
                         </li>
-                      </div>
+                    </div>
                     <div class="sidebar-filters">
-                      <h2 class="sidebar-heading">Filters</h2>
-                      <li>
-                          <a href="#"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Authentication</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-server" aria-hidden="true"></i> Backend</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> Build Tools</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-terminal" aria-hidden="true"></i> Command Line</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-database" aria-hidden="true"></i> Database</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Deployment</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-desktop" aria-hidden="true"></i> Frontend</a>
-                      </li>
-                      <li>
-                          <a href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Testing</a>
-                      </li>
+                        <h2 class="sidebar-heading">Filters</h2>
+                        <li>
+                            <a href="#"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-lock" aria-hidden="true"></i> Authentication</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-server" aria-hidden="true"></i> Backend</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench" aria-hidden="true"></i> Build Tools</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-terminal" aria-hidden="true"></i> Command Line</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-database" aria-hidden="true"></i> Database</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-cloud-upload" aria-hidden="true"></i> Deployment</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-desktop" aria-hidden="true"></i> Frontend</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-check-square-o" aria-hidden="true"></i> Testing</a>
+                        </li>
                     </div>
                     <div class="sidebar-logout">
-                      <li>
-                          <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
-                      </li>
+                        <li>
+                            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+                        </li>
                     </div>
                 </ul>
             </div>
 
             <div id="page-content-wrapper">
                 <div class="container-fluid">
+                    <div class="row snippet-card-search-wrapper">
+                        <div class="col-md-6 col-md-offset-3">
+                            <form class="navbar-form navbar-left searchbar">
+                                <div class="form-group searchbar">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                </div>
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </form>
+                        </div>
+                    </div>
                     <div class="row">
-                        <div class="col-lg-12">
-                            <br>
-                            <h1>User Dashboard</h1>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/450x250">
+                                <div class="caption">
+                                    <h3>Snippet Title<span class="snippet-card-heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span></h3>
+                                    <p>I'm a snippet note...</p>
+                                    <p class="text-right"><span class="label label-default">Category / Subcategory</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/450x250">
+                                <div class="caption">
+                                    <h3>Snippet Title<span class="snippet-card-heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span></h3>
+                                    <p>I'm a snippet note...</p>
+                                    <p class="text-right"><span class="label label-default">Category / Subcategory</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                            <div class="thumbnail">
+                                <img src="http://placehold.it/450x250">
+                                <div class="caption">
+                                    <h3>Snippet Title<span class="snippet-card-heart"><i class="fa fa-heart-o" aria-hidden="true"></i></span></h3>
+                                    <p>I'm a snippet note...</p>
+                                    <p class="text-right"><span class="label label-default">Category / Subcategory</span></p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
