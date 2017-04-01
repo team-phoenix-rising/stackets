@@ -167,7 +167,7 @@ angular.module('stackets.services', [])
       getFavsByUser: getFavsByUser,
       getSnippetsByUser: getSnippetsByUser,
       logIn: logIn,
-      getLoggedInUserData: getLoggedInUserData
+      getLoggedInUserData: getLoggedInUserData,
       user: user,
       authenticate: authenticate
     };
