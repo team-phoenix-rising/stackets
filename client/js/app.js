@@ -97,7 +97,7 @@ angular.module('stackets', [
         }
       }
     });
-}).controller('loginController', function ($scope, $http, $location, Snippets) {    
+}).controller('loginController', function ($scope, $http, $location, Snippets) {
     var query = $location.search()
     var photo = query["photo"];
     var imageKey = query["oe"];
@@ -118,7 +118,7 @@ angular.module('stackets', [
       console.log(response)
 
       $scope.loggedUserEmail = response.data.userEmail;
-      
+      console.log('USER DATA', response.data);
     }, function(err){
       console.log(err)
     });

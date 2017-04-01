@@ -38,15 +38,15 @@ var ResourceUrl = db.define('ResourceUrl', {
   //updatedAt (auto-generated)
 });
 
-// create User table
-var User = db.define('User', {
-  name: Sequelize.TEXT,
-  email: Sequelize.TEXT,
-  photo: Sequelize.TEXT
-  //id (auto-generated)
-  //createdAt (auto-generated)
-  //updatedAt (auto-generated)
-});
+// // create User table
+// var User = db.define('User', {
+//   name: Sequelize.TEXT,
+//   email: Sequelize.TEXT,
+//   photo: Sequelize.TEXT
+//   //id (auto-generated)
+//   //createdAt (auto-generated)
+//   //updatedAt (auto-generated)
+// });
 
 //create Favorite table that contains userID and snippetID per favorite
 var Favorite = db.define('Favorite');

@@ -21,22 +21,23 @@ module.exports = function(app, express) {
 
   app.get('/login/facebook', passport.authenticate('facebook'));
 
-  app.get('/login/facebook/return', 
+  app.get('/login/facebook/return',
     passport.authenticate('facebook', { failureRedirect: '/' }),
-    function(req, res) {      
+    function(req, res) {
       console.log('face res: ', req.user.dataValues);
       req.session.facebookUser = req.user.dataValues.name;
       console.log(req.session)
+      var id = req.user.dataValues.id
       var name = req.user.dataValues.name
-      var photo = req.user.dataValues.image                  
-      res.redirect('/?name='+name+'&photo='+photo);      
+      var photo = req.user.dataValues.image
+      res.redirect('/?name='+name+'&photo='+photo+'&id='+id);      
     }
   );
 
   app.get('/logout', function(req, res){
     req.logout();
     res.redirect('/');
-  });  
+  });
   //get all the snippets
   app.get('/api/snippets', snippetsController.get);
   //get the most recent snippets
@@ -80,10 +81,10 @@ module.exports = function(app, express) {
     res.redirect('/');
   });
   //redirect to the home page
-  app.get('/*', function(req, res) {    
+  app.get('/*', function(req, res) {
     console.log('incoming request comming...', req.session.facebookUser);
 
 
-    res.redirect('/');    
+    res.redirect('/');
   });
 };

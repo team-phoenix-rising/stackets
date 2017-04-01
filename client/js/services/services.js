@@ -3,6 +3,23 @@ angular.module('stackets.services', [])
     var data;
     var languages;
 
+    var user = {};
+
+    var logIn = function(id) {
+      getUserData(id)
+      .then(function(response){
+        var data = response.data;
+        user.email = data.email;
+        user.name = data.name;
+        user.image = data.image;
+        user.id = id;
+      });
+    }
+
+    var getLoggedInUserData = function() {
+      return user;
+    }
+
     var addSnippet = function (snippet) {
       return $http({
         method: 'POST',
@@ -138,6 +155,8 @@ angular.module('stackets.services', [])
       getSubcategories: getSubcategories,
       getUserData: getUserData,
       getFavsByUser: getFavsByUser,
-      getSnippetsByUser: getSnippetsByUser
+      getSnippetsByUser: getSnippetsByUser,
+      logIn: logIn,
+      getLoggedInUserData: getLoggedInUserData
     };
   });
