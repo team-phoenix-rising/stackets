@@ -30,7 +30,7 @@ module.exports = function(app, express) {
       var id = req.user.dataValues.id
       var name = req.user.dataValues.name
       var photo = req.user.dataValues.image
-      res.redirect('/?name='+name+'&photo='+photo+'&id='+id);      
+      res.redirect('/?name='+name+'&photo='+photo+'&id='+id);
     }
   );
 
