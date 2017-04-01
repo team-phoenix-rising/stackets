@@ -2,6 +2,7 @@ angular.module('stackets.services', [])
   .factory('Snippets', function ($http) {
     var data;
     var languages;
+    var user;
 
     var user = {};
 
@@ -135,11 +136,20 @@ angular.module('stackets.services', [])
     };
 
     var getUserData = function (id) {
+      console.log('getting user data')
       return $http({
         method: 'GET',
         url: '/api/getUserData/' + id
       });
     };
+
+    var authenticate = function(token) {
+      return $http({
+        method: 'POST',
+        url: '/authenticate',
+        data: {webToken: token}
+      })
+    }
 
     return {
       addSnippet: addSnippet,
@@ -158,5 +168,7 @@ angular.module('stackets.services', [])
       getSnippetsByUser: getSnippetsByUser,
       logIn: logIn,
       getLoggedInUserData: getLoggedInUserData
+      user: user,
+      authenticate: authenticate
     };
   });

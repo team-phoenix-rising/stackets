@@ -1,7 +1,11 @@
 //require each controller, will refer to each controller in the routes
+require('../../env.js');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
+var jwt = require('jsonwebtoken');
+//var jwtDoorKeeper = require('express-jwt');
 var snippetsController = require('../controllers/snippets-controller.js');
+var jwtAuth = require('../controllers/jwt-authenticate.js');
 var userSignUpController = require('../controllers/user-signup-controller.js');
 var loginController = require('../controllers/login-controller.js');
 var languageController = require('../controllers/languages-controller.js');
@@ -15,9 +19,24 @@ module.exports = function(app, express) {
 
   app.post('/login', loginController.login);
 
-  app.post('/test', function(req, res) {
-    console.log('test...', req.body)
-  });
+  app.post('/authenticate', jwtAuth.authenticate);
+
+  app.get('/login/github', passport.authenticate('github'));
+
+  app.get('/login/github/return', 
+    passport.authenticate('github', { failureRedirect: '/' }),
+    function(req, res) {      
+      console.log('github res: ', req.user.dataValues);
+      var token = jwt.sign({
+        name: req.user.dataValues.name,
+        photo: req.user.dataValues.image                    
+      }, process.env.JWT_SECRET);                  
+      var userId = req.user.dataValues.id;
+      var name = req.user.dataValues.name;
+      var photo = req.user.dataValues.image;                  
+      res.redirect('/?name='+name+'&photo='+photo+'&id='+userId+'&token='+token);            
+    }
+  );
 
   app.get('/login/facebook', passport.authenticate('facebook'));
 
@@ -70,6 +89,7 @@ module.exports = function(app, express) {
   });
   //direct to profile page
   app.get('/profile', function(req, res) {
+    console.log('profile request...', req.headers)
     res.redirect('/');
   });
   //direct to search page
@@ -81,10 +101,8 @@ module.exports = function(app, express) {
     res.redirect('/');
   });
   //redirect to the home page
-  app.get('/*', function(req, res) {
-    console.log('incoming request comming...', req.session.facebookUser);
-
-
+  app.get('/*', function(req, res) {    
+    console.log('incoming request comming...', req.headers);
     res.redirect('/');
   });
 };
