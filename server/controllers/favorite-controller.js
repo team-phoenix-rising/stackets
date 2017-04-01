@@ -50,11 +50,31 @@ module.exports = {
     };
     db.Favorite.findAll(
       {where:{'UserId': req.params.userId},
-      include: [{model: db.Snippet}]
+      include: [{model: db.Snippet, include: [
+              {model: db.Language},
+              {model: db.Category},
+              {model: db.Subcategory},
+              {model: db.User}
+            ]}]
     })
     .then(function(response){
-      console.log('FAVS USER REP', response[0].dataValues.Snippet);
-      var snippets = response.map(item => item.dataValues.Snippet);
+      var snippets = response.map(snippet => {
+        return {
+              id: snippet.dataValues.Snippet.dataValues.id,
+              title: snippet.dataValues.Snippet.dataValues.title,
+              snippet: snippet.dataValues.Snippet.dataValues.snippet,
+              'notes': snippet.dataValues.Snippet.dataValues.notes,
+              'createdAt': snippet.dataValues.Snippet.dataValues.createdAt,
+              'updatedAt': snippet.dataValues.Snippet.dataValues.updatedAt,
+              'LanguageId': snippet.dataValues.Snippet.dataValues.LanguageId,
+              'Language': snippet.dataValues.Snippet.dataValues.Language.dataValues.displayname,
+              'category': snippet.dataValues.Snippet.dataValues.Category.dataValues.name,
+              'subcategory': snippet.dataValues.Snippet.dataValues.Subcategory.dataValues.name,
+              'user': snippet.dataValues.Snippet.dataValues.User.dataValues
+              }
+            }
+      );
+
       res.status(200).send(snippets);
     })
     .catch(function(error){

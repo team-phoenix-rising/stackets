@@ -93,6 +93,24 @@ angular.module('stackets', [
         }
       }
     })
+    .state('search/mysnippets', {
+      url: '/search/mysnippets',
+      views: {
+        'searchResultsView': {
+          controller: 'SearchResultsController',
+          templateUrl: '../partials/search-results.html'
+        }
+      }
+    })
+    .state('search/myfavorites', {
+      url: '/search/myfavorites',
+      views: {
+        'searchResultsView': {
+          controller: 'SearchResultsController',
+          templateUrl: '../partials/search-results.html'
+        }
+      }
+    })
     .state('search-results', {
       url: '/search/:query',
       views: {
