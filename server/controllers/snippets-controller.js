@@ -145,7 +145,8 @@ module.exports = {
       LanguageId: Number(req.body.LanguageId),
       CategoryId: Number(req.body.category),
       SubcategoryId: Number(req.body.subcategory),
-      UserId: Number(req.body.userId)
+      // TODO: put me back in -> UserId: Number(req.body.userId)
+      UserId: 2
     };
 
     db.Snippet.create(params)

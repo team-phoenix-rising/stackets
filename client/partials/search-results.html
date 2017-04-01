@@ -3,24 +3,17 @@
     <label for="name">Search</label>
     <input type="text" class="form-control" id="search" ng-model="search">
   </div>
-  <table class='table table-striped'>
-    <caption>{{ searchResultsTitle }}</caption>
-    <thead>
-      <th>Title</th>
-      <th>Notes</th>
-      <th>Language</th>
-      <th>Category</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat='snippet in data.snippets | filter:search | filter:user'>
-        <td><a href="/snippets/{{snippet.id}}">{{ snippet.title }}</a></td>
-        <td>{{ snippet.notes }}</td>
-        <td>{{ snippet.Language }}</td>
-        <td>{{ snippet.category }} > {{ snippet.subcategory }}</td>
-        <td>
-          <favorite snippetid={{snippet.id}}></favorite>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="row">
+    <div class="col-sm-6 col-md-4" ng-repeat='snippet in data.snippets | filter:search | filter:user'>
+      <div class="thumbnail">
+        <div ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="code"></div>
+        <div class="caption">
+          <h3><span class="snippet-card-heart"><favorite snippetid={{snippet.id}}></favorite></span><a href="/snippets/{{snippet.id}}">{{ snippet.title }}</a></h3>
+          <p><img src="{{ snippet.user.image }}" class="snippet-card-avatar" alt="">{{snippet.user.name}}</p>
+          <p>{{ snippet.notes}}</p>
+          <p class="text-right"><span class="label label-default">{{ snippet.category}} / {{ snippet.subcategory }}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

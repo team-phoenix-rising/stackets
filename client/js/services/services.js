@@ -3,7 +3,7 @@ angular.module('stackets.services', [])
     var data;
     var languages;
 
-    var user = {};
+    var user = {id: 2, name: 'Emilie Hester', image: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/14962611_10157612584030462_6027355226997492156_n.jpg?oh=875c00f6bffe6b90ed2b9e796088a869&oe=5999F210'};
 
     var logIn = function(id) {
       getUserData(id)

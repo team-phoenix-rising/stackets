@@ -213,7 +213,11 @@ input.add-snippet-url {
 
 /*FAVORITE*/
 
-.glyphicon-heart-empty, .glyphicon-heart {
+.fa.fa-heart, .fa.fa-heart-o {
   font-size: 21px;
   cursor: pointer;
+}
+
+.fa.fa-heart {
+  color: #BF4E4C
 }
