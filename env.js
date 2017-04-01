@@ -1,6 +1,4 @@
-process.env['GIT_CLIENT_ID'] = 'e053344368ac0dc99ebd';
-process.env['GIT_CLIENT_SECRET'] = 'a4734a72fbae8f101f958e1ed2017f464496c566';
-process.env['CLIENT_ID'] = '1021607444638561';
-process.env['CLIENT_SECRET'] = '95d4a21948bc249e55a180c6cc98c138';
-process.env['JWT_SECRET'] = 'shhhhh';
-
+process.env['GIT_CLIENT_ID'] = '781b0de3acfd11df01bc';
+process.env['GIT_CLIENT_SECRET'] = '37ef57d15df1a6d3d05b44fee04ae03f23498544';
+process.env['CLIENT_ID'] = '713790005449183';
+process.env['CLIENT_SECRET'] = 'bd13ca3398dc313a2777f1432d84b85e';
