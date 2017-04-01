@@ -3,7 +3,6 @@ angular.module('stackets.searchResults', [])
   .controller('SearchResultsController', function ($scope, $state, $stateParams, Snippets) {
     $scope.searchResultsTitle = 'Search Results';
     $scope.data = {};
-    $scope.code = [];
 
     $scope.search = {
       search: $state.params.query || ''
@@ -12,13 +11,11 @@ angular.module('stackets.searchResults', [])
 
     Snippets.getAllSnippets().then(function (snippets) {
       snippets = snippets.map(snippet => {
+        if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
         snippet.snippet = JSON.parse(snippet.snippet);
         return snippet;
       });
       $scope.data.snippets = snippets;
-
-      $scope.code = snippets.map(snippet => JSON.parse(snippet.snippet));
-      console.log(snippets[0].snippet);
     });
 
     if ($state.params.query === 'mysnippets') {
@@ -69,10 +66,6 @@ angular.module('stackets.searchResults', [])
       _session.setMode("ace/mode/javascript");
       // Load the snippet's code
       _session.setValue('');
-      // Events
-      _session.on("change", function(e) {
-        $scope.code = _session.getValue();
-      });
     };
 
   });

@@ -191,7 +191,7 @@ span.label.label-default {
 }
 
 div.snippet-card-editor {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 .snippet-card-resource-heading {
@@ -219,7 +219,7 @@ input.add-snippet-url {
 }
 
 .add-snippet-added-resources-item:hover {
-  background-color: #D3D3D3;
+  background-color: rgba(230, 230, 230, 0.8);
   cursor: pointer;
 }
 
