@@ -178,7 +178,7 @@ img.snippet-card-avatar {
   width: 35px;
   height: 35px;
   margin-top: -5px;
-  margin-right: 10px;
+  margin-right: 5px;
   border-radius: 30px;
 }
 
@@ -188,6 +188,10 @@ img.snippet-card-avatar {
 
 span.label.label-default {
   background-color: #F0CF65;
+}
+
+div.snippet-card-editor {
+  font-size: 12px;
 }
 
 
@@ -214,6 +218,7 @@ input.add-snippet-url {
 /*FAVORITE*/
 
 .fa.fa-heart, .fa.fa-heart-o {
+  margin-right: 2px;
   font-size: 21px;
   cursor: pointer;
 }
