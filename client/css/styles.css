@@ -9,6 +9,10 @@ nav.navbar.navbar-default.navbar-fixed-top {
   border-color: #BF4E4C;
 }
 
+#menu-toggle:hover, #menu-toggle:focus {
+  color: #BFECE2;
+}
+
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -85,21 +89,6 @@ nav.navbar.navbar-default.navbar-fixed-top {
   text-decoration: none;
 }
 
-.sidebar-nav>.sidebar-brand {
-  height: 65px;
-  font-size: 18px;
-  line-height: 60px;
-}
-
-.sidebar-nav>.sidebar-brand a {
-  color: #FFF;
-}
-
-.sidebar-nav>.sidebar-brand a:hover {
-  background: none;
-  color: #fff;
-}
-
 h2.sidebar-heading {
   margin-left: 40px;
   color: #fff;
@@ -116,19 +105,19 @@ img.sidebar-avatar {
 }
 
 .sidebar-profile {
-  margin: 50px 0px 50px 0px;
+  margin: 15px 0px 35px 0px;
 }
 
 .sidebar-user-snippets {
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 .sidebar-all-snippets {
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 .sidebar-filters {
-  margin-bottom: 50px;
+  margin-bottom: 35px;
 }
 
 @media (min-width: 768px) {
