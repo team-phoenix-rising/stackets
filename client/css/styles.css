@@ -148,8 +148,9 @@ img.sidebar-avatar {
 
 /* FORM */
 button.btn.btn-default {
-  background-color: #4B4237;
+  background-color: #BFECE2;
   border: none;
+  color: #111;
 }
 
 /* SEARCH */
