@@ -9,8 +9,9 @@ angular.module('stackets.profile', [])
     $scope.image = userInfo.image;
 
 
-    Snippets.getFavsByUser({userId: userId}).then(function(response) {
+    Snippets.getFavsByUser(userId).then(function(response) {
       $scope.favorites = response.data;
+      console.log('fav data', response.data);
     });
 
     Snippets.getSnippetsByUser({userId: userId}).then(function(response) {

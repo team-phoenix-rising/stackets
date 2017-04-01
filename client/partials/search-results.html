@@ -12,7 +12,7 @@
       <th>Category</th>
     </thead>
     <tbody>
-      <tr ng-repeat='snippet in data.snippets | filter:search'>
+      <tr ng-repeat='snippet in data.snippets | filter:search | filter:user'>
         <td><a href="/snippets/{{snippet.id}}">{{ snippet.title }}</a></td>
         <td>{{ snippet.notes }}</td>
         <td>{{ snippet.Language }}</td>
