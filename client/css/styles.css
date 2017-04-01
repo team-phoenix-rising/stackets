@@ -40,60 +40,6 @@ ul.face-nav {
 	color: lightblue;
 }
 
-div.overlay {
-	background: rgba(0, 0, 0, 0.8);
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-    z-index: 1000;
-}
-    
-div.overlay div.login-frame {
-	background: white;
-	margin-top: 8%;
-    max-width: 40%;
-    padding: 20px 33px;
-}
-
-div.overlay div.login-frame > div.close-wrapper {
-	text-align: right;
-	width: 100%;
-	margin-bottom: 35px;
-	padding-left: 0;
-}
-
-div.overlay div.login-frame > div.close-wrapper > h3 {
-	margin: 0;
-	padding-left: 0;
-}
-
-div.overlay div.login-frame > div.close-wrapper > span.close-span {
-	background: transparent;
-    border-radius: 5px;
-    padding: 3px 11px;
-    color: grey;
-    border: 1px solid grey;
-}
-
-div.overlay div.login-frame > div.close-wrapper > span.close-span:hover {
-	cursor: pointer;
-}
-
-div.overlay div.login-frame > form  {
-	margin-bottom: 25px;
-}
-
-div.overlay div.login-frame > form > div.button-container {
-	margin: 25px 15px;
-}
-
-div.overlay div.login-frame > form > div.button-container > button[type="submit"] {
-	width: 100%;
-}
-
 div.social-buttons {
 
 }

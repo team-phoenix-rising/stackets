@@ -1,0 +1,31 @@
+<div class="login-frame container">
+  <div class="close-wrapper container">          
+    <h3 class="login-title">Login</h3>
+  </div>
+  <form name="login-form">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" ng-model="userEmail">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" class="form-control" ng-model="userPassword">
+    </div>        
+    <div class="button-container">
+      <button ng-click="loginUser(userEmail, userPassword)" type="submit" class="btn btn-primary submit-login-button">Submit</button>            
+    </div>
+  </form>
+
+  <div class="social-buttons container-fluid">
+    <div class="row">
+      <button class="facebook-link">
+        <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>              
+      </button>                            
+    </div>
+    <div class="row">
+      <button class="github-link">
+        <a href="" target="_self" class="row">GitHub Login</a>
+      </button>                                    
+    </div>
+  </div>        
+</div>

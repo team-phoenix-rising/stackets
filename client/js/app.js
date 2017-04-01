@@ -11,10 +11,27 @@ angular.module('stackets', [
   'stackets.addSnippet',
   'stackets.featuredSnippet',
   'stackets.favorite',
+  'stackets.signup',
+  'stackets.login',
   'ui.router',
   'ui.ace'
 ])
-.config(function ($stateProvider, $locationProvider) {
+.service('APIInterceptor', function($rootScope, $window) {
+  var service = this;
+  console.log('intercepted')
+  service.request = function(config) {
+    if( $window.localStorage.stacketsToken ) {
+      config.headers.authorization = $window.localStorage.stacketsToken;      
+    }
+    return config
+  }
+
+  service.responseError = function(response) {
+    return response
+  }
+})
+
+.config(function ($stateProvider, $locationProvider, $httpProvider) {
   $locationProvider
     .html5Mode({
       enabled: true,
@@ -24,6 +41,11 @@ angular.module('stackets', [
     .state('home', {
       name: 'home',
       url: '/',
+      data: {
+        authorization: false,
+        redirectTo: 'home',
+        memory: true
+      },
       views: {
         'homeView': {
           controller: 'HomeController',
@@ -45,6 +67,11 @@ angular.module('stackets', [
     })
     .state('about', {
       url: '/about',
+      data: {
+        authorization: false,
+        redirectTo: 'about',
+        memory: true
+      },
       views: {
         'aboutView': {
           controller: 'AboutController',
@@ -54,6 +81,11 @@ angular.module('stackets', [
     })
     .state('search', {
       url: '/search',
+      data: {
+        authorization: false,
+        redirectTo: 'search',
+        memory: true
+      },
       views: {
         'searchResultsView': {
           controller: 'SearchResultsController',
@@ -72,6 +104,7 @@ angular.module('stackets', [
     })
     .state('add', {
       url: '/add',
+      authenticate: false,
       views: {
         'addSnippetView': {
           controller: 'AddSnippetController',
@@ -81,6 +114,7 @@ angular.module('stackets', [
     })
     .state('snippet', {
       url: '/snippets/:id',
+      authenticate: false,
       views: {
         'viewSnippetView': {
           controller: 'ViewSnippetController',
@@ -90,37 +124,47 @@ angular.module('stackets', [
     })
     .state('profile', {
       url: '/profile',
+      data: {
+        authorization: true,
+        redirectTo: 'home',
+        memory: true
+      },
       views: {
         'viewProfileView': {
           controller: 'ProfileController',
           templateUrl: '../partials/profile.html'
         }
       }
+    }).state('login', {
+      name: 'login',
+      url: '/loginView',
+      data: {
+        authorization: false,
+        redirectTo: 'home',
+        memory: true
+      },
+      views: {
+        'loginView': {
+          controller: 'LoginController',
+          templateUrl: '../partials/login.html'
+        }
+      }
+    }).state('signup', {
+      name: 'signup',
+      url: '/signupView',
+      data: {
+        authorization: false,
+        redirectTo: 'home',
+        memory: true
+      },
+      views: {
+        'signUpView': {
+          controller: 'SignUpController',
+          templateUrl: '../partials/signup.html'
+        }
+      }
     });
-}).controller('loginController', function ($scope, $http, $location, Snippets) {
-    var query = $location.search()
-    var photo = query["photo"];
-    var imageKey = query["oe"];
-    $scope.photo = photo;
-    $scope.username = query["name"];
-    $scope.imageUrl = photo + '&oe=' + imageKey;
-    $scope.show = true;
-    $scope.toggleShow = function() {
-      $scope.show = $scope.show ? false : true;
-    }
+    $httpProvider.interceptors.push('APIInterceptor');
+})
 
-    $scope.loginUser = function(email, password) {
-    $http({
-          method: 'POST',
-          url: '/login',
-          data: {email: email, password: password}
-    }).then(function(response){
-      console.log(response)
 
-      $scope.loggedUserEmail = response.data.userEmail;
-      console.log('USER DATA', response.data);
-    }, function(err){
-      console.log(err)
-    });
-    }
-  });;
