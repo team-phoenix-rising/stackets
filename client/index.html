@@ -36,7 +36,7 @@
                 <ul class="sidebar-nav">
                     <div class="sidebar-profile">
                         <li>
-                            <a href="#"><img src="https://d3iw72m71ie81c.cloudfront.net/male-20.jpg" class="sidebar-avatar" alt=""> View Your Profile</a>
+                            <a ui-sref="profile"><img src="https://d3iw72m71ie81c.cloudfront.net/male-20.jpg" class="sidebar-avatar" alt=""> View Your Profile</a>
                         </li>
                     </div>
                     <div class="sidebar-user-snippets">
@@ -45,7 +45,7 @@
                             <a href="#"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
+                            <a ui-sref="add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-heart" aria-hidden="true"></i> View Favorites</a>
@@ -95,14 +95,39 @@
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row snippet-card-search-wrapper">
-                        <div class="col-md-6 col-md-offset-3">
-                            <form class="navbar-form navbar-left searchbar">
+                        <div class="col-md-6 col-md-offset-3" ui-view="searchBarView">
+                            <!-- <form class="navbar-form navbar-left searchbar">
                                 <div class="form-group searchbar">
                                     <input type="text" class="form-control" placeholder="Search">
                                 </div>
                                 <button type="submit" class="btn btn-default">Submit</button>
-                            </form>
+                            </form> -->
                         </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-md-12">
+                        <div class="search-bar-panel" ui-view="searchBarView"></div>
+                      </div>
+                    </div> -->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="search-results-panel" ui-view="searchResultsView"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div ui-view="viewProfileView"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="add-snippet-panel" ui-view="addSnippetView"></div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="view-snippet-panel" ui-view="viewSnippetView"></div>
+                      </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-md-4">
@@ -134,23 +159,12 @@
                                     <p class="text-right"><span class="label label-default">Category / Subcategory</span></p>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- TODO: MOVE ME -->
-    <script type="text/javascript">
-        $("#menu-toggle").click(function(e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-    </script>
     <!-- <div class="row">
       <div class="col-md-12">
         <div class="home-panel" ui-view="homeView">
@@ -209,6 +223,7 @@
     <script src='js/controllers/FavoriteController.js'></script>
     <script src='js/services/services.js'></script>
     <script src='js/app.js'></script>
+    <script src='js/sidebarLogic.js'></script>
 </body>
 
 </html>
