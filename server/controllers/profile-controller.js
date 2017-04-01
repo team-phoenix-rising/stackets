@@ -16,7 +16,7 @@ module.exports = {
       res.status(200).send(response);
     })
     .catch(function(error){
-      console.log('Error updating favorite: ', error)
+      console.log('Error getting user data: ', error)
       res.status(400).send(error);
     });
 

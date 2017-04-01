@@ -2,9 +2,10 @@ angular.module('stackets.favorite', [])
   .controller('FavoriteController', function ($scope, Snippets) {
     $scope.heartClass = 'glyphicon glyphicon-heart-empty';
     $scope.isFavorite = false;
+    var userId = Snippets.getLoggedInUserData().id;
 
     if ($scope.snippetid) {
-      Snippets.isFavSnippetByUser({snippetId: Number($scope.snippetid), userId: 1}).then(function(response) {
+      Snippets.isFavSnippetByUser({snippetId: Number($scope.snippetid), userId: userId}).then(function(response) {
         $scope.isFavorite = !!response.data;
         //Turn favorite class on if there is a response
         toggleFavoriteClass();
@@ -24,7 +25,7 @@ angular.module('stackets.favorite', [])
         $scope.totalFavorites++;
       }
       toggleFavoriteClass();
-      var data = JSON.stringify({snippetId: $scope.snippetid, userId: 1, status: $scope.isFavorite})
+      var data = JSON.stringify({snippetId: $scope.snippetid, userId: userId, status: $scope.isFavorite})
       Snippets.toggleFavorite(data);
     };
 

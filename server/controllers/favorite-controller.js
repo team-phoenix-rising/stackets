@@ -16,7 +16,7 @@ module.exports = {
       res.status(200).send({count: response});
     })
     .catch(function(error){
-      console.log('Error updating favorite: ', error)
+      console.log('Error getting favorites: ', error)
       res.status(400).send(error);
     });
 
@@ -38,7 +38,7 @@ module.exports = {
       res.status(200).send(response);
     })
     .catch(function(error){
-      console.log('Error updating favorite: ', error)
+      console.log('Error checking if favorite: ', error)
       res.status(400).send(error);
     });
 
@@ -56,7 +56,7 @@ module.exports = {
       res.status(200).send(response);
     })
     .catch(function(error){
-      console.log('Error updating favorite: ', error)
+      console.log('Error getting favorites for user: ', error)
       res.status(400).send(error);
     });
 
@@ -92,7 +92,7 @@ module.exports = {
         res.status(201).json(response);
       })
       .catch(function(error){
-        console.log('Error updating favorite: ', error)
+        console.log('Error removing favorite: ', error)
         res.status(400).res(error);
       });
     }
