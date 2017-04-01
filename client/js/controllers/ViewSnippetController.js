@@ -4,7 +4,6 @@ angular.module('stackets.view', [])
   .controller('ViewSnippetController', function ($scope, Snippets, $stateParams) {
     $scope.snippet = {};
     $scope.code = '';
-    $scope.codeSample = '';
 
     Snippets.getSnippetById($stateParams.id).then(function (snippet) {
       $scope.id = snippet.id;

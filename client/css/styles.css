@@ -160,15 +160,27 @@ form.navbar-form.navbar-left.searchbar {
   width: 100%;
 }
 
-/* SNIPPET CARD */
-
 .row.snippet-card-search-wrapper {
   margin: -20px -50px 20px -50px;
   background-color: #F0CF65;
 }
 
+/* SNIPPET CARD */
+
+img.snippet-card-avatar {
+  width: 35px;
+  height: 35px;
+  margin-top: -5px;
+  margin-right: 10px;
+  border-radius: 30px;
+}
+
 .snippet-card-heart {
   float: right;
+}
+
+span.label.label-default {
+  background-color: #F0CF65;
 }
 
 
