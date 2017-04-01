@@ -12,7 +12,6 @@ angular.module('stackets.home', [])
   	$scope.username = query["name"];
   	$scope.imageUrl = photo + '&oe=' + imageKey;
   	$scope.show = true;
-    console.log($scope.userId);
   	$scope.toggleShow = function() {
   		$scope.show = $scope.show ? false : true;
   	}

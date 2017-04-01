@@ -25,14 +25,15 @@
               <li><a ui-sref="about">About</a></li>
               <li><a ui-sref="search">Search</a></li>
               <li><a ui-sref="add">Add a Snippet</a></li>
-              <li><a ui-sref="profile">My Profile</a></li>                         
-                                          
+              <li><a ui-sref="profile">My Profile</a></li>
+              <li><a href="search/mysnippets">View All</a></li>                          
+
             </ul>
             <ul class="nav navbar-nav navbar-right face-nav">
               <li><a href="" class="pull-right signup-button">Sign up</a></li>
               <li><a href="" class="pull-right login-button">Login</a></li>
               <li><a href="/logout" class="logout-button">Log Out</a></li>
-            </ul>            
+            </ul>
           </nav>
         </header>
     </div>
@@ -85,7 +86,7 @@
       <div class="login-frame container">
         <div class="close-wrapper container">
           <h3 class="col col-md-8 signup-title">Sign Up</h3>
-          <span class="close-span">close</span>          
+          <span class="close-span">close</span>
         </div>
         <form name="signup-form" action="/signup" method="post">
           <div class="form-group">
@@ -95,33 +96,33 @@
           <div class="form-group">
             <label for="password">Password</label>
             <input type="text" class="form-control" name="user[password]">
-          </div>        
+          </div>
           <div class="button-container">
-            <button type="submit" class="btn btn-primary signup-submit-button">Submit</button>            
+            <button type="submit" class="btn btn-primary signup-submit-button">Submit</button>
           </div>
         </form>
 
         <div class="social-buttons container-fluid">
           <div class="row">
             <button class="facebook-link">
-              <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>              
-            </button>                            
+              <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>
+            </button>
           </div>
           <div class="row">
             <button class="github-link">
               <a href="" target="_self" class="row">GitHub Login</a>
-            </button>                                    
+            </button>
           </div>
-        </div>        
+        </div>
       </div>
     </div>
   </div>
 
   <div ng-controller="loginController" class="login-overlay overlay">
     <div class="login-frame container">
-      <div class="close-wrapper container">          
+      <div class="close-wrapper container">
         <h3 class="col col-md-8 login-title">Login</h3>
-        <span class="close-span login-span">close</span>          
+        <span class="close-span login-span">close</span>
       </div>
       <form name="login-form">
         <div class="form-group">
@@ -131,24 +132,24 @@
         <div class="form-group">
           <label for="password">Password</label>
           <input type="text" class="form-control" ng-model="userPassword">
-        </div>        
+        </div>
         <div class="button-container">
-          <button ng-click="loginUser(userEmail, userPassword)" type="submit" class="btn btn-primary submit-login-button">Submit</button>            
+          <button ng-click="loginUser(userEmail, userPassword)" type="submit" class="btn btn-primary submit-login-button">Submit</button>
         </div>
       </form>
 
       <div class="social-buttons container-fluid">
         <div class="row">
           <button class="facebook-link">
-            <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>              
-          </button>                            
+            <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>
+          </button>
         </div>
         <div class="row">
           <button class="github-link">
             <a href="" target="_self" class="row">GitHub Login</a>
-          </button>                                    
+          </button>
         </div>
-      </div>        
+      </div>
     </div>
   </div>
 
@@ -175,7 +176,7 @@
     });
 
     $('.signup-submit-button').click(function() {
-      $('.overlay').css('display', 'none');      
+      $('.overlay').css('display', 'none');
     });
   </script>
 

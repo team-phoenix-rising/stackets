@@ -90,10 +90,10 @@ angular.module('stackets.services', [])
       });
     };
 
-    var getFavsByUser = function (data) {
+    var getFavsByUser = function (userId) {
       return $http({
         method: 'GET',
-        url: '/api/getFavsByUser/' +  data.userId
+        url: '/api/getFavsByUser/' +  userId
       }).then(function (response) {
         return response;
       });

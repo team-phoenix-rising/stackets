@@ -48,12 +48,14 @@ module.exports = {
     var params = {
       userId: Number(req.params.userId)
     };
-    db.Favorite.findAll({where:
-      {'UserId': req.params.userId},
+    db.Favorite.findAll(
+      {where:{'UserId': req.params.userId},
       include: [{model: db.Snippet}]
     })
     .then(function(response){
-      res.status(200).send(response);
+      console.log('FAVS USER REP', response[0].dataValues.Snippet);
+      var snippets = response.map(item => item.dataValues.Snippet);
+      res.status(200).send(snippets);
     })
     .catch(function(error){
       console.log('Error getting favorites for user: ', error)
