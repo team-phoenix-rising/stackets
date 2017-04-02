@@ -35,9 +35,14 @@
             <div id="sidebar-wrapper">
                 <ul class="sidebar-nav">
                     <div class="sidebar-profile">
+                      <li>
+                          <a ui-sref="signup" class=""><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a>
+                      </li>
                         <li>
-                            <a ui-sref="profile"><i class="fa fa-user" aria-hidden="true"></i> View Your Profile</a>
                             <a ui-sref="login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
+                        </li>
+                        <li ng-controller="LogOutController">
+                            <a ng-click="logout()" href="/logout" target="_self" class="logout-button"><i class="fa fa-sign-out" aria-hidden="true"></i> Log Out</a>
                         </li>
                     </div>
                     <div class="sidebar-user-snippets">
@@ -50,19 +55,8 @@
                         </li>
                         <li>
                             <a ui-sref="search/myfavorites"><i class="fa fa-gratipay" aria-hidden="true"></i></i> View Favorites</a>
-                        </li>                        
+                        </li>
                     </div>
-                    <div class="login-buttons">                        
-                        <li>
-                            <a ui-sref="signup" class="">Sign up</a>
-                        </li>
-                        <li>
-                            <a ui-sref="login" class="">Login</a>
-                        </li>
-                        <li ng-controller="LogOutController">
-                            <a ng-click="logout()" href="/logout" target="_self" class="logout-button">Log Out</a>
-                        </li>
-                    </div> 
                     <div class="sidebar-all-snippets">
                         <h2 class="sidebar-heading">All User's Snippets</h2>
                         <li>
@@ -103,7 +97,7 @@
                 <div class="container-fluid">
                   <div ui-view="loginView">
                   </div>
-                  <div ui-view="homeView">
+                  <!-- <div ui-view="homeView"> -->
                   </div>
                     <div class="row snippet-card-search-wrapper">
                         <div class="col-md-6 col-md-offset-3" ui-view="searchBarView">
@@ -131,9 +125,9 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="view-signup-panel" ui-view="signUpView"></div>                        
+                            <div class="view-signup-panel" ui-view="signUpView"></div>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>

@@ -40,7 +40,6 @@ nav.navbar.navbar-default.navbar-fixed-top {
   left: 250px;
   z-index: 1000;
   overflow-y: auto;
-  margin-top: 60px;
   margin-left: -250px;
   width: 0;
   height: 100%;
@@ -123,7 +122,7 @@ img.sidebar-avatar {
 }
 
 .sidebar-profile {
-  margin: 15px 0px 35px 0px;
+  margin: 75px 0px 35px 0px;
 }
 
 .sidebar-user-snippets {
