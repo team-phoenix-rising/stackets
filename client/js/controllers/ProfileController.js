@@ -10,7 +10,6 @@ angular.module('stackets.profile', [])
 
     Snippets.getFavsByUser(userId).then(function(response) {
       $scope.favorites = response.data;
-      console.log('fav data', response.data);
     });
 
     Snippets.getSnippetsByUser({userId: userId}).then(function(response) {
