@@ -1,8 +1,23 @@
 angular.module('stackets.services', [])
   .factory('Snippets', function ($http) {
+    var isLoggedIn = false;
     var data;
     var languages;
     var user = {}
+
+    var setLogInStatus = function() {
+      isLoggedIn = true;      
+    }
+    
+    var setLogOutStatus = function() {      
+      isLoggedIn = false;;
+    }
+
+    var getLogStatus = function() {
+      console.log('getLogged Status', isLoggedIn)
+      return isLoggedIn;
+    }
+
 
     var logIn = function(id) {
       getUserData(id)
@@ -165,6 +180,10 @@ angular.module('stackets.services', [])
       logIn: logIn,
       getLoggedInUserData: getLoggedInUserData,
       user: user,
-      authenticate: authenticate
+      authenticate: authenticate,
+      isLoggedIn: isLoggedIn,
+      setLogInStatus: setLogInStatus,
+      setLogOutStatus: setLogOutStatus,
+      getLogStatus: getLogStatus
     };
   });

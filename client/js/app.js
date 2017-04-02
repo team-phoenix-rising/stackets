@@ -229,5 +229,6 @@ angular.module('stackets', [
   $scope.logout = function() {
     delete $window.localStorage.stacketsToken;
     delete $window.localStorage.userId;
+    Snippets.setLogOutStatus();
   }
 });
