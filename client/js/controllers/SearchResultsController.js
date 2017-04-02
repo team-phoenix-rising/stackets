@@ -11,7 +11,12 @@ angular.module('stackets.searchResults', [])
 
     if (!$location.$$path.split('/')[2]) {
 
-      Snippets.getAllSnippets().then(function (snippets) {
+      Snippets.getAllSnippets().then(function(snippets) {
+        snippets = snippets.map(snippet => {
+          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          snippet.snippet = JSON.parse(snippet.snippet);
+          return snippet;
+        });
         $scope.data.snippets = snippets;
       });
 
@@ -19,6 +24,11 @@ angular.module('stackets.searchResults', [])
       var userId = Snippets.getLoggedInUserData().id;
 
       Snippets.getAllSnippets().then(function (snippets) {
+        snippets = snippets.map(snippet => {
+          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          snippet.snippet = JSON.parse(snippet.snippet);
+          return snippet;
+        });
         $scope.data.snippets = snippets;
       });
 
@@ -30,9 +40,54 @@ angular.module('stackets.searchResults', [])
       }
       $state.params.query = '';
     } else if ($location.$$path.split('/')[2] === 'myfavorites') {
-      Snippets.getFavsByUser(2).then(function(response){
-        $scope.data.snippets = response.data;
-      })
-    }
+      Snippets.getFavsByUser(2).then(function(response) {
+        var snippets = response.data;
+        snippets = snippets.map(snippet => {
+          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          snippet.snippet = JSON.parse(snippet.snippet);
+          return snippet;
+        });
+        $scope.data.snippets = snippets;
+    });
+  }
+
+    $scope.setAceEditorLang = function (form) {
+      var languageId = Number(this.snippet.LanguageId);
+      var language;
+      for (var i = 0; i < $scope.languages.length; i++) {
+        if ($scope.languages[i].id === languageId) {
+          language = $scope.languages[i];
+          break;
+        }
+      }
+      $scope.ace = language.name;
+      $scope._editor.getSession().setMode("ace/mode/" + $scope.ace);
+    };
+//the method below will serve the ace editor into the text box displaying the snippet.
+    $scope.aceLoaded = function (_editor) {
+      // Ace @ https://ace.c9.io/
+    // Ace @ https://github.com/ajaxorg/ace
+    // ui-ace @ https://www.npmjs.com/package/angular-ui-ace
+    // CDN @ https://cdnjs.com/libraries/ace/
+    // Editor font size
+      // document.getElementById('editor').style.fontSize='14px';
+      // Options
+      var _session = _editor.getSession();
+      var _renderer = _editor.renderer;
+      _editor.setHighlightActiveLine(true);
+      _editor.setShowPrintMargin(false);
+      _editor.setReadOnly(true);
+      _session.setUseWrapMode(true);
+      _session.setTabSize(2);
+      _session.setUseSoftTabs(true);
+      // turn off syntax checking
+      _session.setOption("useWorker", false);
+      // Theme @ https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
+      _editor.setTheme("ace/theme/cobalt");
+      // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
+      _session.setMode("ace/mode/javascript");
+      // Load the snippet's code
+      _session.setValue('');
+    };
 
   });

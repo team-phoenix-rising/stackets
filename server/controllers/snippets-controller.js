@@ -2,6 +2,7 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
+    console.log('get snippets')
     db.Snippet.findAll({
       include: [
         {model: db.Language},
@@ -140,10 +141,11 @@ module.exports = {
       title: req.body.title,
       snippet: req.body.snippet,
       notes: req.body.notes || '',
-      LanguageId: Number(req.body.LanguageId), // languageId comes as a string from front-end form
+      LanguageId: Number(req.body.LanguageId),
       CategoryId: Number(req.body.category),
       SubcategoryId: Number(req.body.subcategory),
-      UserId: Number(req.body.userId)
+      // TODO: put me back in -> UserId: Number(req.body.userId)
+      UserId: 2
     };
 
     db.Snippet.create(params)

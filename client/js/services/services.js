@@ -5,11 +5,9 @@ angular.module('stackets.services', [])
     var user;
 
     var user = {
-      id: 2,
-      email: 'test@test.com',
-      name: 'Bryce Dooley',
-      image: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/13100701_10100422685616885_8866083302877500374_n.jpg?oh=cc19b63962f0e2e4c79732b9fd2d770f&oe=59990398'
-    };
+      id: 2, name:
+      'Emilie Hester',
+      image: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/14962611_10157612584030462_6027355226997492156_n.jpg?oh=875c00f6bffe6b90ed2b9e796088a869&oe=5999F210'};
 
     var logIn = function(id) {
       getUserData(id)

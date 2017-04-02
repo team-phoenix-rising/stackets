@@ -6,27 +6,23 @@ module.exports = {
   getUserData: function(req, res) {
     console.log('decoded', req.headers)
     jwt.verify(req.headers.authorization, process.env.JWT_SECRET, function(err, decoded) {
-        if ( decoded ) {
-                  
-          var params = {
-            userId: req.params.userId
-          };
-          db.User.findOne( {
-            where: {
-              "id": params.userId
-              }
-            }
-          )
-          .then(function(response){
-            res.status(200).send(response);
-          })
-          .catch(function(error){
-            console.log('Error updating favorite: ', error)
-            res.status(400).send(error);
-          });
-          // res.status(200)
-          // res.send(true)
-        } 
-    });    
+      if (decoded) {
+        var params = {
+          userId: req.params.userId
+        };
+        db.User.findOne({
+          where: {
+            "id": params.userId
+          }
+        })
+        .then(function(response) {
+          res.status(200).send(response);
+        })
+        .catch(function(error) {
+          console.log('Error updating favorite: ', error)
+          res.status(400).send(error);
+        });
+      }
+    });
   }
 };

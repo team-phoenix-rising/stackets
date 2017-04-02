@@ -35,7 +35,7 @@
     <label for="resourceUrl">Enter Resource URLs (hit enter to add to list)</label>
     <input type="url" class="form-control add-snippet-url" id="resourceUrl" ng-model="snippet.resources" ng-keypress="addResource($event)">
     <span ng-repeat="url in resourceUrls">
-      <p ng-click="removeResource($index)"><span class="add-snippet-added-resources-item">{{url}} <span class="glyphicon glyphicon-remove-circle"></span></span></p>
+      <p ng-click="removeResource($index)"><span class="add-snippet-added-resources-item">{{url}} <i class="fa fa-times-circle" aria-hidden="true"></i></p>
     </span>
   </div>
   <div class="form-group col-md-12 text-right">

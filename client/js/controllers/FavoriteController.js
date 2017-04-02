@@ -1,6 +1,6 @@
 angular.module('stackets.favorite', [])
   .controller('FavoriteController', function ($scope, Snippets) {
-    $scope.heartClass = 'glyphicon glyphicon-heart-empty';
+    $scope.heartClass = 'fa fa-heart-o';
     $scope.isFavorite = false;
     var userId = Snippets.getLoggedInUserData().id;
 
@@ -31,9 +31,9 @@ angular.module('stackets.favorite', [])
 
     function toggleFavoriteClass() {
       if ($scope.isFavorite) {
-        $scope.heartClass = 'glyphicon glyphicon-heart';
+        $scope.heartClass = 'fa fa-heart';
       } else {
-        $scope.heartClass = 'glyphicon glyphicon-heart-empty';
+        $scope.heartClass = 'fa fa-heart-o';
       }
     }
 

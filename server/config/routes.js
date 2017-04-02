@@ -1,9 +1,7 @@
-//require each controller, will refer to each controller in the routes
 require('../../env.js');
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 var jwt = require('jsonwebtoken');
-//var jwtDoorKeeper = require('express-jwt');
 var snippetsController = require('../controllers/snippets-controller.js');
 var jwtAuth = require('../controllers/jwt-authenticate.js');
 var userSignUpController = require('../controllers/user-signup-controller.js');
@@ -16,25 +14,24 @@ var profileController = require('../controllers/profile-controller.js');
 
 module.exports = function(app, express) {
   app.post('/signup', userSignUpController.signup);
-
   app.post('/login', loginController.login);
 
   app.post('/authenticate', jwtAuth.authenticate);
 
   app.get('/login/github', passport.authenticate('github'));
 
-  app.get('/login/github/return', 
+  app.get('/login/github/return',
     passport.authenticate('github', { failureRedirect: '/' }),
-    function(req, res) {      
+    function(req, res) {
       console.log('github res: ', req.user.dataValues);
       var token = jwt.sign({
         name: req.user.dataValues.name,
-        photo: req.user.dataValues.image                    
-      }, process.env.JWT_SECRET);                  
+        photo: req.user.dataValues.image
+      }, process.env.JWT_SECRET);
       var userId = req.user.dataValues.id;
       var name = req.user.dataValues.name;
-      var photo = req.user.dataValues.image;                  
-      res.redirect('/?name='+name+'&photo='+photo+'&id='+userId+'&token='+token);            
+      var photo = req.user.dataValues.image;
+      res.redirect('/?name='+name+'&photo='+photo+'&id='+userId+'&token='+token);
     }
   );
 
@@ -109,8 +106,8 @@ module.exports = function(app, express) {
     res.redirect('/');
   });
   //redirect to the home page
-  app.get('/*', function(req, res) {    
-    console.log('incoming request comming...', req.headers);
+  app.get('/*', function(req, res) {
+    console.log('incoming request coming...', req.headers);
     res.redirect('/');
   });
 };

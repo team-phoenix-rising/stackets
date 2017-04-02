@@ -4,7 +4,6 @@ angular.module('stackets.view', [])
   .controller('ViewSnippetController', function ($scope, Snippets, $stateParams) {
     $scope.snippet = {};
     $scope.code = '';
-    $scope.codeSample = '';
 
     Snippets.getSnippetById($stateParams.id).then(function (snippet) {
       $scope.id = snippet.id;
@@ -31,14 +30,18 @@ angular.module('stackets.view', [])
     // ui-ace @ https://www.npmjs.com/package/angular-ui-ace
     // CDN @ https://cdnjs.com/libraries/ace/
     // Editor font size
-      document.getElementById('editor').style.fontSize='12px';
+      document.getElementById('editor').style.fontSize='14px';
       // Options
       var _session = _editor.getSession();
       var _renderer = _editor.renderer;
       _editor.setHighlightActiveLine(true);
-      _editor.setShowPrintMargin(true);
+      _editor.setShowPrintMargin(false);
       _editor.setReadOnly(true);
       _session.setUseWrapMode(true);
+      _session.setTabSize(2);
+      _session.setUseSoftTabs(true);
+      // turn off syntax checking
+      _session.setOption("useWorker", false);
       // Theme @ https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
       _editor.setTheme("ace/theme/cobalt");
       // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
@@ -51,30 +54,5 @@ angular.module('stackets.view', [])
       });
     };
 //the method below will serve the ace editor into the text box displaying the code sample.
-    $scope.aceLoaded2 = function (_editor) {
-      // Ace @ https://ace.c9.io/
-    // Ace @ https://github.com/ajaxorg/ace
-    // ui-ace @ https://www.npmjs.com/package/angular-ui-ace
-    // CDN @ https://cdnjs.com/libraries/ace/
-    // Editor font size
-      document.getElementById('editor').style.fontSize='12px';
-      // Options
-      var _session = _editor.getSession();
-      var _renderer = _editor.renderer;
-      _editor.setHighlightActiveLine(true);
-      _editor.setShowPrintMargin(true);
-      _editor.setReadOnly(true);
-      _session.setUseWrapMode(true);
-      // Theme @ https://github.com/ajaxorg/ace/tree/master/lib/ace/theme
-      _editor.setTheme("ace/theme/cobalt");
-      // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
-      _session.setMode("ace/mode/javascript");
-      // Load the snippet's code
-      _session.setValue('');
-      // Events
-      _session.on("change", function(e) {
-        $scope.codeSample = _session.getValue();
-      });
-    };
 
   });
