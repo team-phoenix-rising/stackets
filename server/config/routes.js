@@ -41,18 +41,15 @@ module.exports = function(app, express) {
   app.get('/login/facebook/return',
     passport.authenticate('facebook', { failureRedirect: '/' }),
     function(req, res) {
-      console.log('face res: ', req.user.dataValues);
-      req.session.facebookUser = req.user.dataValues.name;
-      console.log(req.session)
+      console.log('face return : ', req.user[0].dataValues);          
       var token = jwt.sign({
-        name: req.user.dataValues.name,
-        photo: req.user.dataValues.image,           
-        id: req.user.dataValues.id                    
+        name: req.user[0].dataValues.name,
+        photo: req.user[0].dataValues.image,           
+        id: req.user[0].dataValues.id                    
       }, process.env.JWT_SECRET);                  
->>>>>>> initial user data
-      var id = req.user.dataValues.id
-      var name = req.user.dataValues.name
-      var photo = req.user.dataValues.image
+      var id = req.user[0].dataValues.id
+      var name = req.user[0].dataValues.name
+      var photo = req.user[0].dataValues.image
       res.redirect('/?name='+name+'&photo='+photo+'&id='+id+'&token='+token);
     }
   );

@@ -2,8 +2,7 @@ angular.module('stackets.services', [])
   .factory('Snippets', function ($http) {
     var data;
     var languages;
-
-    var user = {};
+    var user = {}
 
     var logIn = function(id) {
       getUserData(id)
@@ -141,11 +140,10 @@ angular.module('stackets.services', [])
       });
     };
 
-    var authenticate = function(token) {
+    var authenticate = function() {
       return $http({
-        method: 'POST',
-        url: '/authenticate',
-        data: {webToken: token}
+        method: 'GET',
+        url: '/authenticate'
       })
     }
 
