@@ -14,15 +14,18 @@ passport.use(new Strategy({
     clientSecret: process.env.CLIENT_SECRET,
     callbackURL: 'http://localhost:3000/login/facebook/return',
     profileFields: ['id', 'displayName', 'photos', 'email']
-  }, function(accessToken, refreshToken, profile, done) {
-    db.User.create({
-      name: profile.displayName,
-      token: accessToken,
-      image: profile.photos[0].value,
-      provider: profile.provider
-    }).then(function(user, err) {
-      return done(err, user);
+  }, function(accessToken, refreshToken, profile, done) {        
+    db.User.findOrCreate({
+      where: {        
+        name: profile.displayName,        
+        image: profile.photos[0].value,
+        provider: profile.provider,
+        facebook_id: profile.id  
+      }
     })
+    .then(function(user, err) {
+      return done(err, user);
+    })    
 }));
 
 passport.use(new GitHubStrategy({
@@ -32,15 +35,18 @@ passport.use(new GitHubStrategy({
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log('github profile..', profile._json.avatar_url)
-    db.User.create({
-      name: profile.displayName,
-      token: accessToken,
-      image: profile._json.avatar_url,
-      provider: profile.provider
-    }).then(function(user, err) {
-      return done(err, user);
+    console.log('github profile..', profile)
+    db.User.findOrCreate({
+      where: {        
+        name: profile.displayName,      
+        image: profile._json.avatar_url,
+        provider: profile.provider,
+        github_id: profile.id
+      }
     })
+    .then(function(user, err) {
+      return done(err, user);
+    }); 
   }
 ));
 
