@@ -2,7 +2,6 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
-    console.log('get snippets')
     db.Snippet.findAll({
       include: [
         {model: db.Language},
@@ -145,7 +144,7 @@ module.exports = {
       CategoryId: Number(req.body.category),
       SubcategoryId: Number(req.body.subcategory),
       // TODO: put me back in -> UserId: Number(req.body.userId)
-      UserId: 2
+      UserId: Number(req.body.userId)
     };
 
     db.Snippet.create(params)

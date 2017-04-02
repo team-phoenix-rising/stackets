@@ -9,7 +9,7 @@ angular.module('stackets.searchResults', [])
     };
     $scope.search = $state.params.query;
 
-    if (!$location.$$path.split('/')[2]) {
+    if ($location.$$path.split('/')[2] === 'mysnippets') {
 
       Snippets.getAllSnippets().then(function(snippets) {
         snippets = snippets.map(snippet => {
@@ -20,7 +20,7 @@ angular.module('stackets.searchResults', [])
         $scope.data.snippets = snippets;
       });
 
-    } else if ($location.$$path.split('/')[2] === 'mysnippets') {
+    } else if (!$location.$$path.split('/')[2]) {
       var userId = Snippets.getLoggedInUserData().id;
 
       Snippets.getAllSnippets().then(function (snippets) {
@@ -40,7 +40,8 @@ angular.module('stackets.searchResults', [])
       }
       $state.params.query = '';
     } else if ($location.$$path.split('/')[2] === 'myfavorites') {
-      Snippets.getFavsByUser(2).then(function(response) {
+      var userId = Snippets.getLoggedInUserData().id;
+      Snippets.getFavsByUser(userId).then(function(response) {
         var snippets = response.data;
         snippets = snippets.map(snippet => {
           if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
@@ -49,6 +50,19 @@ angular.module('stackets.searchResults', [])
         });
         $scope.data.snippets = snippets;
     });
+  } else {
+
+    $scope.category = $location.$$path.split('/')[2] || '';
+
+    Snippets.getAllSnippets().then(function (snippets) {
+      snippets = snippets.map(snippet => {
+        if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+        snippet.snippet = JSON.parse(snippet.snippet);
+        return snippet;
+      });
+      $scope.data.snippets = snippets;
+    });
+
   }
 
     $scope.setAceEditorLang = function (form) {
