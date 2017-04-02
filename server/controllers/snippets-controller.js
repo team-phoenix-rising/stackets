@@ -2,7 +2,6 @@ var db = require('../config/db.js');
 
 module.exports = {
   get: function(req, res) {
-    console.log('get snippets')
     db.Snippet.findAll({
       include: [
         {model: db.Language},
@@ -36,7 +35,6 @@ module.exports = {
     var params = {
       userId: Number(req.params.userId)
     };
-    console.log(req.params);
     db.Snippet.findAll({
       where: {
         'UserId': Number(req.params.userId)

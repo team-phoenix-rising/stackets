@@ -96,6 +96,14 @@ module.exports = function(app, express) {
   app.get('/search', function(req, res) {
     res.redirect('/');
   });
+  //direct view all page
+  app.get('/search/mysnippets', function(req, res) {
+    res.redirect('/');
+  });
+  //direct to view favorites
+  app.get('/search/myfavorties', function(req, res) {
+    res.redirect('/');
+  });
   //direct to page wher a user can add a snippet
   app.get('/add', function(req, res) {
     res.redirect('/');
