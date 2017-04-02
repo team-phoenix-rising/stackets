@@ -42,17 +42,9 @@ angular.module('stackets', [
         controller: 'HomeController',
         templateUrl: '../partials/home.html'
       },
-      'recentSnippetsView': {
-        controller: 'RecentSnippetsController',
-        templateUrl: '../partials/recent-snippets.html'
-      },
-      'featuredSnippetView': {
-        controller: 'FeaturedSnippetController',
-        templateUrl: '../partials/featured-snippet.html'
-      },
-      'searchBarView': {
-        controller: 'SearchBarController',
-        templateUrl: '../partials/search-bar.html'
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
       }
     }
   }).state('about', {

@@ -2,7 +2,7 @@ angular.module('stackets.services', [])
   .factory('Snippets', function ($http) {
     var data;
     var languages;
-    
+
     var user = {};
 
     var logIn = function(id) {

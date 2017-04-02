@@ -192,6 +192,8 @@ span.label.label-default {
 
 div.snippet-card-editor {
   font-size: 10px;
+  /*ADDED BELOW TO PREVENT TALL SNIPPETS*/
+  height: 200px;
 }
 
 .snippet-card-resource-heading {
@@ -204,7 +206,7 @@ div.snippet-card-editor {
 }
 
 div .thumbnail .caption {
-  min-height: 270px;
+  /*min-height: 270px;*/
 }
 
 

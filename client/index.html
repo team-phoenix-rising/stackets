@@ -37,12 +37,13 @@
                     <div class="sidebar-profile">
                         <li>
                             <a ui-sref="profile"><i class="fa fa-user" aria-hidden="true"></i> View Your Profile</a>
+                            <a ui-sref="login"><i class="fa fa-user" aria-hidden="true"></i> Login</a>
                         </li>
                     </div>
                     <div class="sidebar-user-snippets">
                         <h2 class="sidebar-heading">Your Snippets</h2>
                         <li>
-                            <a ui-sref="search/mysnippets"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
+                            <a href="/"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
                         </li>
                         <li>
                             <a ui-sref="add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
@@ -54,7 +55,7 @@
                     <div class="sidebar-all-snippets">
                         <h2 class="sidebar-heading">All User's Snippets</h2>
                         <li>
-                            <a href="#"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
+                            <a ui-sref="search/mysnippets"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
                         </li>
                     </div>
                     <div class="sidebar-filters">
@@ -94,6 +95,10 @@
 
             <div id="page-content-wrapper">
                 <div class="container-fluid">
+                  <div ui-view="loginView">
+                  </div>
+                  <div ui-view="homeView">
+                  </div>
                     <div class="row snippet-card-search-wrapper">
                         <div class="col-md-6 col-md-offset-3" ui-view="searchBarView">
                         </div>

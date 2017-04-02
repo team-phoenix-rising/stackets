@@ -9,7 +9,7 @@ angular.module('stackets.searchResults', [])
     };
     $scope.search = $state.params.query;
 
-    if (!$location.$$path.split('/')[2]) {
+    if ($location.$$path.split('/')[2] === 'mysnippets') {
 
       Snippets.getAllSnippets().then(function(snippets) {
         snippets = snippets.map(snippet => {
@@ -20,7 +20,7 @@ angular.module('stackets.searchResults', [])
         $scope.data.snippets = snippets;
       });
 
-    } else if ($location.$$path.split('/')[2] === 'mysnippets') {
+    } else if (!$location.$$path.split('/')[2]) {
       var userId = Snippets.getLoggedInUserData().id;
 
       Snippets.getAllSnippets().then(function (snippets) {
