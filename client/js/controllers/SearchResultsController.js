@@ -40,7 +40,8 @@ angular.module('stackets.searchResults', [])
       }
       $state.params.query = '';
     } else if ($location.$$path.split('/')[2] === 'myfavorites') {
-      Snippets.getFavsByUser(2).then(function(response) {
+      var userId = Snippets.getLoggedInUserData().id;
+      Snippets.getFavsByUser(userId).then(function(response) {
         var snippets = response.data;
         snippets = snippets.map(snippet => {
           if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'

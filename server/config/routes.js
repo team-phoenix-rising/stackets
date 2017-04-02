@@ -43,10 +43,15 @@ module.exports = function(app, express) {
       console.log('face res: ', req.user.dataValues);
       req.session.facebookUser = req.user.dataValues.name;
       console.log(req.session)
+      var token = jwt.sign({
+        name: req.user.dataValues.name,
+        photo: req.user.dataValues.image,
+        id: req.user.dataValues.id
+      }, process.env.JWT_SECRET);
       var id = req.user.dataValues.id
       var name = req.user.dataValues.name
       var photo = req.user.dataValues.image
-      res.redirect('/?name='+name+'&photo='+photo+'&id='+id);
+      res.redirect('/?name='+name+'&photo='+photo+'&id='+id+'&token='+token);
     }
   );
 
@@ -86,7 +91,6 @@ module.exports = function(app, express) {
   });
   //direct to profile page
   app.get('/profile', function(req, res) {
-    console.log('profile request...', req.headers)
     res.redirect('/');
   });
   //direct to search page
@@ -99,6 +103,7 @@ module.exports = function(app, express) {
   });
   //direct to view favorites
   app.get('/search/myfavorties', function(req, res) {
+
     res.redirect('/');
   });
   //direct to page wher a user can add a snippet

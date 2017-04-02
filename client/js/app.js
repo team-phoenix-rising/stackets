@@ -17,7 +17,6 @@ angular.module('stackets', [
   'ui.ace'
 ]).service('APIInterceptor', function($rootScope, $window) {
   var service = this;
-  console.log('intercepted')
   service.request = function(config) {
     if ($window.localStorage.stacketsToken) {
       config.headers.authorization = $window.localStorage.stacketsToken;
