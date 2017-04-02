@@ -22,16 +22,18 @@ module.exports = function(app, express) {
 
   app.get('/login/github/return',
     passport.authenticate('github', { failureRedirect: '/' }),
-    function(req, res) {
-      console.log('github res: ', req.user.dataValues);
+    function(req, res) {      
+      console.log('github response...', req.user)
       var token = jwt.sign({
-        name: req.user.dataValues.name,
-        photo: req.user.dataValues.image,                    
-        id: req.user.dataValues.id                   
-      }, process.env.JWT_SECRET);                  
-      var userId = req.user.dataValues.id;
-      var name = req.user.dataValues.name;
-      var photo = req.user.dataValues.image;
+        name: req.user[0].dataValues.name,
+        photo: req.user[0].dataValues.image,                    
+        id: req.user[0].dataValues.id,
+        provider: req.user[0].dataValues.provider                   
+      }, process.env.JWT_SECRET);         
+
+      var userId = req.user[0].dataValues.id;
+      var name = req.user[0].dataValues.name;
+      var photo = req.user[0].dataValues.image;
       res.redirect('/?name='+name+'&photo='+photo+'&id='+userId+'&token='+token);
     }
   );
@@ -40,13 +42,14 @@ module.exports = function(app, express) {
 
   app.get('/login/facebook/return',
     passport.authenticate('facebook', { failureRedirect: '/' }),
-    function(req, res) {
-      console.log('face return : ', req.user[0].dataValues);          
+    function(req, res) {            
       var token = jwt.sign({
         name: req.user[0].dataValues.name,
         photo: req.user[0].dataValues.image,           
-        id: req.user[0].dataValues.id                    
-      }, process.env.JWT_SECRET);                  
+        id: req.user[0].dataValues.id,
+        provider: req.user[0].dataValues.provider                    
+      }, process.env.JWT_SECRET);             
+
       var id = req.user[0].dataValues.id
       var name = req.user[0].dataValues.name
       var photo = req.user[0].dataValues.image

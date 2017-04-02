@@ -35,15 +35,18 @@ passport.use(new GitHubStrategy({
     profileFields: ['id', 'displayName', 'photos', 'email']
   },
   function(accessToken, refreshToken, profile, done) {
-    console.log('github profile..', profile._json.avatar_url)
-    db.User.create({
-      name: profile.displayName,
-      token: accessToken,
-      image: profile._json.avatar_url,
-      provider: profile.provider
-    }).then(function(user, err) {
-      return done(err, user);
+    console.log('github profile..', profile)
+    db.User.findOrCreate({
+      where: {        
+        name: profile.displayName,      
+        image: profile._json.avatar_url,
+        provider: profile.provider,
+        github_id: profile.id
+      }
     })
+    .then(function(user, err) {
+      return done(err, user);
+    }); 
   }
 ));
 

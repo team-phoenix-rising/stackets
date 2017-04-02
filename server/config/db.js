@@ -72,7 +72,8 @@ var User = db.define('User', {
   provider: Sequelize.TEXT,
   password: Sequelize.TEXT,
   email: Sequelize.TEXT,
-  facebook_id: Sequelize.TEXT
+  facebook_id: Sequelize.TEXT,
+  github_id: Sequelize.TEXT
   //id (auto-generated)
   //createdAt (auto-generated)
   //updatedAt (auto-generated)
