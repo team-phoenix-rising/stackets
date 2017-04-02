@@ -6,7 +6,8 @@ module.exports = {
 		console.log('authenticate request...', req.headers)
 		jwt.verify(req.headers.authorization, process.env.JWT_SECRET, function(err, decoded) {		  	
 		  	if(err) {console.log(err)}
-		  	if ( decoded ) {		  		
+		  	if ( decoded ) {		  
+		  		console.log('decoded user..', decoded)		
 		  		res.status(200)
 		  		res.send(decoded)
 		  	}	

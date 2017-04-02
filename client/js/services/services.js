@@ -5,14 +5,19 @@ angular.module('stackets.services', [])
     var languages;
     var user = {}
 
-    var setLogStatus = function() {
-      isLoggedIn = !isLoggedIn;
-      console.log('isLoggedIn', isLoggedIn);
+    var setLogInStatus = function() {
+      isLoggedIn = true;      
+    }
+    
+    var setLogOutStatus = function() {      
+      isLoggedIn = false;;
     }
 
     var getLogStatus = function() {
+      console.log('getLogged Status', isLoggedIn)
       return isLoggedIn;
     }
+
 
     var logIn = function(id) {
       getUserData(id)
@@ -177,7 +182,8 @@ angular.module('stackets.services', [])
       user: user,
       authenticate: authenticate,
       isLoggedIn: isLoggedIn,
-      setLogStatus: setLogStatus,
+      setLogInStatus: setLogInStatus,
+      setLogOutStatus: setLogOutStatus,
       getLogStatus: getLogStatus
     };
   });

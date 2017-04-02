@@ -9,12 +9,16 @@ module.exports = {
     bcrypt.hash(req.body.password, null, null, function(err, hash) {
 	    db.User.create({
 	    	email: req.body.email,
-	      	password: hash
+	      password: hash,
+	      provider: 'self'
 	    }).then(function(user, err) {
-			var token = jwt.sign(user.dataValues.email, process.env.JWT_SECRET);
+				var token = jwt.sign({
+					user: user.dataValues.email,
+					provider: user.provider
+				}, process.env.JWT_SECRET);
 	      	console.log('successfully created ', user.dataValues.email)
-			res.status(200);
-			res.send(token);
+				res.status(200);
+				res.send(token);
 	    })
 	});
   }	

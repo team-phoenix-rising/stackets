@@ -1,6 +1,6 @@
 angular.module('stackets.login', [])
 
-.controller('LoginController', function ($scope, $http, $location, Snippets) {
+.controller('LoginController', function ($scope, $http, $window, $location, Snippets) {
 	var query = $location.search()
   var photo = query["photo"];
   var imageKey = query["oe"];
@@ -22,7 +22,9 @@ angular.module('stackets.login', [])
     }).then(function(response){
       console.log('login response', response)
       $scope.loggedUserEmail = response.data.userEmail;
-      Snippets.setLogStatus();
+      $window.localStorage.stacketsToken = response.data.token;
+      Snippets.setLogInStatus();
+      $location.path('/');
     }, function(err){
       console.log(err)
     });

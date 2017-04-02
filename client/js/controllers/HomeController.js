@@ -4,7 +4,7 @@ angular.module('stackets.home', [])
     Snippets.authenticate().then(function(response) {
       console.log('autehnticating', $scope.loggedIn)     
       if( $window.localStorage.stacketsToken ) {          
-        $scope.loggedIn = Snippets.setLogStatus();
+        $scope.loggedIn = Snippets.setLogInStatus();
         $scope.username = response.data.name;
         $scope.imageUrl = response.data.photo;
         $scope.loggedIn = Snippets.getLogStatus();        
