@@ -8,12 +8,13 @@
       <div class="thumbnail">
         <div class="snippet-card-editor" ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="snippet.snippet"></div>
         <div class="caption">
-          <h3 class="snippet-card-title"><span class="snippet-card-heart"><favorite snippetid={{snippet.id}}></favorite></span><a href="/snippets/{{snippet.id}}">{{ snippet.title }}</a></h3>
+          <h3 class="snippet-card-title"><span class="snippet-card-heart"><favorite snippetid={{snippet.id}}></favorite></span>{{ snippet.title }}</h3>
           <p><img src="{{ snippet.user.image }}" class="snippet-card-avatar" alt="">{{snippet.user.name}}</p>
           <div class="snippet-card-note-wrapper">
             <p>{{ snippet.notes}}</p>
           </div>
-          <p class="text-right"><span class="label label-default">{{ snippet.category}} / {{ snippet.subcategory }}</span></p>
+          <p class="snippet-card-button"><a href="/snippets/{{snippet.id}}"><span class="label label-default button">View Snippet</span></a></p>
+          <p class="snippet-card-label"><span class="label label-default category">{{ snippet.category}} / {{ snippet.subcategory }}</span></p>
         </div>
       </div>
     </div>

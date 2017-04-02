@@ -211,7 +211,28 @@ img.snippet-card-avatar {
   float: right;
 }
 
-span.label.label-default {
+.snippet-card-button {
+  display: inline;
+}
+
+.snippet-card-button a:hover {
+  text-decoration: none;
+}
+
+.snippet-card-label {
+  display: inline;
+  float: right;
+}
+
+span.label.label-default.button {
+  background-color: #BF4E4C;
+}
+
+span.label.label-default.button:hover {
+  background-color: #BFECE2;
+}
+
+span.label.label-default.category {
   background-color: #F0CF65;
 }
 
