@@ -1,9 +1,9 @@
 //This controller serves the results of all the snippets to the search page.
 angular.module('stackets.searchResults', [])
-  .controller('SearchResultsController', function ($scope, $state, $stateParams, Snippets, $location) {
+  .controller('SearchResultsController', function ($scope, $state, $stateParams, Snippets, $location, $window) {
     $scope.searchResultsTitle = 'Search Results';
     $scope.data = {};
-
+    var userId = $window.localStorage.userId;
     $scope.search = {
       search: $state.params.query || ''
     };
@@ -37,8 +37,8 @@ angular.module('stackets.searchResults', [])
       });
 
     } else if (!$location.$$path.split('/')[2]) {
-      var userId = Snippets.getLoggedInUserData().id;
-
+      // var userId = Snippets.getLoggedInUserData().id;
+      // console.log('userid', userId);
       Snippets.getAllSnippets().then(function (snippets) {
         snippets = snippets.map(snippet => {
           if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
@@ -57,7 +57,7 @@ angular.module('stackets.searchResults', [])
       }
       $state.params.query = '';
     } else if ($location.$$path.split('/')[2] === 'myfavorites') {
-      var userId = Snippets.getLoggedInUserData().id;
+      // var userId = Snippets.getLoggedInUserData().id;
       Snippets.getFavsByUser(userId).then(function(response) {
         var snippets = response.data;
         snippets = snippets.map(snippet => {

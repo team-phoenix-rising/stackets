@@ -50,8 +50,19 @@
                         </li>
                         <li>
                             <a ui-sref="search/myfavorites"><i class="fa fa-gratipay" aria-hidden="true"></i></i> View Favorites</a>
-                        </li>
+                        </li>                        
                     </div>
+                    <div class="login-buttons">                        
+                        <li>
+                            <a ui-sref="signup" class="">Sign up</a>
+                        </li>
+                        <li>
+                            <a ui-sref="login" class="">Login</a>
+                        </li>
+                        <li ng-controller="LogOutController">
+                            <a ng-click="logout()" href="/logout" target="_self" class="logout-button">Log Out</a>
+                        </li>
+                    </div> 
                     <div class="sidebar-all-snippets">
                         <h2 class="sidebar-heading">All User's Snippets</h2>
                         <li>
@@ -83,11 +94,6 @@
                         </li>
                         <li>
                             <a ui-sref="search/testing"><i class="fa fa-check-square-o" aria-hidden="true"></i> Testing</a>
-                        </li>
-                    </div>
-                    <div class="sidebar-logout">
-                        <li>
-                            <a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
                         </li>
                     </div>
                 </ul>
@@ -123,6 +129,11 @@
                         <div class="view-snippet-panel" ui-view="viewSnippetView"></div>
                       </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="view-signup-panel" ui-view="signUpView"></div>                        
+                        </div>
+                    </div>                    
                 </div>
             </div>
         </div>

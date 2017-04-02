@@ -224,4 +224,10 @@ angular.module('stackets', [
     }
   });
   $httpProvider.interceptors.push('APIInterceptor');
+})
+.controller('LogOutController', function ($scope, $window, Snippets) {
+  $scope.logout = function() {
+    delete $window.localStorage.stacketsToken;
+    delete $window.localStorage.userId;
+  }
 });
