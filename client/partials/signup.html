@@ -1,0 +1,31 @@
+<div class="signup-frame container">
+  <div class="close-wrapper container">
+    <h3 class="signup-title">Sign Up</h3>
+  </div>
+  <form name="signup-form">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="text" class="form-control" ng-model="email">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="text" class="form-control" ng-model="password">
+    </div>        
+    <div class="button-container">
+      <button ng-click="signUpUser(email, password)" type="submit" class="btn btn-primary signup-submit-button">Submit</button>            
+    </div>
+  </form>
+
+  <div class="social-buttons container-fluid">
+    <div class="row">
+      <button class="facebook-link">
+        <a href="/login/facebook" target="_self" class="pull-right facebook-  button">Facebook Login</a>              
+      </button>                            
+    </div>
+    <div class="row">
+      <button class="github-link">
+        <a href="/login/github" target="_self" class="row">GitHub Login</a>
+      </button>                                    
+    </div>
+  </div>        
+</div>

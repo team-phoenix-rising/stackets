@@ -1,6 +1,6 @@
 //This controller serves the results of all the snippets to the search page.
 angular.module('stackets.searchResults', [])
-  .controller('SearchResultsController', function ($scope, $state, $stateParams, Snippets) {
+  .controller('SearchResultsController', function ($scope, $state, $stateParams, Snippets, $location) {
     $scope.searchResultsTitle = 'Search Results';
     $scope.data = {};
 
@@ -9,17 +9,29 @@ angular.module('stackets.searchResults', [])
     };
     $scope.search = $state.params.query;
 
-    Snippets.getAllSnippets().then(function (snippets) {
-      snippets = snippets.map(snippet => {
-        if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
-        snippet.snippet = JSON.parse(snippet.snippet);
-        return snippet;
-      });
-      $scope.data.snippets = snippets;
-    });
+    if (!$location.$$path.split('/')[2]) {
 
-    if ($state.params.query === 'mysnippets') {
+      Snippets.getAllSnippets().then(function(snippets) {
+        snippets = snippets.map(snippet => {
+          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          snippet.snippet = JSON.parse(snippet.snippet);
+          return snippet;
+        });
+        $scope.data.snippets = snippets;
+      });
+
+    } else if ($location.$$path.split('/')[2] === 'mysnippets') {
       var userId = Snippets.getLoggedInUserData().id;
+
+      Snippets.getAllSnippets().then(function (snippets) {
+        snippets = snippets.map(snippet => {
+          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          snippet.snippet = JSON.parse(snippet.snippet);
+          return snippet;
+        });
+        $scope.data.snippets = snippets;
+      });
+
       $scope.user = function(snippet) {
         if (Number(snippet.user.id) === Number(userId)) {
           return true;
@@ -27,7 +39,17 @@ angular.module('stackets.searchResults', [])
         return false;
       }
       $state.params.query = '';
-    }
+    } else if ($location.$$path.split('/')[2] === 'myfavorites') {
+      Snippets.getFavsByUser(2).then(function(response) {
+        var snippets = response.data;
+        snippets = snippets.map(snippet => {
+          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          snippet.snippet = JSON.parse(snippet.snippet);
+          return snippet;
+        });
+        $scope.data.snippets = snippets;
+    });
+  }
 
     $scope.setAceEditorLang = function (form) {
       var languageId = Number(this.snippet.LanguageId);

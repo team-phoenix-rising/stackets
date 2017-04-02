@@ -36,19 +36,19 @@
                 <ul class="sidebar-nav">
                     <div class="sidebar-profile">
                         <li>
-                            <a ui-sref="profile"><img src="https://d3iw72m71ie81c.cloudfront.net/male-20.jpg" class="sidebar-avatar" alt=""> View Your Profile</a>
+                            <a ui-sref="profile"><i class="fa fa-user" aria-hidden="true"></i> View Your Profile</a>
                         </li>
                     </div>
                     <div class="sidebar-user-snippets">
                         <h2 class="sidebar-heading">Your Snippets</h2>
                         <li>
-                            <a href="search/mysnippets"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
+                            <a ui-sref="search/mysnippets"><i class="fa fa-list" aria-hidden="true"></i> View All</a>
                         </li>
                         <li>
                             <a ui-sref="add"><i class="fa fa-plus-circle" aria-hidden="true"></i> Add New</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-gratipay" aria-hidden="true"></i></i> View Favorites</a>
+                            <a ui-sref="search/myfavorites"><i class="fa fa-gratipay" aria-hidden="true"></i></i> View Favorites</a>
                         </li>
                     </div>
                     <div class="sidebar-all-snippets">
@@ -122,6 +122,8 @@
             </div>
         </div>
     </div>
+    <script src='js/controllers/SignUpController.js'></script>
+    <script src='js/controllers/LoginController.js'></script>
     <script src='js/controllers/AboutController.js'></script>
     <script src='js/controllers/AddSnippetController.js'></script>
     <script src='js/controllers/FeaturedSnippetController.js'></script>

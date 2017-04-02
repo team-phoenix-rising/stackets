@@ -8,7 +8,6 @@ angular.module('stackets.profile', [])
     $scope.email = userInfo.email;
     $scope.image = userInfo.image;
 
-
     Snippets.getFavsByUser(userId).then(function(response) {
       $scope.favorites = response.data;
       console.log('fav data', response.data);

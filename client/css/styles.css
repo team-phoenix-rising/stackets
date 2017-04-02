@@ -203,6 +203,10 @@ div.snippet-card-editor {
   margin-bottom: -1px;
 }
 
+div .thumbnail .caption {
+  min-height: 270px;
+}
+
 
 /* ADD A SNIPPET */
 
@@ -234,4 +238,54 @@ input.add-snippet-url {
 
 .fa.fa-heart {
   color: #BF4E4C
+}
+
+/* LOGIN */
+
+ul.face-nav {
+	margin-bottom: 0;
+	padding-left: 0;
+	margin-right: 40px;
+}
+
+.navbar-default .navbar-nav > li > a.login-button {
+	background-color: rgba(44, 62, 80, 0.62);
+}
+
+.navbar-default .navbar-nav > li > a.logout-button {
+	background-color: rgba(44, 62, 80, 0.62);
+	color: red;
+}
+
+.navbar-default .navbar-nav > li > a.login-button:hover {
+	color: lightblue;
+}
+
+div.social-buttons {
+
+}
+
+div.social-buttons .row {
+	margin: 10px 0;
+}
+
+div.social-buttons .row > button {
+	width: 100%;
+	border: 0;
+	border-radius: 5px;
+	padding: 10px 0;
+}
+
+div.social-buttons .row > button.facebook-link {
+	background: #3b5998;
+}
+
+div.social-buttons .row > button {
+	background: #767676;
+}
+
+div.social-buttons .row > button > a {
+	width: 100%;
+	margin: 0;
+	color: white;
 }

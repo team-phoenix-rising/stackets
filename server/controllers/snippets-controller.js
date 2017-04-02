@@ -36,7 +36,6 @@ module.exports = {
     var params = {
       userId: Number(req.params.userId)
     };
-    console.log(req.params);
     db.Snippet.findAll({
       where: {
         'UserId': Number(req.params.userId)
