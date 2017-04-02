@@ -16,7 +16,7 @@ module.exports = function(app, express) {
   app.post('/signup', userSignUpController.signup);
   app.post('/login', loginController.login);
 
-  app.post('/authenticate', jwtAuth.authenticate);
+  app.get('/authenticate', jwtAuth.authenticate);
 
   app.get('/login/github', passport.authenticate('github'));
 
@@ -26,8 +26,9 @@ module.exports = function(app, express) {
       console.log('github res: ', req.user.dataValues);
       var token = jwt.sign({
         name: req.user.dataValues.name,
-        photo: req.user.dataValues.image
-      }, process.env.JWT_SECRET);
+        photo: req.user.dataValues.image,                    
+        id: req.user.dataValues.id                   
+      }, process.env.JWT_SECRET);                  
       var userId = req.user.dataValues.id;
       var name = req.user.dataValues.name;
       var photo = req.user.dataValues.image;
@@ -45,9 +46,10 @@ module.exports = function(app, express) {
       console.log(req.session)
       var token = jwt.sign({
         name: req.user.dataValues.name,
-        photo: req.user.dataValues.image,
-        id: req.user.dataValues.id
-      }, process.env.JWT_SECRET);
+        photo: req.user.dataValues.image,           
+        id: req.user.dataValues.id                    
+      }, process.env.JWT_SECRET);                  
+>>>>>>> initial user data
       var id = req.user.dataValues.id
       var name = req.user.dataValues.name
       var photo = req.user.dataValues.image

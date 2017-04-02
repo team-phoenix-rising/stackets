@@ -4,7 +4,7 @@ var jwt = require('jsonwebtoken');
 
 module.exports = {
   getUserData: function(req, res) {
-    console.log('decoded', req.headers)
+    //console.log('decoded', req.headers)
     jwt.verify(req.headers.authorization, process.env.JWT_SECRET, function(err, decoded) {
       if (decoded) {
         var params = {
