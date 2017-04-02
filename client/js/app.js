@@ -42,10 +42,10 @@ angular.module('stackets', [
         controller: 'HomeController',
         templateUrl: '../partials/home.html'
       },
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
-      }
+      // 'searchResultsView': {
+      //   controller: 'SearchResultsController',
+      //   templateUrl: '../partials/search-results.html'
+      // }
     }
   }).state('about', {
     url: '/about',

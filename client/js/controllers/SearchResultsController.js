@@ -122,4 +122,10 @@ angular.module('stackets.searchResults', [])
       _session.setValue('');
     };
 
+  })
+  .directive('searchresult', function(){
+    return {
+      controller: 'SearchResultsController',
+      templateUrl: '../partials/search-results.html'
+    }
   });
