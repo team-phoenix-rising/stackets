@@ -17,7 +17,6 @@ angular.module('stackets', [
   'ui.ace'
 ]).service('APIInterceptor', function($rootScope, $window) {
   var service = this;
-  console.log('intercepted')
   service.request = function(config) {
     if ($window.localStorage.stacketsToken) {
       config.headers.authorization = $window.localStorage.stacketsToken;
@@ -43,17 +42,9 @@ angular.module('stackets', [
         controller: 'HomeController',
         templateUrl: '../partials/home.html'
       },
-      'recentSnippetsView': {
-        controller: 'RecentSnippetsController',
-        templateUrl: '../partials/recent-snippets.html'
-      },
-      'featuredSnippetView': {
-        controller: 'FeaturedSnippetController',
-        templateUrl: '../partials/featured-snippet.html'
-      },
-      'searchBarView': {
-        controller: 'SearchBarController',
-        templateUrl: '../partials/search-bar.html'
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
       }
     }
   }).state('about', {
@@ -84,6 +75,72 @@ angular.module('stackets', [
     }
   }).state('search/mysnippets', {
     url: '/search/mysnippets',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/authentication', {
+    url: '/search/authentication',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/backend', {
+    url: '/search/backend',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/build tools', {
+    url: '/search/build tools',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/command line', {
+    url: '/search/command line',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/database', {
+    url: '/search/database',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/deployment', {
+    url: '/search/deployment',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  })
+  .state('search/frontend', {
+    url: '/search/frontend',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  })
+  .state('search/testing', {
+    url: '/search/testing',
     views: {
       'searchResultsView': {
         controller: 'SearchResultsController',

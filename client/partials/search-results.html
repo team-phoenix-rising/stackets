@@ -4,7 +4,7 @@
     <input type="text" class="form-control" id="search" ng-model="search">
   </div>
   <div class="row">
-    <div class="col-sm-6 col-md-4" ng-repeat='snippet in data.snippets | filter:search | filter:user'>
+    <div class="col-sm-6 col-md-4" ng-repeat='snippet in data.snippets | filter:search | filter:user | filter:category'>
       <div class="thumbnail">
         <div class="snippet-card-editor" ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="snippet.snippet"></div>
         <div class="caption">
