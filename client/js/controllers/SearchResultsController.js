@@ -9,11 +9,27 @@ angular.module('stackets.searchResults', [])
     };
     $scope.search = $state.params.query;
 
+    var truncateTitle = function(title) {
+      var newTitle = [];
+      var charCount = 0;
+      title.split(' ').forEach(word => {
+        if (charCount + word.length <= 22) newTitle.push(word);
+        charCount += word.length;
+      });
+      newTitle = newTitle.join(' ');
+      return newTitle + '...';
+    };
+
+    var truncateNote = function(note) {
+      return note.split(' ').splice(0, 21).join(' ') + '...';
+    };
+
     if ($location.$$path.split('/')[2] === 'mysnippets') {
 
       Snippets.getAllSnippets().then(function(snippets) {
         snippets = snippets.map(snippet => {
-          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
+          if (snippet.title.length > 22) snippet.title = truncateTitle(snippet.title);
           snippet.snippet = JSON.parse(snippet.snippet);
           return snippet;
         });
@@ -25,7 +41,8 @@ angular.module('stackets.searchResults', [])
 
       Snippets.getAllSnippets().then(function (snippets) {
         snippets = snippets.map(snippet => {
-          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
+          if (snippet.title.length > 22) snippet.title = truncateTitle(snippet.title);
           snippet.snippet = JSON.parse(snippet.snippet);
           return snippet;
         });
@@ -44,7 +61,8 @@ angular.module('stackets.searchResults', [])
       Snippets.getFavsByUser(userId).then(function(response) {
         var snippets = response.data;
         snippets = snippets.map(snippet => {
-          if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+          if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
+          if (snippet.title.length > 22) snippet.title = truncateTitle(snippet.title);
           snippet.snippet = JSON.parse(snippet.snippet);
           return snippet;
         });
@@ -56,7 +74,8 @@ angular.module('stackets.searchResults', [])
 
     Snippets.getAllSnippets().then(function (snippets) {
       snippets = snippets.map(snippet => {
-        if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+        if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
+        if (snippet.title.length > 22) snippet.title = truncateTitle(snippet.title);
         snippet.snippet = JSON.parse(snippet.snippet);
         return snippet;
       });
