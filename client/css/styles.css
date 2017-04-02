@@ -9,6 +9,16 @@ nav.navbar.navbar-default.navbar-fixed-top {
   border-color: #BF4E4C;
 }
 
+.container-fluid.navbar {
+  margin-top: 20px;
+  margin-bottom: -20px;
+}
+
+.navbar-brand.logo, .navbar-brand.toggle {
+  float: none;
+  /*margin-top: 20px;*/
+}
+
 #menu-toggle:hover, #menu-toggle:focus {
   color: #BFECE2;
 }
@@ -30,7 +40,6 @@ nav.navbar.navbar-default.navbar-fixed-top {
   left: 250px;
   z-index: 1000;
   overflow-y: auto;
-  margin-top: 60px;
   margin-left: -250px;
   width: 0;
   height: 100%;
@@ -54,6 +63,14 @@ nav.navbar.navbar-default.navbar-fixed-top {
 #wrapper.toggled #page-content-wrapper {
   position: absolute;
   margin-right: -250px;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-brand.toggle {
+    float: right;
+    margin-top: -50px;
+    margin-bottom: -50px;
+  }
 }
 
 
@@ -105,7 +122,7 @@ img.sidebar-avatar {
 }
 
 .sidebar-profile {
-  margin: 15px 0px 35px 0px;
+  margin: 75px 0px 35px 0px;
 }
 
 .sidebar-user-snippets {
@@ -174,6 +191,14 @@ form.navbar-form.navbar-left.searchbar {
 
 /* SNIPPET CARD */
 
+div .caption {
+  margin-top: -20px;
+}
+
+.snippet-card-title {
+  font-size: 20px;
+}
+
 img.snippet-card-avatar {
   width: 35px;
   height: 35px;
@@ -186,7 +211,28 @@ img.snippet-card-avatar {
   float: right;
 }
 
-span.label.label-default {
+.snippet-card-button {
+  display: inline;
+}
+
+.snippet-card-button a:hover {
+  text-decoration: none;
+}
+
+.snippet-card-label {
+  display: inline;
+  float: right;
+}
+
+span.label.label-default.button {
+  background-color: #BF4E4C;
+}
+
+span.label.label-default.button:hover {
+  background-color: #BFECE2;
+}
+
+span.label.label-default.category {
   background-color: #F0CF65;
 }
 
@@ -205,8 +251,9 @@ div.snippet-card-editor {
   margin-bottom: -1px;
 }
 
-div .thumbnail .caption {
-  /*min-height: 270px;*/
+.snippet-card-note-wrapper {
+  height: 90px;
+  margin-bottom: 5px;
 }
 
 
@@ -290,4 +337,21 @@ div.social-buttons .row > button > a {
 	width: 100%;
 	margin: 0;
 	color: white;
+}
+
+/* DISABLE BOOTSTRAP NATIVE COLLAPSE */
+.navbar-collapse.collapse {
+  display: block!important;
+}
+
+.navbar-nav>li, .navbar-nav {
+  float: left !important;
+}
+
+.navbar-nav.navbar-right:last-child {
+  margin-right: -15px !important;
+}
+
+.navbar-right {
+  float: right!important;
 }
