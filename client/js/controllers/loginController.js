@@ -15,15 +15,16 @@ angular.module('stackets.login', [])
   }
 
   $scope.loginUser = function(email, password) {
-  $http({
-        method: 'POST',
-        url: '/login',
-        data: {email: email, password: password}
-  }).then(function(response){
-    console.log(response)
-    $scope.loggedUserEmail = response.data.userEmail;
-  }, function(err){
-    console.log(err)
-  });
+    $http({
+          method: 'POST',
+          url: '/login',
+          data: {email: email, password: password}
+    }).then(function(response){
+      console.log('login response', response)
+      $scope.loggedUserEmail = response.data.userEmail;
+      Snippets.setLogStatus();
+    }, function(err){
+      console.log(err)
+    });
   }
 })

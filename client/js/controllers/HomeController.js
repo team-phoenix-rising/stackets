@@ -1,15 +1,17 @@
 angular.module('stackets.home', [])
   .controller('HomeController', function ($scope, $http, $window, $location, Snippets) {
-    $scope.loggedIn = false;
-    if( $window.localStorage.stacketsToken ) {    
-      Snippets.authenticate().then(function(response) {        
-        $scope.loggedIn = true;
+    $scope.loggedIn = Snippets.getLogStatus();
+    Snippets.authenticate().then(function(response) {
+      console.log('autehnticating', $scope.loggedIn)     
+      if( $window.localStorage.stacketsToken ) {          
+        $scope.loggedIn = Snippets.setLogStatus();
         $scope.username = response.data.name;
         $scope.imageUrl = response.data.photo;
-      },function(error) {
-        console.log('initial query error', error)
-      }); 
-    }
+        $scope.loggedIn = Snippets.getLogStatus();        
+      }       
+    }, function(err) {
+      console.log(err);
+    });
 
     var query = $location.search()
     if( query["token"] ) {

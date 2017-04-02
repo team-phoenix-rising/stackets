@@ -3,7 +3,7 @@ var bcrypt = require('bcrypt-nodejs');
 
 module.exports = {
 	login: function(req, res) {
-	  //console.log('login req..', req.body)
+	  	console.log('login req..', req.body)
 		db.User.findAll({
 		  where: {
 		    email: req.body.email
