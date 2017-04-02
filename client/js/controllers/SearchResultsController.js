@@ -50,6 +50,19 @@ angular.module('stackets.searchResults', [])
         });
         $scope.data.snippets = snippets;
     });
+  } else {
+
+    $scope.category = $location.$$path.split('/')[2] || '';
+
+    Snippets.getAllSnippets().then(function (snippets) {
+      snippets = snippets.map(snippet => {
+        if (snippet.notes !== '') snippet.notes = snippet.notes.split(' ').splice(0, 40).join(' ') + '...'
+        snippet.snippet = JSON.parse(snippet.snippet);
+        return snippet;
+      });
+      $scope.data.snippets = snippets;
+    });
+
   }
 
     $scope.setAceEditorLang = function (form) {

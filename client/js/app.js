@@ -81,6 +81,72 @@ angular.module('stackets', [
         templateUrl: '../partials/search-results.html'
       }
     }
+  }).state('search/authentication', {
+    url: '/search/authentication',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/backend', {
+    url: '/search/backend',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/build tools', {
+    url: '/search/build tools',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/command line', {
+    url: '/search/command line',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/database', {
+    url: '/search/database',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  }).state('search/deployment', {
+    url: '/search/deployment',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  })
+  .state('search/frontend', {
+    url: '/search/frontend',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
+  })
+  .state('search/testing', {
+    url: '/search/testing',
+    views: {
+      'searchResultsView': {
+        controller: 'SearchResultsController',
+        templateUrl: '../partials/search-results.html'
+      }
+    }
   }).state('search/myfavorites', {
     url: '/search/myfavorites',
     views: {
