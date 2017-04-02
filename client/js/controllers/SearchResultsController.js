@@ -69,7 +69,6 @@ angular.module('stackets.searchResults', [])
         $scope.data.snippets = snippets;
     });
   } else {
-
     $scope.category = $location.$$path.split('/')[2] || '';
 
     Snippets.getAllSnippets().then(function (snippets) {

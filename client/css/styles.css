@@ -213,8 +213,10 @@ div.snippet-card-editor {
   margin-bottom: -1px;
 }
 
-div .thumbnail .caption {
-  min-height: 220px;
+.snippet-card-note-wrapper {
+  height: 90px;
+  margin-bottom: 5px;
+  /*overflow: hidden;*/
 }
 
 
