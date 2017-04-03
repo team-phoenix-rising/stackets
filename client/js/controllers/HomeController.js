@@ -1,21 +1,21 @@
 angular.module('stackets.home', [])
 
-  .controller('HomeController', function ($scope, $http, $window, $location, Snippets) {                  
+  .controller('HomeController', function ($scope, $http, $window, $location, Snippets) {
     $scope.loggedIn = Snippets.getLogStatus();
-    Snippets.authenticate().then(function(response) {      
-      console.log('autehnticating', $scope.loggedIn)     
-      if( $window.localStorage.stacketsToken ) {          
+    Snippets.authenticate().then(function(response) {
+      console.log('autehnticating', $scope.loggedIn)
+      if( $window.localStorage.stacketsToken ) {
         $scope.loggedIn = Snippets.setLogInStatus();
         $scope.username = response.data.name;
         $scope.imageUrl = response.data.photo;
 //         $scope.loggedIn = Snippets.getLogStatus();
         Snippets.getLogStatus().then(function(status) {
-          $scope.loggedIn = status;        
+          $scope.loggedIn = status;
         });
       } else if (response.status = 401) {
         $location.path('/login');
         $location.replace();
-      }        
+      }
 
     }, function(err) {
       console.log(err);
