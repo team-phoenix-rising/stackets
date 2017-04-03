@@ -1,4 +1,5 @@
 angular.module('stackets.home', [])
+
   .controller('HomeController', function ($scope, $http, $window, $location, Snippets) {
     $scope.loggedIn = Snippets.getLogStatus();
     Snippets.authenticate().then(function(response) {
@@ -6,11 +7,14 @@ angular.module('stackets.home', [])
         $scope.loggedIn = Snippets.setLogInStatus();
         $scope.username = response.data.name;
         $scope.imageUrl = response.data.photo;
-        $scope.loggedIn = Snippets.getLogStatus();
+        Snippets.getLogStatus().then(function(status) {
+          $scope.loggedIn = status;
+        });
       } else if (response.status = 401) {
         $location.path('/login');
         $location.replace();
       }
+
     }, function(err) {
       console.error(err);
     });
