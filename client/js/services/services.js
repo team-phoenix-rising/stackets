@@ -5,17 +5,28 @@ angular.module('stackets.services', [])
     var languages;
     var user = {}
 
+    var promise = new Promise(function(resolve, reject) {
+      isLoggedIn = false;
+      if ( isLoggedIn === false ) {
+        resolve(isLoggedIn);
+      }
+      else {
+        reject();
+      }
+    });
+
     var setLogInStatus = function() {
       isLoggedIn = true;      
     }
     
     var setLogOutStatus = function() {      
-      isLoggedIn = false;;
+      isLoggedIn = false;
     }
 
     var getLogStatus = function() {
       console.log('getLogged Status', isLoggedIn)
-      return isLoggedIn;
+      //return isLoggedIn;
+      return promise;
     }
 
 
