@@ -192,7 +192,7 @@ angular.module('stackets', [
     }
   }).state('login', {
     name: 'login',
-    url: '/loginView',
+    url: '/login',
     data: {
       authorization: false,
       redirectTo: 'home',
@@ -206,7 +206,7 @@ angular.module('stackets', [
     }
   }).state('signup', {
     name: 'signup',
-    url: '/signupView',
+    url: '/signup',
     data: {
       authorization: false,
       redirectTo: 'home',

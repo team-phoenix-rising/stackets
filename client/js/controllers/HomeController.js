@@ -9,7 +9,7 @@ angular.module('stackets.home', [])
         $scope.imageUrl = response.data.photo;
         $scope.loggedIn = Snippets.getLogStatus();
       } else if (response.status = 401) {
-        $location.path('/loginView');
+        $location.path('/login');
         $location.replace();
       }
     }, function(err) {
