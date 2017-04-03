@@ -75,46 +75,47 @@
                   <div class="add-snippet-panel">
                     <form name="addSnippetForm" novalidate>
                       <div class="form-group col-md-8">
-                        <label for="title">Title</label>
+                        <label for="title">Title <span class="add-form-invalid-asterisk" ng-show="addSnippetForm.title.$invalid">*</span></label>
                         <input type="text" class="form-control" name="title" id="title" ng-model="snippet.title" required>
                       </div>
                       <div class="form-group col-md-4">
-                        <label for="language">Language</label>
-                        <select class="form-control" ng-model="snippet.LanguageId" ng-change="setAceEditorLang(language.name)" required>
+                        <label for="language">Language <span class="add-form-invalid-asterisk" ng-show="addSnippetForm.language.$invalid">*</span></label>
+                        <select class="form-control" name="language" ng-model="snippet.LanguageId" ng-change="setAceEditorLang(language.name)" required>
                           <option ng-repeat="language in languages" value="{{language.id}}">
                             {{language.displayname}}
                           </option>
                         </select>
                       </div>
                       <div class="form-group col-md-12">
-                        <label for="snippet">Snippet</label>
-                        <div ui-ace="{ onLoad: aceLoaded }" id="editor" ng-model="snippet.snippet"></div>
+                        <label for="snippet">Snippet <span class="add-form-invalid-asterisk" ng-show="addSnippetForm.editor.$invalid">*</span></label>
+                        <div ui-ace="{ onLoad: aceLoaded }" name="editor" id="editor" ng-model="snippet.snippet" required></div>
                       </div>
                       <div class="form-group col-md-12">
                         <label for="notes">Notes</label>
                         <textarea id="notes" class="form-control" rows="10" ng-model="snippet.notes"></textarea>
                       </div>
                       <div class="form-group col-md-3">
-                        <label for="language">Select Category</label>
-                        <select class="form-control" ng-model="snippet.category" ng-change="setCategory(snippet.category)" required>
+                        <label for="language">Select Category <span class="add-form-invalid-asterisk" ng-show="addSnippetForm.category.$invalid">*</span></label>
+                        <select class="form-control" name="category" ng-model="snippet.category" ng-change="setCategory(snippet.category)" required>
                           <option ng-repeat="cat in categories" value="{{cat.id}}">{{cat.name}}</option>
                         </select>
                       </div>
                       <div class="form-group col-md-3">
-                        <label for="language">Select Subcategory</label>
-                        <select class="form-control" ng-model="snippet.subcategory" required>
+                        <label for="language">Select Subcategory <span class="add-form-invalid-asterisk" ng-show="addSnippetForm.subcategory.$invalid">*</span></label>
+                        <select class="form-control" name="subcategory" ng-model="snippet.subcategory" required>
                           <option ng-repeat="cat in subcategories" value="{{cat.id}}">{{cat.name}}</option>
                         </select>
                       </div>
                       <div class="form-group col-md-6">
-                        <label for="resourceUrl">Enter Resource URLs (hit enter to add to list)</label>
-                        <input type="url" class="form-control add-snippet-url" id="resourceUrl" ng-model="snippet.resources" ng-keypress="addResource($event)">
+                        <label for="resourceUrl">Enter Resource URLs (hit return to add url to list) <span class="add-form-invalid-asterisk" ng-show="addSnippetForm.resource.$invalid">*</span></label>
+                        <input type="url" class="form-control add-snippet-url" name="resource" id="resourceUrl" ng-model="snippet.resources" ng-keypress="addResource($event)" placeholder="http://www.your-url.com">
                         <span ng-repeat="url in resourceUrls">
                           <p ng-click="removeResource($index)"><span class="add-snippet-added-resources-item">{{url}} <i class="fa fa-times-circle" aria-hidden="true"></i></p>
                         </span>
                       </div>
                       <div class="form-group col-md-12 text-right">
-                        <button type="button" class="btn btn-default" ng-click="addSnippetForm.$valid && code.length > 0 && addSnippet(addSnippetForm)">Submit</button>
+                        <button type="button" class="btn btn-default" ng-click="addSnippetForm.$valid && code.length > 0 && addSnippet(addSnippetForm)"> Submit</button><br/>
+                        <span class="add-form-invalid-asterisk" ng-show="addSnippetForm.$invalid">*Required Info Missing</span>
                       </div>
                     </form>
                   </div>
