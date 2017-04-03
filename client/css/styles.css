@@ -177,11 +177,15 @@ form.navbar-form.navbar-left.searchbar {
 }
 
 .form-group.searchbar {
-  width: 80%;
+  width: 100%;
 }
 
 .navbar-form input.form-control {
   width: 100%;
+}
+
+input#search:focus {
+  border: none;
 }
 
 .row.snippet-card-search-wrapper {
