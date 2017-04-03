@@ -177,11 +177,15 @@ form.navbar-form.navbar-left.searchbar {
 }
 
 .form-group.searchbar {
-  width: 80%;
+  width: 100%;
 }
 
 .navbar-form input.form-control {
   width: 100%;
+}
+
+input#search:focus {
+  border: none;
 }
 
 .row.snippet-card-search-wrapper {
@@ -211,11 +215,16 @@ img.snippet-card-avatar {
   float: right;
 }
 
-.snippet-card-button {
+.snippet-card-link {
   display: inline;
+  font-size: 12px;
 }
 
-.snippet-card-button a:hover {
+.snippet-card-link a {
+  color: #555;
+}
+
+.snippet-card-link a:hover {
   text-decoration: none;
 }
 
@@ -291,6 +300,10 @@ input.add-snippet-url {
 
 /* LOGIN */
 
+.login-logo {
+  margin-bottom: 30px;
+}
+
 ul.face-nav {
 	margin-bottom: 0;
 	padding-left: 0;
@@ -311,7 +324,7 @@ ul.face-nav {
 }
 
 div.social-buttons {
-
+  margin-top: 50px;
 }
 
 div.social-buttons .row {
