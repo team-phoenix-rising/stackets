@@ -211,11 +211,16 @@ img.snippet-card-avatar {
   float: right;
 }
 
-.snippet-card-button {
+.snippet-card-link {
   display: inline;
+  font-size: 12px;
 }
 
-.snippet-card-button a:hover {
+.snippet-card-link a {
+  color: #555;
+}
+
+.snippet-card-link a:hover {
   text-decoration: none;
 }
 
