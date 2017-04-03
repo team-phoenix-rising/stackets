@@ -1,6 +1,7 @@
 angular.module('stackets.login', [])
 
 .controller('LoginController', function ($scope, $http, $window, $location, Snippets) {
+  console.log('login controller')
 	var query = $location.search()
   var photo = query["photo"];
   var imageKey = query["oe"];
