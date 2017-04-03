@@ -291,6 +291,10 @@ input.add-snippet-url {
 
 /* LOGIN */
 
+.login-logo {
+  margin-bottom: 30px;
+}
+
 ul.face-nav {
 	margin-bottom: 0;
 	padding-left: 0;
@@ -311,7 +315,7 @@ ul.face-nav {
 }
 
 div.social-buttons {
-
+  margin-top: 50px;
 }
 
 div.social-buttons .row {
