@@ -19,6 +19,10 @@ nav.navbar.navbar-default.navbar-fixed-top {
   /*margin-top: 20px;*/
 }
 
+a.navbar-brand.logo:hover, a.navbar-brand.logo:focus {
+  color: #BFECE2;
+}
+
 #menu-toggle:hover, #menu-toggle:focus {
   color: #BFECE2;
 }
@@ -161,6 +165,10 @@ img.sidebar-avatar {
     margin-left: 7px;
     font-size: 25px;
   }
+
+  .navbar-form input.form-control {
+    margin-left: 15px;
+  }
 }
 
 /* FORM */
@@ -200,7 +208,7 @@ div .caption {
 }
 
 .snippet-card-title {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 img.snippet-card-avatar {
@@ -285,6 +293,10 @@ input.add-snippet-url {
   cursor: pointer;
 }
 
+.add-form-invalid-asterisk {
+  color: #BF4E4C;
+}
+
 
 /*FAVORITE*/
 
@@ -300,8 +312,15 @@ input.add-snippet-url {
 
 /* LOGIN */
 
+.login-wrapper {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .login-logo {
-  margin-bottom: 30px;
+  text-align: center;
 }
 
 ul.face-nav {
