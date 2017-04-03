@@ -22,14 +22,14 @@ module.exports = function(app, express) {
 
   app.get('/login/github/return',
     passport.authenticate('github', { failureRedirect: '/' }),
-    function(req, res) {      
+    function(req, res) {
       console.log('github response...', req.user)
       var token = jwt.sign({
         name: req.user[0].dataValues.name,
-        photo: req.user[0].dataValues.image,                    
+        photo: req.user[0].dataValues.image,
         id: req.user[0].dataValues.id,
-        provider: req.user[0].dataValues.provider                   
-      }, process.env.JWT_SECRET);         
+        provider: req.user[0].dataValues.provider
+      }, process.env.JWT_SECRET);
 
       var userId = req.user[0].dataValues.id;
       var name = req.user[0].dataValues.name;
@@ -42,13 +42,13 @@ module.exports = function(app, express) {
 
   app.get('/login/facebook/return',
     passport.authenticate('facebook', { failureRedirect: '/' }),
-    function(req, res) {            
+    function(req, res) {
       var token = jwt.sign({
         name: req.user[0].dataValues.name,
-        photo: req.user[0].dataValues.image,           
+        photo: req.user[0].dataValues.image,
         id: req.user[0].dataValues.id,
-        provider: req.user[0].dataValues.provider                    
-      }, process.env.JWT_SECRET);             
+        provider: req.user[0].dataValues.provider
+      }, process.env.JWT_SECRET);
 
       var id = req.user[0].dataValues.id
       var name = req.user[0].dataValues.name
@@ -105,7 +105,6 @@ module.exports = function(app, express) {
   });
   //direct to view favorites
   app.get('/search/myfavorties', function(req, res) {
-
     res.redirect('/');
   });
   //direct to page wher a user can add a snippet
@@ -114,7 +113,6 @@ module.exports = function(app, express) {
   });
   //redirect to the home page
   app.get('/*', function(req, res) {
-    console.log('incoming request coming...', req.headers);
     res.redirect('/');
   });
 };
