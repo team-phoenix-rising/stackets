@@ -41,10 +41,6 @@ angular.module('stackets', [
       'homeView': {
         controller: 'HomeController',
         templateUrl: '../partials/home.html'
-      },
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
       }
     }
   }).state('about', {
@@ -76,83 +72,83 @@ angular.module('stackets', [
   }).state('search/mysnippets', {
     url: '/search/mysnippets',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search/authentication', {
     url: '/search/authentication',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search/backend', {
     url: '/search/backend',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search/build tools', {
     url: '/search/build tools',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search/command line', {
     url: '/search/command line',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search/database', {
     url: '/search/database',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search/deployment', {
     url: '/search/deployment',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   })
   .state('search/frontend', {
     url: '/search/frontend',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   })
   .state('search/testing', {
     url: '/search/testing',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search/myfavorites', {
     url: '/search/myfavorites',
     views: {
-      'searchResultsView': {
-        controller: 'SearchResultsController',
-        templateUrl: '../partials/search-results.html'
+      'homeView': {
+        controller: 'HomeController',
+        templateUrl: '../partials/home.html'
       }
     }
   }).state('search-results', {
@@ -196,7 +192,7 @@ angular.module('stackets', [
     }
   }).state('login', {
     name: 'login',
-    url: '/loginView',
+    url: '/login',
     data: {
       authorization: false,
       redirectTo: 'home',
@@ -210,7 +206,7 @@ angular.module('stackets', [
     }
   }).state('signup', {
     name: 'signup',
-    url: '/signupView',
+    url: '/signup',
     data: {
       authorization: false,
       redirectTo: 'home',
