@@ -2,11 +2,19 @@
 
 > codeMinder is an app for organizing and sharing useful code snippets
 
-## Team
+## codeMinder Team
 
   - Emilie Hester
   - Ignacio Palma
   - Bryce Dooley
+  
+### Stackets Team
+A portion of the code was forked from the Stackets repo. Team includes:
+
+- Danya D. Smith
+- Jason Kim
+- Lou Kaileh
+- Joanna Wheeler
 
 ## Usage
 Visit `http://codeminder.herokuapp.com` and add code snippets that you would like to have quick, easy access to. Easily filter your own snippets, and also search other users' snippets. Check the heart on a snippet to have it show in your favorites section.
