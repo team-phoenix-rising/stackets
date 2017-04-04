@@ -39,5 +39,5 @@ Lastly, seed the database by running:
 ### Roadmap
 
 - Edit & Delete Snippets
-- Create your own username, password and iamge
+- Create your own username, password and image
 
