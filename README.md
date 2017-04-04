@@ -1,6 +1,6 @@
 # codeMinder
 
-> Stackets provides boilerplate code snippets for full stack developers in need of a quick code reference to accomplish a specific task
+> codeMinder is an app for organizing and sharing useful code snippets
 
 ## Team
 
