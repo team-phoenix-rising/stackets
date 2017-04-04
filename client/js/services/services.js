@@ -16,16 +16,14 @@ angular.module('stackets.services', [])
     });
 
     var setLogInStatus = function() {
-      isLoggedIn = true;      
+      isLoggedIn = true;
     }
-    
-    var setLogOutStatus = function() {      
+
+    var setLogOutStatus = function() {
       isLoggedIn = false;
     }
 
     var getLogStatus = function() {
-      console.log('getLogged Status', isLoggedIn)
-      //return isLoggedIn;
       return promise;
     }
 

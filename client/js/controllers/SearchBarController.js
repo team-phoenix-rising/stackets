@@ -9,9 +9,6 @@ angular.module('stackets.searchBar', [])
     });
 
     $scope.search = function (form) {
-      //console.log('Form: ', form);
-      //console.log('Search Query: ', $scope.searchQuery);
-      //$location.path('/search/' + $scope.searchQuery);
       $state.go('search-results', {query: $scope.searchQuery});
     }
   });

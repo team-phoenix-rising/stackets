@@ -16,7 +16,6 @@ angular.module('stackets.favorite', [])
       });
     }
 
-
     $scope.toggleFavorite = function() {
       $scope.isFavorite = !$scope.isFavorite;
       if (!$scope.isFavorite) {

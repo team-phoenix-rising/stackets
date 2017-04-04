@@ -13,7 +13,7 @@ angular.module('stackets.searchResults', [])
       var newTitle = [];
       var charCount = 0;
       title.split(' ').forEach(word => {
-        if (charCount + word.length <= 22) newTitle.push(word);
+        if (charCount + word.length <= 21) newTitle.push(word);
         charCount += word.length;
       });
       newTitle = newTitle.join(' ');
@@ -21,15 +21,15 @@ angular.module('stackets.searchResults', [])
     };
 
     var truncateNote = function(note) {
-      return note.split(' ').splice(0, 21).join(' ') + '...';
+      return note.split(' ').splice(0, 19).join(' ') + '...';
     };
 
     if ($location.$$path.split('/')[2] === 'mysnippets') {
 
       Snippets.getAllSnippets().then(function(snippets) {
         snippets = snippets.map(snippet => {
-          if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
-          if (snippet.title.length > 22) snippet.title = truncateTitle(snippet.title);
+          if (snippet.notes.length > 18) snippet.notes = truncateNote(snippet.notes);
+          if (snippet.title.length > 20) snippet.title = truncateTitle(snippet.title);
           snippet.snippet = JSON.parse(snippet.snippet);
           return snippet;
         });
@@ -37,8 +37,6 @@ angular.module('stackets.searchResults', [])
       });
 
     } else if (!$location.$$path.split('/')[2]) {
-      // var userId = Snippets.getLoggedInUserData().id;
-      // console.log('userid', userId);
       Snippets.getAllSnippets().then(function (snippets) {
         snippets = snippets.map(snippet => {
           if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
@@ -57,7 +55,6 @@ angular.module('stackets.searchResults', [])
       }
       $state.params.query = '';
     } else if ($location.$$path.split('/')[2] === 'myfavorites') {
-      // var userId = Snippets.getLoggedInUserData().id;
       Snippets.getFavsByUser(userId).then(function(response) {
         var snippets = response.data;
         snippets = snippets.map(snippet => {
@@ -118,6 +115,7 @@ angular.module('stackets.searchResults', [])
       _editor.setTheme("ace/theme/cobalt");
       // Mode @ https://github.com/ajaxorg/ace/tree/master/lib/ace/mode
       _session.setMode("ace/mode/javascript");
+      _editor.$blockScrolling = Infinity;
       // Load the snippet's code
       _session.setValue('');
     };

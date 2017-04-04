@@ -16,7 +16,10 @@ nav.navbar.navbar-default.navbar-fixed-top {
 
 .navbar-brand.logo, .navbar-brand.toggle {
   float: none;
-  /*margin-top: 20px;*/
+}
+
+a.navbar-brand.logo:hover, a.navbar-brand.logo:focus {
+  color: #BFECE2;
 }
 
 #menu-toggle:hover, #menu-toggle:focus {
@@ -161,6 +164,10 @@ img.sidebar-avatar {
     margin-left: 7px;
     font-size: 25px;
   }
+
+  .navbar-form input.form-control {
+    margin-left: 15px;
+  }
 }
 
 /* FORM */
@@ -200,7 +207,7 @@ div .caption {
 }
 
 .snippet-card-title {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 img.snippet-card-avatar {
@@ -285,6 +292,10 @@ input.add-snippet-url {
   cursor: pointer;
 }
 
+.add-form-invalid-asterisk {
+  color: #BF4E4C;
+}
+
 
 /*FAVORITE*/
 
@@ -300,8 +311,15 @@ input.add-snippet-url {
 
 /* LOGIN */
 
+.login-wrapper {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
 .login-logo {
-  margin-bottom: 30px;
+  text-align: center;
 }
 
 ul.face-nav {
@@ -330,13 +348,13 @@ button.submit-login-button {
 }
 
 button.signup-submit-button {
-  width: 100%;  
+  width: 100%;
   background: transparent;
   color: #2c3e50;
 }
 
 div.home-header {
-  text-align: center;  
+  text-align: center;
 }
 
 div.home-header > img {
@@ -351,7 +369,6 @@ div.home-header > img {
 
 div.social-buttons {
   padding: 0;
-/*   margin-top: 50px; */
 }
 
 div.social-buttons .row {
@@ -378,14 +395,13 @@ div.social-buttons .row > button.facebook-button {
 }
 
 div.social-buttons > .row > a.facebook-button > button.facebook-link {
-  width: 100%;  
+  width: 100%;
   height: 39px;
   background: #3b5998;
   color: white;
   border: 0;
   border-radius: 5px;
 }
-
 
 div.social-buttons .row > button {
 	background: #767676;
