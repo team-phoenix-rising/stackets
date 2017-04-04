@@ -33,7 +33,3 @@ Lastly, seed the database by running:
 - Edit & Delete Snippets
 - Create your own username, password and iamge
 
-
-## Contributing
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
