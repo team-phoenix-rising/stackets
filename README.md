@@ -9,7 +9,7 @@
   - Bryce Dooley
 
 ## Usage
-Visit `http://codeminder.herokuapp.com` and add code snippets that you would like to have quick, easy access to. Easily filter your own snippets, and also search other users' snippets. Check the heart on a snippet to have it show in your favorite's section.
+Visit `http://codeminder.herokuapp.com` and add code snippets that you would like to have quick, easy access to. Easily filter your own snippets, and also search other users' snippets. Check the heart on a snippet to have it show in your favorites section.
 
 ## Requirements
 
