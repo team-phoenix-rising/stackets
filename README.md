@@ -20,16 +20,13 @@ Visit `http://codeminder.herokuapp.com` and add code snippets that you would lik
 
 ## Development
 
-### Installing Dependencies
-
-From within the root directory:
-
+To get started, start PostgreSQL in your local environment. Then run the following in your root directory:
 ```
 npm install
-start PostgreSQL
 npm start
-seed the database by running node/snippetData/seeder.js
 ```
+Lastly, seed the database by running: 
+```node/snippetData/seeder.js```
 
 ### Roadmap
 
