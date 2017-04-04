@@ -37,8 +37,6 @@ angular.module('stackets.searchResults', [])
       });
 
     } else if (!$location.$$path.split('/')[2]) {
-      // var userId = Snippets.getLoggedInUserData().id;
-      // console.log('userid', userId);
       Snippets.getAllSnippets().then(function (snippets) {
         snippets = snippets.map(snippet => {
           if (snippet.notes.length > 20) snippet.notes = truncateNote(snippet.notes);
